@@ -5,3 +5,20 @@ spring:
         config:
             failFast: true
             uri: http://localhost:8888
+
+#Cuando se logre configurar oauth con google llevar estas properties a tesla
+security:
+    oauth2:
+        client:
+            clientId: 1030790490578-pt6ah3fm6c3u0qh4fei47mfiubvoen3n.apps.googleusercontent.com
+            clientSecret: ER4wvghqUNLKbqscM9hEZN3g
+            accessTokenUri: https://www.googleapis.com/oauth2/v4/token
+            userAuthorizationUri: https://accounts.google.com/o/oauth2/v2/auth
+            clientAuthenticationScheme: form
+            scope:
+              - openid
+              - email
+              - profile
+        resource:
+            userInfoUri: https://www.googleapis.com/oauth2/v3/userinfo
+            preferTokenInfo: true
