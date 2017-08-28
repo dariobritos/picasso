@@ -1,48 +1,36 @@
-import { NgModule }       from '@angular/core';
-import { BrowserModule }  from '@angular/platform-browser';
-import { FormsModule }    from '@angular/forms';
-import { RouterModule }   from '@angular/router';
+import {NgModule} from '@angular/core';
+import {BrowserModule} from '@angular/platform-browser';
+import {FormsModule} from '@angular/forms';
 
-import { AppComponent }        from './app.component';
-import { HeroDetailComponent } from './hero-detail.component';
-import { HeroesComponent }     from './heroes.component';
-import { HeroService }         from './hero.service';
-import {DashboardComponent} from "./dashboard.component";
+
+
+import {HttpModule} from "@angular/http";
+import {AppRoutingModule} from "./routing/app-routing.module";
+import {AppComponent} from "./component/app/app.component";
+import {DashboardComponent} from "./component/dashboard/dashboard.component";
+import {CalculationDetailComponent} from "./component/calculation/detail/calculation-detail.component";
+import {CalculationsComponent} from "./component/calculation/calculations.component";
+import {CalculationService} from "./service/calculation.service";
+import {HomeComponent} from "./component/home/home.component";
+import {NavbarComponent} from "./component/navbar/navbar.component";
+
 
 @NgModule({
   imports: [
     BrowserModule,
     FormsModule,
-    RouterModule.forRoot([
-      {
-        path: '',
-        redirectTo: '/dashboard',
-        pathMatch: 'full'
-      },
-      {
-        path: 'dashboard',
-        component: DashboardComponent
-      },
-      {
-        path: 'heroes',
-        component: HeroesComponent
-      },
-      {
-        path: 'detail/:id',
-        component: HeroDetailComponent
-      }
-    ])
+    AppRoutingModule,
+    HttpModule
   ],
   declarations: [
     AppComponent,
     DashboardComponent,
-    HeroDetailComponent,
-    HeroesComponent
+    HomeComponent,
+    NavbarComponent,
+    CalculationDetailComponent,
+    CalculationsComponent
   ],
-  providers: [
-    HeroService
-  ],
+  providers: [ CalculationService ],
   bootstrap: [ AppComponent ]
 })
-export class AppModule {
-}
+export class AppModule { }

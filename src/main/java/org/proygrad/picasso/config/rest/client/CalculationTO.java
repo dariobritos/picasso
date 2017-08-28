@@ -1,27 +1,36 @@
 package org.proygrad.picasso.config.rest.client;
 
+import java.io.Serializable;
+import java.math.BigDecimal;
 import java.util.Map;
 
-public class CalculationTO {
+public class CalculationTO implements Serializable {
 
-    private String id;
+    private Long id;
     private String name;
     private String type;
 
     private Map<String, Double> input;
-    private Double seed;
+    private BigDecimal seed;
 
     private String precision;
 
     private String result;
     private Map<String, Double> output;
 
+    public CalculationTO() {
+    }
 
-    public String getId() {
+    public CalculationTO(Long id, String name) {
+        this.id = id;
+        this.name = name;
+    }
+
+    public Long getId() {
         return id;
     }
 
-    public void setId(String id) {
+    public void setId(Long id) {
         this.id = id;
     }
 
@@ -49,11 +58,11 @@ public class CalculationTO {
         this.input = input;
     }
 
-    public double getSeed() {
+    public BigDecimal getSeed() {
         return seed;
     }
 
-    public void setSeed(Double seed) {
+    public void setSeed(BigDecimal seed) {
         this.seed = seed;
     }
 
