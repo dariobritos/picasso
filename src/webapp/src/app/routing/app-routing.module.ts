@@ -4,18 +4,21 @@ import {CalculationsComponent} from "../component/calculation/calculations.compo
 import {CalculationDetailComponent} from "../component/calculation/detail/calculation-detail.component";
 import {DashboardComponent} from "../component/dashboard/dashboard.component";
 import {HomeComponent} from "../component/home/home.component";
+import {NewCalculationComponent} from "../component/calculation/new/new-calculation.component";
 
 
 const routes: Routes = [
-  { path: '', redirectTo: '/home', pathMatch: 'full' },
-  { path: 'home',  component: HomeComponent },
-  { path: 'dashboard',  component: DashboardComponent },
-  { path: 'calculation/:id', component: CalculationDetailComponent },
-  { path: 'calculations',     component: CalculationsComponent }
+  {path: '', redirectTo: '/home', pathMatch: 'full'},
+  {path: 'home', component: HomeComponent},
+  {path: 'dashboard', component: DashboardComponent},
+  {path: 'calculation/:id', component: CalculationDetailComponent},
+  {path: 'calculations', component: CalculationsComponent},
+  {path: 'new', component: NewCalculationComponent}
 ];
 
 @NgModule({
-  imports: [ RouterModule.forRoot(routes) ],
-  exports: [ RouterModule ]
+  imports: [RouterModule.forRoot(routes)],
+  exports: [RouterModule]
 })
-export class AppRoutingModule {}
+export class AppRoutingModule {
+}

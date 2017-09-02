@@ -13,6 +13,7 @@ import {CalculationsComponent} from "./component/calculation/calculations.compon
 import {CalculationService} from "./service/calculation.service";
 import {HomeComponent} from "./component/home/home.component";
 import {NavbarComponent} from "./component/navbar/navbar.component";
+import {NewCalculationComponent} from "./component/calculation/new/new-calculation.component";
 
 
 @NgModule({
@@ -28,7 +29,8 @@ import {NavbarComponent} from "./component/navbar/navbar.component";
     HomeComponent,
     NavbarComponent,
     CalculationDetailComponent,
-    CalculationsComponent
+    CalculationsComponent,
+    NewCalculationComponent
   ],
   providers: [ CalculationService ],
   bootstrap: [ AppComponent ]

@@ -1,9 +1,18 @@
-<h2>My Heroes</h2>
-<ul class="heroes">
-  <li *ngFor="let hero of calculation"
-      [class.selected]="hero === selectedCalculation"
-      (click)="onSelect(hero)">
-    <span class="badge">{{hero.id}}</span> {{hero.name}}
+<div class="main-container">
+
+
+<div id="new-calc-container" class="container text-center">
+  <button routerLink="/new" type="button"  class="btn btn-success">New Calculation</button>
+</div>
+
+
+
+<h2>My Calculations</h2>
+<ul class="calculations">
+  <li *ngFor="let calc of calculation"
+      [class.selected]="calc === selectedCalculation"
+      (click)="onSelect(calc)">
+    <span class="badge">{{calc.id}}</span> {{calc.name}}
   </li>
 </ul>
 
@@ -17,7 +26,7 @@
 
 <div *ngIf="selectedCalculation">
   <h2>
-    {{selectedCalculation.name | uppercase}} is my hero
+    {{selectedCalculation.name | uppercase}} is my calculation
   </h2>
   <button (click)="gotoDetail()">View Details</button>
 </div>
@@ -25,3 +34,4 @@
 
 
 
+</div>

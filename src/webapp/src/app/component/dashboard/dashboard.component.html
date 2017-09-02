@@ -1,3 +1,23 @@
+<div class="main-container">
+
+
+<div class="container text-center">
+  <div class="row">
+    <div class="col-md-3 col-sm-12">
+      <h4>Column</h4>
+    </div>
+    <div class="col-md-3 col-sm-12">
+      <h4>Column</h4>
+    </div>
+    <div class="col-md-3 col-sm-12">
+      <h4>Column</h4>
+    </div>
+  </div>
+</div>
+
+
+
+
 <h3>Top Heroes</h3>
 <div class="grid grid-pad">
   <a *ngFor="let hero of heroes"  [routerLink]="['/detail', hero.id]"  class="col-1-4">
@@ -5,4 +25,5 @@
       <h4>{{hero.name}}</h4>
     </div>
   </a>
+</div>
 </div>
