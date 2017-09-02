@@ -14,6 +14,7 @@ import {CalculationService} from "./service/calculation.service";
 import {HomeComponent} from "./component/home/home.component";
 import {NavbarComponent} from "./component/navbar/navbar.component";
 import {NewCalculationComponent} from "./component/calculation/new/new-calculation.component";
+import {InputsModule} from "./component/utils/utils-module";
 
 
 @NgModule({
@@ -21,16 +22,17 @@ import {NewCalculationComponent} from "./component/calculation/new/new-calculati
     BrowserModule,
     FormsModule,
     AppRoutingModule,
-    HttpModule
+    HttpModule,
+    InputsModule
   ],
   declarations: [
     AppComponent,
     DashboardComponent,
     HomeComponent,
-    NavbarComponent,
     CalculationDetailComponent,
     CalculationsComponent,
-    NewCalculationComponent
+    NewCalculationComponent,
+    NavbarComponent
   ],
   providers: [ CalculationService ],
   bootstrap: [ AppComponent ]
