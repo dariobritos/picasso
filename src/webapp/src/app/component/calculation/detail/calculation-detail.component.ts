@@ -13,7 +13,7 @@ import {Calculation} from "../../../entities/calculation";
 
 export class CalculationDetailComponent {
   @Input()
-  hero: Calculation;
+  calculation: Calculation;
 
   constructor(
     private heroService: CalculationService,
@@ -25,11 +25,11 @@ export class CalculationDetailComponent {
   ngOnInit(): void {
     this.route.paramMap
       .switchMap((params: ParamMap) => this.heroService.getCalculation(+params.get('id')))
-      .subscribe(hero => this.hero = hero);
+      .subscribe(hero => this.calculation = hero);
   }
 
   save(): void {
-    this.heroService.update(this.hero)
+    this.heroService.update(this.calculation)
       .then(() => this.goBack());
   }
 

@@ -1,5 +1,6 @@
 
-import { Component } from '@angular/core';
+import {Component, EventEmitter, Input, Output} from '@angular/core';
+import { Parameter} from "../../../entities/calculation";
 
 @Component({
   selector: 'static-variable-input',
@@ -7,4 +8,20 @@ import { Component } from '@angular/core';
   styleUrls: ['static-variable.input.component.css']
 })
 export class StaticVariableInputComponent {
+
+  @Input()
+  parameter: Parameter;
+
+
+  @Output()
+  changeParameter = new EventEmitter<Parameter>();
+
+  onChange(){
+
+    this.changeParameter.emit(this.parameter);
+  }
+
+
+
+
 }

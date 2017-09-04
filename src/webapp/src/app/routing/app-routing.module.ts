@@ -5,6 +5,8 @@ import {CalculationDetailComponent} from "../component/calculation/detail/calcul
 import {DashboardComponent} from "../component/dashboard/dashboard.component";
 import {HomeComponent} from "../component/home/home.component";
 import {NewCalculationComponent} from "../component/calculation/new/new-calculation.component";
+import {UserProfileComponent} from "../component/user-profile/user-profile.component";
+import {MaterialsComponent} from "../component/materials/materials.component";
 
 
 const routes: Routes = [
@@ -13,7 +15,9 @@ const routes: Routes = [
   {path: 'dashboard', component: DashboardComponent},
   {path: 'calculation/:id', component: CalculationDetailComponent},
   {path: 'calculations', component: CalculationsComponent},
-  {path: 'new', component: NewCalculationComponent}
+  {path: 'new', component: NewCalculationComponent},
+  {path: 'profile', component: UserProfileComponent},
+  {path: 'materials', component: MaterialsComponent}
 ];
 
 @NgModule({

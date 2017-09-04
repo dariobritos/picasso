@@ -12,9 +12,12 @@ import {CalculationDetailComponent} from "./component/calculation/detail/calcula
 import {CalculationsComponent} from "./component/calculation/calculations.component";
 import {CalculationService} from "./service/calculation.service";
 import {HomeComponent} from "./component/home/home.component";
-import {NavbarComponent} from "./component/navbar/navbar.component";
+import {NavbarComponent} from "./component/utils/navbar/navbar.component";
 import {NewCalculationComponent} from "./component/calculation/new/new-calculation.component";
 import {InputsModule} from "./component/utils/utils-module";
+import {CommonModule} from "@angular/common";
+import {UserProfileComponent} from "./component/user-profile/user-profile.component";
+import {MaterialsComponent} from "./component/materials/materials.component";
 
 
 @NgModule({
@@ -23,7 +26,8 @@ import {InputsModule} from "./component/utils/utils-module";
     FormsModule,
     AppRoutingModule,
     HttpModule,
-    InputsModule
+    InputsModule,
+    CommonModule
   ],
   declarations: [
     AppComponent,
@@ -32,7 +36,9 @@ import {InputsModule} from "./component/utils/utils-module";
     CalculationDetailComponent,
     CalculationsComponent,
     NewCalculationComponent,
-    NavbarComponent
+    UserProfileComponent,
+    UserProfileComponent,
+    MaterialsComponent
   ],
   providers: [ CalculationService ],
   bootstrap: [ AppComponent ]

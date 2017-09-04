@@ -6,12 +6,14 @@
 
     <!--TIPO DE PROBLEMA-->
     <div class="col-12 col-lg-6 col-md-12 col-sm-12 justify-content-center mb-3 ">
-      <select class="custom-select w-100 form-control-lg mb-2 mt-2">
-        <option selected>Semi-elliptical surface crack in a straight pipe.</option>
-        <option value="1">One</option>
-        <option value="2">Two</option>
-        <option value="3">Three</option>
-      </select>
+
+
+      <label class="w-100">
+        <select [(ngModel)]="calculation.type" class="custom-select form-control-lg mb-2 mt-2 w-100">
+          <option *ngFor="let oo of calculationTypes" [value]="oo">{{oo|calculationName}}</option>
+
+        </select>
+      </label>
 
       <div class="card w-100">
         <div class="card-body">
@@ -43,12 +45,10 @@
             <div class="card-body">
 
 
-              <static-variable-input></static-variable-input>
-              <static-variable-input></static-variable-input>
-              <static-variable-input></static-variable-input>
-
-
-
+              <static-variable-input [parameter]="calculation.parameters.get('CRACK_DEPTH')"
+                                     (changeParameter)="parameterChanged($event)"></static-variable-input>
+              <static-variable-input [parameter]="calculation.parameters.get('CRACK_LENGTH')"
+                                     (changeParameter)="parameterChanged($event)"></static-variable-input>
 
 
             </div>
@@ -70,8 +70,10 @@
             <div class="card-body">
 
 
-              <static-variable-input></static-variable-input>
-              <static-variable-input></static-variable-input>
+              <static-variable-input [parameter]="calculation.parameters.get('WALL_THICKNESS')"
+                                     (changeParameter)="parameterChanged($event)"></static-variable-input>
+              <static-variable-input [parameter]="calculation.parameters.get('INNER_RADIUS')"
+                                     (changeParameter)="parameterChanged($event)"></static-variable-input>
 
 
             </div>
@@ -93,8 +95,8 @@
                data-parent="#accordion">
             <div class="card-body">
 
-              <static-variable-input></static-variable-input>
-              <static-variable-input></static-variable-input>
+              <static-variable-input [parameter]="calculation.parameters.get('YIELD_STRESS')"
+                                     (changeParameter)="parameterChanged($event)"></static-variable-input>
 
             </div>
           </div>
@@ -112,7 +114,9 @@
           <div id="collapseFour" class="collapse" role="tabpanel" aria-labelledby="headingFour"
                data-parent="#accordion">
             <div class="card-body">
-              <static-variable-input></static-variable-input>
+
+              <static-variable-input [parameter]="calculation.parameters.get('OPERATING_PRESSURE')"
+                                     (changeParameter)="parameterChanged($event)"></static-variable-input>
 
 
             </div>
@@ -121,8 +125,34 @@
       </div>
     </div>
 
-    <button type="button" class="btn btn-success m-5">Start calculation</button>
 
   </div>
+
+
+  <div class="row mt-5">
+    <h1 class="w-100 text-center">Configuration</h1>
+
+
+    <div class="col-8 col-lg-4 ml-auto  mr-auto mr-lg-1 mt-1">
+      <label for="input-seed">Seed</label>
+      <input id="input-seed" class="form-control" type="number" placeholder="Seed" [(ngModel)]="calculation.configuration.seed">
+    </div>
+    <div class="col-8 col-lg-4  mr-auto ml-auto ml-lg-1 mt-1">
+      <label for="input-presicion">Presicion</label>
+      <input id="input-presicion" class="form-control" type="number" placeholder="Presicion" [(ngModel)]="calculation.configuration.presicion">
+    </div>
+
+  </div>
+
+
+  <div class="row">
+
+    <div class="col-12 text-center">
+
+      <button type="button" (click)="printCalculation()" class="btn btn-success m-5">Start calculation</button>
+
+    </div>
+  </div>
+
 
 </div>
