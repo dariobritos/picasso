@@ -1,4 +1,4 @@
-package org.proygrad.picasso.config.rest.client;
+package org.proygrad.picasso.rest.client;
 
 import java.io.Serializable;
 import java.math.BigDecimal;

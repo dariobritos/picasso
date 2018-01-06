@@ -1,4 +1,4 @@
-package org.proygrad.picasso.config.rest.client;
+package org.proygrad.picasso.rest.client;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.client.RestTemplate;

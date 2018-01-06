@@ -1,4 +1,4 @@
-package org.proygrad.picasso.config.rest.controller;
+package org.proygrad.picasso.rest.controller;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;

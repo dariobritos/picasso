@@ -1,7 +1,7 @@
-package org.proygrad.picasso.config.rest.controller;
+package org.proygrad.picasso.rest.controller;
 
-import org.proygrad.picasso.config.rest.client.CalculationTO;
-import org.proygrad.picasso.config.rest.client.TuringClient;
+import org.proygrad.picasso.rest.client.CalculationTO;
+import org.proygrad.picasso.rest.client.TuringClient;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -30,20 +30,20 @@ public class CalculationController {
         calclulations.add(new CalculationTO(5L, "Dario"));
     }
 
-    @RequestMapping(value = "/service/calculation", method = RequestMethod.GET)
+    @RequestMapping(value = "/calculation", method = RequestMethod.GET)
     public List<CalculationTO> calculations() {
 
         return calclulations;
     }
 
 
-    @RequestMapping(value = "/service/calculation/{id}", method = RequestMethod.GET)
+    @RequestMapping(value = "/calculation/{id}", method = RequestMethod.GET)
     public CalculationTO calculation(@PathVariable final Long id) {
 
         return calclulations.stream().filter(x -> x.getId().equals(id)).findAny().orElseGet(null);
     }
 
-    @RequestMapping(value = "/service/calculation/{id}", method = RequestMethod.PUT)
+    @RequestMapping(value = "/calculation/{id}", method = RequestMethod.PUT)
     public CalculationTO updateCalculation(@PathVariable final Long id, @RequestBody CalculationTO calculation) {
 
         CalculationTO calculationTO = calclulations.stream().filter(x -> x.getId().equals(id)).findAny().orElseGet(null);
@@ -52,7 +52,7 @@ public class CalculationController {
         return calculationTO;
     }
 
-    @RequestMapping(value = "/service/calculation", method = RequestMethod.POST)
+    @RequestMapping(value = "/calculation", method = RequestMethod.POST)
     public CalculationTO addCalculation(@RequestBody CalculationTO data) {
 
         OptionalLong max = calculations().stream().mapToLong(CalculationTO::getId).max();

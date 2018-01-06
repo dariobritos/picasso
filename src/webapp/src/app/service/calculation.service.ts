@@ -7,14 +7,14 @@ import {Calculation} from "../entities/calculation";
 
 @Injectable()
 export class CalculationService {
-  private heroesUrl = 'service/calculation';  // URL to web api
+  private calculationUrl = 'calculation';  // URL to web api
   private headers = new Headers({'Content-Type': 'application/json'});
 
   constructor(private http: Http) {
   }
 
   getCalculation(id: number): Promise<Calculation> {
-    const url = `${this.heroesUrl}/${id}`;
+    const url = `${this.calculationUrl}/${id}`;
     return this.http.get(url)
       .toPromise()
       .then(response => response.json() as Calculation)
@@ -22,7 +22,7 @@ export class CalculationService {
   }
 
   getCalculations(): Promise<Calculation[]> {
-    return this.http.get(this.heroesUrl)
+    return this.http.get(this.calculationUrl)
       .toPromise()
       .then(response => response.json() as Calculation[])
       .catch(this.handleError);
@@ -30,14 +30,14 @@ export class CalculationService {
 
   create(name: string): Promise<Calculation> {
     return this.http
-      .post(this.heroesUrl, JSON.stringify({name: name}), {headers: this.headers})
+      .post(this.calculationUrl, JSON.stringify({name: name}), {headers: this.headers})
       .toPromise()
       .then(res => res.json() as Calculation)
       .catch(this.handleError);
   }
 
   update(hero: Calculation): Promise<Calculation> {
-    const url = `${this.heroesUrl}/${hero.id}`;
+    const url = `${this.calculationUrl}/${hero.id}`;
     return this.http
       .put(url, JSON.stringify(hero), {headers: this.headers})
       .toPromise()
