@@ -1,6 +1,6 @@
 import {Component, OnInit} from '@angular/core';
-import {CalculationService} from "../../service/calculation.service";
-import {Calculation} from "../../entities/calculation";
+import {ScenarioService} from "../../service/scenario.service";
+import {Scenario} from "../../entities/scenario";
 
 
 @Component({
@@ -10,12 +10,12 @@ import {Calculation} from "../../entities/calculation";
 })
 export class DashboardComponent implements OnInit {
 
-  heroes: Calculation[] = [];
+  heroes: Scenario[] = [];
 
-  constructor(private heroService: CalculationService) { }
+  constructor(private heroService: ScenarioService) { }
 
   ngOnInit(): void {
-    this.heroService.getCalculations()
+    this.heroService.getScenarios()
       .then(heroes => this.heroes = heroes);
   }
 }

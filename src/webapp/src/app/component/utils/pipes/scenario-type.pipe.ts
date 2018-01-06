@@ -1,7 +1,7 @@
 import {Pipe, PipeTransform} from "@angular/core";
 
-@Pipe({name: 'calculationName'})
-export class CalculationTypePipe implements PipeTransform {
+@Pipe({name: 'scenarioName'})
+export class ScenarioTypePipe implements PipeTransform {
 
 
   problemNames: Map<string, string> = new Map().set('SE_SURFACE_CRACK_STRAIGHT_PIPE', 'Semi-elliptical surface crack in a straight pipe.');

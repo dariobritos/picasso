@@ -1,6 +1,6 @@
 
 import {Component, EventEmitter, Input, Output} from '@angular/core';
-import { Parameter} from "../../../entities/calculation";
+import { Parameter} from "../../../entities/scenario";
 
 @Component({
   selector: 'static-variable-input',

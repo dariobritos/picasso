@@ -1,6 +1,6 @@
 import {NgModule} from "@angular/core";
 import {StaticVariableInputComponent} from "./inputs/static-variable.input.component";
-import {CalculationTypePipe} from "./pipes/calculation-type.pipe";
+import {ScenarioTypePipe} from "./pipes/scenario-type.pipe";
 import {ParameterNamePipe} from "./pipes/parameter-name.pipe";
 import {CommonModule} from "@angular/common";
 import {FormsModule} from "@angular/forms";
@@ -9,8 +9,8 @@ import {AppRoutingModule} from "../../routing/app-routing.module";
 
 @NgModule({
   imports:[CommonModule,FormsModule,AppRoutingModule],
-  declarations:[StaticVariableInputComponent, CalculationTypePipe, ParameterNamePipe,NavbarComponent],
-  exports:[StaticVariableInputComponent,CalculationTypePipe,ParameterNamePipe,NavbarComponent]
+  declarations:[StaticVariableInputComponent, ScenarioTypePipe, ParameterNamePipe,NavbarComponent],
+  exports:[StaticVariableInputComponent,ScenarioTypePipe,ParameterNamePipe,NavbarComponent]
 })
 export class InputsModule{
 }

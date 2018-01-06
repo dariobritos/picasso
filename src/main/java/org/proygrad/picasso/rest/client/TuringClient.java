@@ -6,15 +6,15 @@ import org.springframework.web.client.RestTemplate;
 
 public class TuringClient {
 
-    private static String GET_CALCULATIONS = "http://turing/calculation";
+    private static String GET_SCENARIOS = "http://turing/scenario";
 
     @Autowired
     private RestTemplate restTemplate;
 
 
-    public CalculationTO getCalculation()    {
+    public ScenarioTO getScenario()    {
         String id = "id";
-        return restTemplate.getForEntity(GET_CALCULATIONS,CalculationTO.class, id ).getBody();
+        return restTemplate.getForEntity(GET_SCENARIOS,ScenarioTO.class, id ).getBody();
     }
 
 

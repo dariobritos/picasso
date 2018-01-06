@@ -4,7 +4,7 @@ import java.io.Serializable;
 import java.math.BigDecimal;
 import java.util.Map;
 
-public class CalculationTO implements Serializable {
+public class ScenarioTO implements Serializable {
 
     private Long id;
     private String name;
@@ -18,10 +18,10 @@ public class CalculationTO implements Serializable {
     private String result;
     private Map<String, Double> output;
 
-    public CalculationTO() {
+    public ScenarioTO() {
     }
 
-    public CalculationTO(Long id, String name) {
+    public ScenarioTO(Long id, String name) {
         this.id = id;
         this.name = name;
     }

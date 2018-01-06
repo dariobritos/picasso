@@ -2,42 +2,42 @@ import {Injectable} from '@angular/core';
 import {Headers, Http} from '@angular/http';
 
 import 'rxjs/add/operator/toPromise';
-import {Calculation} from "../entities/calculation";
+import {Scenario} from "../entities/scenario";
 
 
 @Injectable()
-export class CalculationService {
-  private calculationUrl = 'calculation';  // URL to web api
+export class ScenarioService {
+  private scenarioUrl = 'scenario';  // URL to web api
   private headers = new Headers({'Content-Type': 'application/json'});
 
   constructor(private http: Http) {
   }
 
-  getCalculation(id: number): Promise<Calculation> {
-    const url = `${this.calculationUrl}/${id}`;
+  getScenario(id: number): Promise<Scenario> {
+    const url = `${this.scenarioUrl}/${id}`;
     return this.http.get(url)
       .toPromise()
-      .then(response => response.json() as Calculation)
+      .then(response => response.json() as Scenario)
       .catch(this.handleError);
   }
 
-  getCalculations(): Promise<Calculation[]> {
-    return this.http.get(this.calculationUrl)
+  getScenarios(): Promise<Scenario[]> {
+    return this.http.get(this.scenarioUrl)
       .toPromise()
-      .then(response => response.json() as Calculation[])
+      .then(response => response.json() as Scenario[])
       .catch(this.handleError);
   }
 
-  create(name: string): Promise<Calculation> {
+  create(name: string): Promise<Scenario> {
     return this.http
-      .post(this.calculationUrl, JSON.stringify({name: name}), {headers: this.headers})
+      .post(this.scenarioUrl, JSON.stringify({name: name}), {headers: this.headers})
       .toPromise()
-      .then(res => res.json() as Calculation)
+      .then(res => res.json() as Scenario)
       .catch(this.handleError);
   }
 
-  update(hero: Calculation): Promise<Calculation> {
-    const url = `${this.calculationUrl}/${hero.id}`;
+  update(hero: Scenario): Promise<Scenario> {
+    const url = `${this.scenarioUrl}/${hero.id}`;
     return this.http
       .put(url, JSON.stringify(hero), {headers: this.headers})
       .toPromise()

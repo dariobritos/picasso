@@ -32,7 +32,7 @@ export class Output {
 }
 
 
-export class Calculation {
+export class Scenario {
   id: string;
   type: string;
   parameters: Map<string, Parameter>;
