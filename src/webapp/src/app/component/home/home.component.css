@@ -1,0 +1,24 @@
+
+
+
+#cover {
+  background: #222 url(../../../assets/factory-power-plant.jpg) no-repeat center center;
+  height: 100vh;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+  text-align: right;
+  display: flex;
+  align-items:center;
+}
+
+
+#cover-caption{
+  width: 100%;
+}
+
+#form{
+  display: flex;
+  float: right;
+}
