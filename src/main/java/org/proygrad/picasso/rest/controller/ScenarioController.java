@@ -10,7 +10,7 @@ import java.util.LinkedList;
 import java.util.List;
 import java.util.OptionalLong;
 
-@RestController(value = "/service")
+@RestController()
 public class ScenarioController {
 
 
@@ -30,20 +30,20 @@ public class ScenarioController {
         calclulations.add(new ScenarioTO(5L, "Dario"));
     }
 
-    @RequestMapping(value = "/scenario", method = RequestMethod.GET)
+    @RequestMapping(value = "/rest/scenario", method = RequestMethod.GET)
     public List<ScenarioTO> scenarios() {
 
         return calclulations;
     }
 
 
-    @RequestMapping(value = "/scenario/{id}", method = RequestMethod.GET)
+    @RequestMapping(value = "/rest/scenario/{id}", method = RequestMethod.GET)
     public ScenarioTO scenario(@PathVariable final Long id) {
 
         return calclulations.stream().filter(x -> x.getId().equals(id)).findAny().orElseGet(null);
     }
 
-    @RequestMapping(value = "/scenario/{id}", method = RequestMethod.PUT)
+    @RequestMapping(value = "/rest/scenario/{id}", method = RequestMethod.PUT)
     public ScenarioTO updateScenario(@PathVariable final Long id, @RequestBody ScenarioTO scenario) {
 
         ScenarioTO scenarioTO = calclulations.stream().filter(x -> x.getId().equals(id)).findAny().orElseGet(null);
@@ -52,7 +52,7 @@ public class ScenarioController {
         return scenarioTO;
     }
 
-    @RequestMapping(value = "/scenario", method = RequestMethod.POST)
+    @RequestMapping(value = "/rest/scenario", method = RequestMethod.POST)
     public ScenarioTO addScenario(@RequestBody ScenarioTO data) {
 
         OptionalLong max = scenarios().stream().mapToLong(ScenarioTO::getId).max();

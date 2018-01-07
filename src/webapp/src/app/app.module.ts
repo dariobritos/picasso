@@ -13,7 +13,7 @@ import {ScenariosComponent} from "./component/scenario/scenarios.component";
 import {ScenarioService} from "./service/scenario.service";
 import {HomeComponent} from "./component/home/home.component";
 import {NavbarComponent} from "./component/utils/navbar/navbar.component";
-import {NewScenarioComponent} from "./component/scenario/new/new-scenario.component";
+import {SESCIASPComponent} from "./component/scenario/new/SESCIASP/SESCIASP.component";
 import {InputsModule} from "./component/utils/utils-module";
 import {CommonModule} from "@angular/common";
 import {UserProfileComponent} from "./component/user-profile/user-profile.component";
@@ -35,7 +35,7 @@ import {MaterialsComponent} from "./component/materials/materials.component";
     HomeComponent,
     ScenarioDetailComponent,
     ScenariosComponent,
-    NewScenarioComponent,
+    SESCIASPComponent,
     UserProfileComponent,
     UserProfileComponent,
     MaterialsComponent

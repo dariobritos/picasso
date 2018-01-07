@@ -16,7 +16,7 @@ export class ScenarioDetailComponent {
   scenario: Scenario;
 
   constructor(
-    private heroService: ScenarioService,
+    private scenarioService: ScenarioService,
     private route: ActivatedRoute,
     private location: Location
   ) {}
@@ -24,12 +24,12 @@ export class ScenarioDetailComponent {
 
   ngOnInit(): void {
     this.route.paramMap
-      .switchMap((params: ParamMap) => this.heroService.getScenario(+params.get('id')))
-      .subscribe(hero => this.scenario = hero);
+      .switchMap((params: ParamMap) => this.scenarioService.getScenario(+params.get('id')))
+      .subscribe(scenario => this.scenario = scenario);
   }
 
   save(): void {
-    this.heroService.update(this.scenario)
+    this.scenarioService.update(this.scenario)
       .then(() => this.goBack());
   }
 

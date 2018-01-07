@@ -26,8 +26,8 @@ export class ScenariosComponent implements OnInit {
     this.getScenarios();
   }
 
-  onSelect(hero: Scenario): void {
-    this.selectedScenario = hero;
+  onSelect(scenario: Scenario): void {
+    this.selectedScenario = scenario;
   }
 
   gotoDetail(): void {

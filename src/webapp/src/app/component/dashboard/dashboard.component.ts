@@ -10,12 +10,12 @@ import {Scenario} from "../../entities/scenario";
 })
 export class DashboardComponent implements OnInit {
 
-  heroes: Scenario[] = [];
+  scenarios: Scenario[] = [];
 
-  constructor(private heroService: ScenarioService) { }
+  constructor(private scenarioService: ScenarioService) { }
 
   ngOnInit(): void {
-    this.heroService.getScenarios()
-      .then(heroes => this.heroes = heroes);
+    this.scenarioService.getScenarios()
+      .then(scenarios => this.scenarios = scenarios);
   }
 }

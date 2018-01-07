@@ -8,6 +8,8 @@ export class Parameter {
   constructor(code: string, type: string) {
     this.type = type;
     this.code = code;
+    this.value = 0.0;
+    this.unit = "CENTIMETER";
   }
 
   code: string;

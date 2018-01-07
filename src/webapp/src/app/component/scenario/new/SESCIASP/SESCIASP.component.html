@@ -4,9 +4,10 @@
     <div class="row m-0 justify-content-center ">
 
 
+
         <!--TIPO DE PROBLEMA-->
         <div class="col-12 col-lg-6 col-md-12 col-sm-12 justify-content-center mb-3 ">
-
+            <h1 class="w-100 text-center m-3">Scenario</h1>
 
             <label class="w-100">
                 <select [(ngModel)]="scenario.type" class="custom-select form-control-lg mb-2 mt-2 w-100">
@@ -164,9 +165,16 @@
 
         <div class="col-12 col-lg-6 col-md-12 col-sm-12 justify-content-center mb-3 ">
 
+
+            <h1 class="w-80 text-center m-3">Comment and start</h1>
+
+            <div class="col-12 text-center">
+                <textarea class="form-control" rows="5" id="comments"></textarea>
+            </div>
+
             <div class="col-12 text-center">
 
-                <button type="button" (click)="printScenario()" class="btn btn-success m-5">Start scenario
+                <button type="button" (click)="startScenarioCalculation()" class="btn btn-success m-5">Start scenario
                 </button>
 
             </div>

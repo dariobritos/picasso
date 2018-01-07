@@ -1,13 +1,13 @@
 import {Component, OnInit} from '@angular/core';
-import {Scenario, Configuration, Parameter} from "../../../entities/scenario";
+import {Scenario, Configuration, Parameter} from "../../../../entities/scenario";
 
 
 @Component({
   selector: 'my-scenarios',
-  templateUrl: './new-scenario.component.html',
-  styleUrls: ['./new-scenario.component.css']
+  templateUrl: './SESCIASP.component.html',
+  styleUrls: ['./SESCIASP.component.css']
 })
-export class NewScenarioComponent implements OnInit {
+export class SESCIASPComponent implements OnInit {
 
   scenario: Scenario;
 
@@ -30,7 +30,11 @@ export class NewScenarioComponent implements OnInit {
 
   }
 
-  printScenario() {
+  startScenarioCalculation() {
+
+
+    //Postear el escenario
+      //con el id obtenido redirigir a la pagina del escenario por ID
     console.log(this.scenario);
   }
 

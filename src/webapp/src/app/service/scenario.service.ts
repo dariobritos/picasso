@@ -7,7 +7,7 @@ import {Scenario} from "../entities/scenario";
 
 @Injectable()
 export class ScenarioService {
-  private scenarioUrl = 'scenario';  // URL to web api
+  private scenarioUrl = 'rest/scenario';  // URL to web api
   private headers = new Headers({'Content-Type': 'application/json'});
 
   constructor(private http: Http) {
@@ -36,12 +36,12 @@ export class ScenarioService {
       .catch(this.handleError);
   }
 
-  update(hero: Scenario): Promise<Scenario> {
-    const url = `${this.scenarioUrl}/${hero.id}`;
+  update(scenario: Scenario): Promise<Scenario> {
+    const url = `${this.scenarioUrl}/${scenario.id}`;
     return this.http
-      .put(url, JSON.stringify(hero), {headers: this.headers})
+      .put(url, JSON.stringify(scenario), {headers: this.headers})
       .toPromise()
-      .then(() => hero)
+      .then(() => scenario)
       .catch(this.handleError);
   }
 
