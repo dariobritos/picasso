@@ -1,76 +1,96 @@
 <div class="main-container">
-  <div class="row">
-    <div class="col col-10 col-lg-6 mr-auto ml-auto">
-      <h1 class="w-100 text-center">User profile</h1>
-
-      <form>
-
-        <div class="row">
-          <div class="form-group col col-12 col-lg-6">
-            <label for="fieldEmail">Email address</label>
-            <input type="email" class="form-control" id="fieldEmail" aria-describedby="emailHelp" disabled
-                   placeholder="Enter email">
-            <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
-          </div>
+    <div class="row">
+        <div class="col col-10 col-lg-6 mr-auto ml-auto">
 
 
-          <div class="form-group col col-12 col-lg-6">
-            <label for="inputName">Name</label>
-            <input type="text" class="form-control" id="inputName" placeholder="Name">
-          </div>
+            <form>
 
+                <h1 class="w-100 text-center mt-4 mb-4">User profile</h1>
+
+                <div class="row">
+                    <div class="form-group col col-12 col-lg-6">
+                        <label for="fieldEmail">Email address</label>
+                        <input [(ngModel)]="user.email" name="email" type="email" class="form-control" id="fieldEmail"
+                               aria-describedby="emailHelp" disabled
+                               placeholder="Enter email">
+                        <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone
+                            else.
+                        </small>
+                    </div>
+
+
+                    <div class="form-group col col-12 col-lg-6">
+                        <label for="inputName">Name</label>
+                        <input [(ngModel)]="user.name" name="name" type="text" class="form-control" id="inputName"
+                               placeholder="Name">
+                    </div>
+
+
+                </div>
+
+
+                <div class="row">
+                    <div class="form-group col col-12 col-lg-6">
+                        <label for="inputName">Surname</label>
+                        <input [(ngModel)]="user.surname" name="surname" type="text" class="form-control"
+                               id="inputSurname" placeholder="Surname">
+                    </div>
+
+
+
+
+
+                </div>
+
+                <h1 class="w-100 text-center mt-4 mb-4">Configuration</h1>
+
+                <div class="row">
+                    <div class="form-group col col-12 col-lg-6">
+                        <label for="unitSystemInput" class="w-100">Unit System</label>
+                        <div id="unitSystemInput" class="btn-group w-100" data-toggle="buttons">
+                            <label class="btn btn-secondary active w-50">
+                                <input type="radio" name="options" id="option1" autocomplete="off" checked>
+                                International
+                            </label>
+                            <label class="btn btn-secondary w-50">
+                                <input type="radio" name="options" id="option2" autocomplete="off"> United States
+                            </label>
+
+                        </div>
+                    </div>
+
+
+                    <div class="form-group col col-12 col-lg-6">
+                        <label for="languageInput" class="w-100">Language</label>
+                        <div id="languageInput" class="btn-group w-100" data-toggle="buttons">
+                            <label class="btn btn-secondary active w-50">
+                                <input type="radio" name="options" id="languageEN" autocomplete="off" checked>
+                                English
+                            </label>
+                            <label class="btn btn-secondary w-50">
+                                <input type="radio" name="options" id="languageES" autocomplete="off"> Spanish
+                            </label>
+
+                        </div>
+                    </div>
+
+                </div>
+
+
+                <div class="row">
+                    <div class="form-group col col-12 col-lg-6">
+                    <label for="fastScenarioIdInput" class="w-100">Fast scenario</label>
+                    <div id="fastScenarioIdInput" class="form-group w-100">
+                            <select class="custom-select form-control-lg mb-2 mt-2 w-100">
+                                <option *ngFor="let oo of scenarioTypes" [value]="oo">{{oo|scenarioName}}</option>
+
+                            </select>
+                    </div>
+                    </div>
+                </div>
+
+            </form>
 
         </div>
-
-
-        <div class="row">
-          <div class="form-group col col-12 col-lg-6">
-            <label for="field">Field</label>
-            <input type="text" class="form-control" id="field"
-                   placeholder="Field">
-          </div>
-
-
-          <div class="form-group col col-12 col-lg-6">
-            <label for="field2">Field 2</label>
-            <input type="text" class="form-control" id="field2"
-                   placeholder="Field">
-          </div>
-
-
-        </div>
-
-        <div class="row">
-          <div class="form-group col col-12 col-lg-6">
-            <label for="unitSystemInput">Unit System</label>
-            <div id="unitSystemInput" class="btn-group" data-toggle="buttons">
-              <label class="btn btn-secondary active ">
-                <input type="radio" name="options" id="option1" autocomplete="off" checked> International
-              </label>
-              <label class="btn btn-secondary">
-                <input type="radio" name="options" id="option2" autocomplete="off"> United States
-              </label>
-
-            </div>
-          </div>
-
-
-          <div class="form-group col col-12 col-lg-6">
-            <select class="selectpicker" data-width="fit">
-              <option data-content='<span class="flag-icon flag-icon-us"></span> English'>English</option>
-              <option  data-content='<span class="flag-icon flag-icon-mx"></span> Español'>Español</option>
-            </select>
-
-          </div>
-
-
-        </div>
-
-
-
-      </form>
-
-
     </div>
-  </div>
 </div>

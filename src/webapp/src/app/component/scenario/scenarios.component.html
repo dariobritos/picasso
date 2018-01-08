@@ -1,39 +1,30 @@
-<div class="main-container">
-
-  <h1 class="display-2 w-100 text-center">Scenarios</h1>
-
-<div id="new-calc-container" class="container text-center">
-  <button routerLink="/new" type="button"  class="btn btn-success">New Scenario</button>
-</div>
+<div class="main-container container mt-2 justify-content-lg-center">
 
 
-<!--
-
-<h2>My Scenarios</h2>
-<ul class="scenarios">
-  <li *ngFor="let calc of scenario"
-      [class.selected]="calc === selectedScenario"
-      (click)="onSelect(calc)">
-    <span class="badge">{{calc.id}}</span> {{calc.name}}
-  </li>
-</ul>
-
-<div>
-  <label>Scenario name:</label> <input #scenarioName />
-  <button (click)="add(scenarioName.value); scenarioName.value=''">
-    Add
-  </button>
-</div>
+    <div class="row m-0 justify-content-center ">
 
 
-<div *ngIf="selectedScenario">
-  <h2>
-    {{selectedScenario.name | uppercase}} is my scenario
-  </h2>
-  <button (click)="gotoDetail()">View Details</button>
-</div>
+        <!--TIPO DE PROBLEMA-->
+        <div class="col-12 col-lg-6 col-md-12 col-sm-12 justify-content-center mb-3 ">
+            <h1 class="w-100 text-center m-3">Scenario</h1>
 
--->
+            <label class="w-100">
+                <select class="custom-select form-control-lg mb-2 mt-2 w-100">
+                    <option *ngFor="let oo of scenarioTypes" [value]="oo">{{oo|scenarioName}}</option>
 
+                </select>
+            </label>
 
+            <div class="card w-100">
+                <div class="card-body">
+                </div>
+                <img class="card-img-top" src="../../../assets/scenario1.png" alt="Card image cap">
+
+            </div>
+        </div>
+
+        <div id="new-calc-container" class="container text-center">
+            <button routerLink="/new/semi-elliptical-surface-crack-in-a-straight-pipe" type="button"  class="btn btn-success">Proceed</button>
+        </div>
+    </div>
 </div>

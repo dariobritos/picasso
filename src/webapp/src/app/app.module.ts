@@ -3,7 +3,6 @@ import {BrowserModule} from '@angular/platform-browser';
 import {FormsModule} from '@angular/forms';
 
 
-
 import {HttpModule} from "@angular/http";
 import {AppRoutingModule} from "./routing/app-routing.module";
 import {AppComponent} from "./component/app/app.component";
@@ -12,8 +11,7 @@ import {ScenarioDetailComponent} from "./component/scenario/detail/scenario-deta
 import {ScenariosComponent} from "./component/scenario/scenarios.component";
 import {ScenarioService} from "./service/scenario.service";
 import {HomeComponent} from "./component/home/home.component";
-import {NavbarComponent} from "./component/utils/navbar/navbar.component";
-import {SESCIASPComponent} from "./component/scenario/new/SESCIASP/SESCIASP.component";
+import {SESCIASPComponent} from "./component/scenario/SESCIASP/SESCIASP.component";
 import {InputsModule} from "./component/utils/utils-module";
 import {CommonModule} from "@angular/common";
 import {UserProfileComponent} from "./component/user-profile/user-profile.component";
@@ -21,26 +19,27 @@ import {MaterialsComponent} from "./component/materials/materials.component";
 
 
 @NgModule({
-  imports: [
-    BrowserModule,
-    FormsModule,
-    AppRoutingModule,
-    HttpModule,
-    InputsModule,
-    CommonModule
-  ],
-  declarations: [
-    AppComponent,
-    DashboardComponent,
-    HomeComponent,
-    ScenarioDetailComponent,
-    ScenariosComponent,
-    SESCIASPComponent,
-    UserProfileComponent,
-    UserProfileComponent,
-    MaterialsComponent
-  ],
-  providers: [ ScenarioService ],
-  bootstrap: [ AppComponent ]
+    imports: [
+        BrowserModule,
+        FormsModule,
+        AppRoutingModule,
+        HttpModule,
+        InputsModule,
+        CommonModule
+    ],
+    declarations: [
+        AppComponent,
+        DashboardComponent,
+        HomeComponent,
+        ScenarioDetailComponent,
+        ScenariosComponent,
+        SESCIASPComponent,
+        UserProfileComponent,
+        UserProfileComponent,
+        MaterialsComponent
+    ],
+    providers: [ScenarioService],
+    bootstrap: [AppComponent]
 })
-export class AppModule { }
+export class AppModule {
+}

@@ -1,2 +1,2 @@
 # picasso
-Servidor picasso Proyecto de grado
+Servidor picasso
