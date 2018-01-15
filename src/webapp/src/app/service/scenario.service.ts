@@ -13,8 +13,9 @@ export class ScenarioService {
   constructor(private http: Http) {
   }
 
-  getScenario(id: number): Promise<Scenario> {
+  getScenario(id: string): Promise<Scenario> {
     const url = `${this.scenarioUrl}/${id}`;
+    console.log(url);
     return this.http.get(url)
       .toPromise()
       .then(response => response.json() as Scenario)
@@ -28,11 +29,11 @@ export class ScenarioService {
       .catch(this.handleError);
   }
 
-  create(name: string): Promise<Scenario> {
+  create(scenario: Object): Promise<string> {
     return this.http
-      .post(this.scenarioUrl, JSON.stringify({name: name}), {headers: this.headers})
+      .post(this.scenarioUrl, JSON.stringify(scenario), {headers: this.headers})
       .toPromise()
-      .then(res => res.json() as Scenario)
+      .then(res => res.text())
       .catch(this.handleError);
   }
 

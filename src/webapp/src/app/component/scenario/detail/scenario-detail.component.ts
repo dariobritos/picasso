@@ -24,7 +24,7 @@ export class ScenarioDetailComponent {
 
   ngOnInit(): void {
     this.route.paramMap
-      .switchMap((params: ParamMap) => this.scenarioService.getScenario(+params.get('id')))
+      .switchMap((params: ParamMap) => this.scenarioService.getScenario(params.get('id')))
       .subscribe(scenario => this.scenario = scenario);
   }
 

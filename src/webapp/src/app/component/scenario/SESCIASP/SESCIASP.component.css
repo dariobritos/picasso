@@ -19,3 +19,12 @@
 .form-group input[type="checkbox"]:checked + .btn-group > label span:last-child {
   display: none;
 }
+
+
+.ng-valid[required], .ng-valid.required  {
+  border-left: 5px solid #42A948; /* green */
+}
+
+.ng-invalid[required], .ng-valid.required  {
+  border-left: 5px solid #a92100; /* green */
+}

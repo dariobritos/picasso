@@ -1,66 +1,40 @@
 package org.proygrad.picasso.rest.controller;
 
-import org.proygrad.picasso.rest.client.ScenarioTO;
-import org.proygrad.picasso.rest.client.TuringClient;
+
+import org.proygrad.picasso.rest.api.scenario.ScenarioTO;
+import org.proygrad.picasso.service.ScenarioService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
-import javax.annotation.PostConstruct;
-import java.util.LinkedList;
 import java.util.List;
-import java.util.OptionalLong;
 
 @RestController()
 public class ScenarioController {
 
 
     @Autowired
-    private TuringClient turingClient;
+    private ScenarioService scenarioService;
 
-    private List<ScenarioTO> calclulations;
-
-
-    @PostConstruct
-    private void init() {
-        calclulations = new LinkedList<ScenarioTO>();
-        calclulations.add(new ScenarioTO(1L, "Zero"));
-        calclulations.add(new ScenarioTO(2L, "Mr. Nice"));
-        calclulations.add(new ScenarioTO(3L, "Narco"));
-        calclulations.add(new ScenarioTO(4L, "Bombasto"));
-        calclulations.add(new ScenarioTO(5L, "Dario"));
-    }
 
     @RequestMapping(value = "/rest/scenario", method = RequestMethod.GET)
     public List<ScenarioTO> scenarios() {
-
-        return calclulations;
+        return scenarioService.getScenarios();
     }
 
 
     @RequestMapping(value = "/rest/scenario/{id}", method = RequestMethod.GET)
-    public ScenarioTO scenario(@PathVariable final Long id) {
-
-        return calclulations.stream().filter(x -> x.getId().equals(id)).findAny().orElseGet(null);
+    public ScenarioTO scenario(@PathVariable String id) {
+        return scenarioService.getScenario(id);
     }
 
     @RequestMapping(value = "/rest/scenario/{id}", method = RequestMethod.PUT)
-    public ScenarioTO updateScenario(@PathVariable final Long id, @RequestBody ScenarioTO scenario) {
-
-        ScenarioTO scenarioTO = calclulations.stream().filter(x -> x.getId().equals(id)).findAny().orElseGet(null);
-        scenarioTO.setName(scenario.getName());
-
-        return scenarioTO;
+    public ScenarioTO updateScenario(@PathVariable String id, @RequestBody ScenarioTO scenario) {
+        scenarioService.updateScenario(id,scenario);
+        return scenarioService.getScenario(id);
     }
 
     @RequestMapping(value = "/rest/scenario", method = RequestMethod.POST)
-    public ScenarioTO addScenario(@RequestBody ScenarioTO data) {
-
-        OptionalLong max = scenarios().stream().mapToLong(ScenarioTO::getId).max();
-
-        ScenarioTO newCalc = new ScenarioTO(max.getAsLong()+1, data.getName());
-
-        calclulations.add(newCalc);
-
-        return newCalc;
+    public String addScenario(@RequestBody ScenarioTO data) {
+        return scenarioService.addScenario(data);
     }
 }

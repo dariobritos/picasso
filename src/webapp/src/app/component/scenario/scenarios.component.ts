@@ -40,15 +40,7 @@ export class ScenariosComponent implements OnInit {
     }
 
     add(name: string): void {
-        name = name.trim();
-        if (!name) {
-            return;
-        }
-        this.scenarioService.create(name)
-            .then(scenario => {
-                this.scenario.push(scenario);
-                this.selectedScenario = null;
-            });
+
     }
 }
 

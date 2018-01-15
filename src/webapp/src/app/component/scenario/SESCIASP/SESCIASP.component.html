@@ -1,4 +1,6 @@
+
 <div class="main-container container mt-2 justify-content-lg-center">
+    <form id="needs-validation" class="" [formGroup]="form" >
 
 
     <div class="row m-0 justify-content-center ">
@@ -141,9 +143,10 @@
 
                 </div>
                 <div class="col-6">
-                    <input id="input-seed" class="form-control" type="number" placeholder="Seed"
-                           [(ngModel)]="scenario.configuration.seed">
+                    <input formControlName="seed" id="input-seed" class="form-control" placeholder="Seed"
+                           [(ngModel)]="scenario.configuration.seed" name="seed" required>
                 </div>
+
             </div>
 
 
@@ -153,9 +156,8 @@
 
                 </div>
                 <div class="col-6">
-
-                    <input id="input-presicion" class="form-control" type="number" placeholder="Presicion"
-                           [(ngModel)]="scenario.configuration.presicion">
+                    <input formControlName="precision" id="input-presicion" class="form-control"  placeholder="Presicion"
+                           [(ngModel)]="scenario.configuration.presicion" name="presicion" required>
                 </div>
             </div>
 
@@ -173,12 +175,12 @@
 
             <div class="col-12 text-center">
 
-                <button type="button" (click)="startScenarioCalculation()" class="btn btn-success m-5">Start scenario
+                <button type="submit" (click)="startScenarioCalculation()" class="btn btn-success m-5">Start scenario
                 </button>
 
             </div>
         </div>
     </div>
 
-
+    </form>
 </div>
