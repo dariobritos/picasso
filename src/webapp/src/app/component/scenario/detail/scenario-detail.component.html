@@ -1,10 +1,29 @@
-<div *ngIf="scenario">
-    <h2>{{scenario.name}} details!</h2>
-    <div><label>id: </label>{{scenario.id}}</div>
-    <div>
-        <label>name: </label>
-        <input [(ngModel)]="scenario.name" placeholder="name"/>
+<div class="main-container container mt-2 justify-content-lg-center">
+
+    <div *ngIf="scenario">
+        <div class="card">
+            <div class="card-header" role="tab" id="headingTwo">
+                <h5 class="mb-0">
+                    <a class="collapsed" data-toggle="collapse" href="#collapseTwo" aria-expanded="false"
+                       aria-controls="collapseTwo">
+                        Component Geometry
+                    </a>
+                </h5>
+            </div>
+            <div id="collapseTwo" class="collapse" role="tabpanel" aria-labelledby="headingTwo"
+                 data-parent="#accordion">
+                <div class="card-body">
+
+
+                    <static-variable-input [parameter]="scenario.parameters.WALL_THICKNESS"
+                                           (changeParameter)="parameterChanged($event)"></static-variable-input>
+                    <static-variable-input [parameter]="scenario.parameters.INNER_RADIUS"
+                                           (changeParameter)="parameterChanged($event)"></static-variable-input>
+
+
+                </div>
+            </div>
+        </div>
     </div>
-    <button (click)="save()">Save</button>
-    <button (click)="goBack()">Back</button>
+
 </div>
