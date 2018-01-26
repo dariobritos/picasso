@@ -15,7 +15,7 @@ export class StaticVariableInputComponent implements OnInit {
     parameter: Parameter;
 
 
-    form : FormGroup;
+    form: FormGroup;
 
 
     @Output()
@@ -53,13 +53,13 @@ export class StaticVariableInputComponent implements OnInit {
     typeChange(typeValue) {
         this.parameter.type = typeValue;
 
-        if(LOG_NORMAL === typeValue){
+        if (LOG_NORMAL === typeValue) {
             let d = new Distribution();
             let params = new Map();
-            params.set("PARAM_1",this.parameter1);
+            params.set("PARAM_1", this.parameter1);
             d.parameters = params;
             this.parameter.distribution = d;
-        }else{
+        } else {
             this.parameter.distribution = null;
             this.parameter1 = 0;
         }

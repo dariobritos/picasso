@@ -1,14 +1,12 @@
+export class UserConfiguration {
 
-
-export class UserConfiguration{
-
-    constructor(){
+    constructor() {
         this.unitSystem = "INT";
         this.language = "EN"
     }
 
-    unitSystem : string;
-    language : string;
+    unitSystem: string;
+    language: string;
 }
 
 export class User {
@@ -22,7 +20,7 @@ export class User {
     email: string;
     name: string;
     surname: string;
-    configuration : UserConfiguration;
+    configuration: UserConfiguration;
 
 
 }

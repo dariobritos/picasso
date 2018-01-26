@@ -9,9 +9,9 @@ import {AppRoutingModule} from "../../routing/app-routing.module";
 import {ScenarioIdPipe} from "./pipes/scenario-id.pipe";
 
 @NgModule({
-  imports:[CommonModule,FormsModule,ReactiveFormsModule,AppRoutingModule],
-  declarations:[StaticVariableInputComponent, ScenarioTypePipe,ScenarioIdPipe, ParameterNamePipe,NavbarComponent],
-  exports:[StaticVariableInputComponent,ScenarioTypePipe,ParameterNamePipe,NavbarComponent]
+    imports: [CommonModule, FormsModule, ReactiveFormsModule, AppRoutingModule],
+    declarations: [StaticVariableInputComponent, ScenarioTypePipe, ScenarioIdPipe, ParameterNamePipe, NavbarComponent],
+    exports: [StaticVariableInputComponent, ScenarioTypePipe, ParameterNamePipe, NavbarComponent]
 })
-export class InputsModule{
+export class InputsModule {
 }
