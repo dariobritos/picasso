@@ -1,6 +1,7 @@
 package org.proygrad.picasso.rest.api.scenario;
 
 import java.io.Serializable;
+import java.util.List;
 import java.util.Map;
 
 public class ScenarioTO implements Serializable {
@@ -8,7 +9,7 @@ public class ScenarioTO implements Serializable {
     private String id;
     private String type;
     private String unitSystem;
-    private Map<String, ParameterTO> parameters;
+    private List< ParameterTO> parameters;
     private Map<String, ParameterTO> materials;
     private Map<String, Double> configuration;
     private Map<String, Object> output;
@@ -38,11 +39,11 @@ public class ScenarioTO implements Serializable {
         this.unitSystem = unitSystem;
     }
 
-    public Map<String, ParameterTO> getParameters() {
+    public List<ParameterTO> getParameters() {
         return parameters;
     }
 
-    public void setParameters(Map<String, ParameterTO> parameters) {
+    public void setParameters(List<ParameterTO> parameters) {
         this.parameters = parameters;
     }
 

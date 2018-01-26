@@ -16,6 +16,7 @@ import {InputsModule} from "./component/utils/utils-module";
 import {CommonModule} from "@angular/common";
 import {UserProfileComponent} from "./component/user-profile/user-profile.component";
 import {MaterialsComponent} from "./component/materials/materials.component";
+import {ChartsModule} from "ng2-charts";
 
 
 @NgModule({
@@ -26,7 +27,8 @@ import {MaterialsComponent} from "./component/materials/materials.component";
         AppRoutingModule,
         HttpModule,
         InputsModule,
-        CommonModule
+        CommonModule,
+        ChartsModule
     ],
     declarations: [
         AppComponent,

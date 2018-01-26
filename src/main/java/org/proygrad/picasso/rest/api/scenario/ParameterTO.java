@@ -2,10 +2,20 @@ package org.proygrad.picasso.rest.api.scenario;
 
 public class ParameterTO {
 
+    private String code;
     private Double value;
     private String type;
     private DistributionTO distribution;
+    private String magnitude;
     private String unit;
+
+    public String getCode() {
+        return code;
+    }
+
+    public void setCode(String code) {
+        this.code = code;
+    }
 
     public Double getValue() {
         return value;
@@ -29,6 +39,14 @@ public class ParameterTO {
 
     public void setDistribution(DistributionTO distribution) {
         this.distribution = distribution;
+    }
+
+    public String getMagnitude() {
+        return magnitude;
+    }
+
+    public void setMagnitude(String magnitude) {
+        this.magnitude = magnitude;
     }
 
     public String getUnit() {

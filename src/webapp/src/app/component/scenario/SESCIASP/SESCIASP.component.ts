@@ -22,14 +22,15 @@ export class SESCIASPComponent {
     constructor(private router: Router,
                 private scenarioService: ScenarioService) {
         this.scenario = new Scenario();
-        this.scenario.parameters = new Map([
-            ['CRACK_DEPTH', new Parameter('CRACK_DEPTH', LOG_NORMAL, 0, CENTIMETER, DISTANCE)],
-            ['CRACK_LENGTH', new Parameter('CRACK_LENGTH', LOG_NORMAL, 0, CENTIMETER, DISTANCE)],
-            ['WALL_THICKNESS', new Parameter('WALL_THICKNESS', STATIC, 0, CENTIMETER, DISTANCE)],
-            ['INNER_RADIUS', new Parameter('INNER_RADIUS', STATIC, 0, CENTIMETER, DISTANCE)],
-            ['YIELD_STRESS', new Parameter('YIELD_STRESS', LOG_NORMAL, 0, CENTIMETER, DISTANCE)],
-            ['OPERATING_PRESSURE', new Parameter('OPERATING_PRESSURE', LOG_NORMAL, 0, CENTIMETER, DISTANCE)]
-        ]);
+        this.scenario.parameters = [
+            new Parameter('CRACK_DEPTH', LOG_NORMAL, 0, CENTIMETER, DISTANCE),
+            new Parameter('CRACK_LENGTH', LOG_NORMAL, 0, CENTIMETER, DISTANCE),
+            new Parameter('WALL_THICKNESS', STATIC, 0, CENTIMETER, DISTANCE),
+            new Parameter('INNER_RADIUS', STATIC, 0, CENTIMETER, DISTANCE),
+            new Parameter('YIELD_STRESS', LOG_NORMAL, 0, CENTIMETER, DISTANCE),
+            new Parameter('OPERATING_PRESSURE', LOG_NORMAL, 0, CENTIMETER, DISTANCE)];
+
+
         this.scenario.type = 'SE_SURFACE_CRACK_STRAIGHT_PIPE';
 
         this.scenario.unitSystem = 'INTERNATIONAL';
@@ -50,22 +51,21 @@ export class SESCIASPComponent {
 
 
     parameterChanged(event: Parameter) {
-        this.scenario.parameters.set(event.code, event);
+        this.scenario.parameters.push(event);
     }
 
     startScenarioCalculation() {
 
         let valid: boolean = true;
-        console.log(this.scenario.parameters.values());
+        console.log(this.scenario.parameters);
 
         let scenarioObj = {};
-        this.scenario.parameters.forEach((value: Parameter, key: string) => {
+        this.scenario.parameters.forEach((value: Parameter) => {
             valid = valid && value.valid;
-
         });
 
 
-        console.log(this.scenario.toObject());
+        console.log(this.scenario);
 
         if (valid) {
             this.postAndRoute();
@@ -74,8 +74,12 @@ export class SESCIASPComponent {
 
     }
 
+    private getParameter(code: string) {
+        return this.scenario.parameters.find(p => p.code === code);
+    }
+
     private postAndRoute() {
-        this.scenarioService.create(this.scenario.toObject())
+        this.scenarioService.create(this.scenario)
             .then(res => {
                 this.router.navigate(['/scenario', res]);
             });

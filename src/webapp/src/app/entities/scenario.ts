@@ -41,7 +41,7 @@ export class Scenario {
     id: string;
     type: string;
     unitSystem: string;
-    parameters: Map<string, Parameter>;
+    parameters: Array<Parameter>;
     configuration: Configuration;
     output: Output;
 
@@ -54,12 +54,14 @@ export class Scenario {
         obj['unitSystem'] = this.unitSystem;
 
         let params = {};
-        this.parameters.forEach((value: Parameter, key: string) => {
-            params[key] = value;
+        this.parameters.forEach((value: Parameter) => {
+            params[value.code] = value;
         });
         obj['parameters'] = params;
         obj['configuration'] = this.configuration;
         obj['output'] = this.output;
+
+
 
         return obj;
 

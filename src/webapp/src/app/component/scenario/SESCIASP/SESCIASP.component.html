@@ -46,9 +46,9 @@
                             <div class="card-body">
 
 
-                                <static-variable-input [parameter]="scenario.parameters.get('CRACK_DEPTH')"
+                                <static-variable-input [parameter]="getParameter('CRACK_DEPTH')"
                                                        (changeParameter)="parameterChanged($event)"></static-variable-input>
-                                <static-variable-input [parameter]="scenario.parameters.get('CRACK_LENGTH')"
+                                <static-variable-input [parameter]="getParameter('CRACK_LENGTH')"
                                                        (changeParameter)="parameterChanged($event)"></static-variable-input>
 
 
@@ -72,11 +72,10 @@
                             <div class="card-body">
 
 
-                                <static-variable-input [parameter]="scenario.parameters.get('WALL_THICKNESS')"
+                                <static-variable-input [parameter]="getParameter('WALL_THICKNESS')"
                                                        (changeParameter)="parameterChanged($event)"></static-variable-input>
-                                <static-variable-input [parameter]="scenario.parameters.get('INNER_RADIUS')"
+                                <static-variable-input [parameter]="getParameter('INNER_RADIUS')"
                                                        (changeParameter)="parameterChanged($event)"></static-variable-input>
-
 
                             </div>
                         </div>
@@ -121,7 +120,7 @@
                                     </label>
                                 </div>
 
-                                <static-variable-input [parameter]="scenario.parameters.get('YIELD_STRESS')"
+                                <static-variable-input [parameter]="getParameter('YIELD_STRESS')"
                                                        (changeParameter)="parameterChanged($event)"></static-variable-input>
 
                             </div>
@@ -141,7 +140,7 @@
                              data-parent="#accordion">
                             <div class="card-body">
 
-                                <static-variable-input [parameter]="scenario.parameters.get('OPERATING_PRESSURE')"
+                                <static-variable-input [parameter]="getParameter('OPERATING_PRESSURE')"
                                                        (changeParameter)="parameterChanged($event)"></static-variable-input>
 
 

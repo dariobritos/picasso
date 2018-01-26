@@ -1,27 +1,201 @@
 <div class="main-container container mt-2 justify-content-lg-center">
 
     <div *ngIf="scenario">
-        <div class="card">
-            <div class="card-header" role="tab" id="headingTwo">
-                <h5 class="mb-0">
-                    <a class="collapsed" data-toggle="collapse" href="#collapseTwo" aria-expanded="false"
-                       aria-controls="collapseTwo">
-                        Component Geometry
-                    </a>
-                </h5>
+
+        <div class="row m-0 justify-content-center ">
+            <div class="col-12 col-lg-6 col-md-12 col-sm-12 justify-content-center mb-3 ">
+                <h1 class="w-100 text-center  mt-4 mb-4">Scenario</h1>
+
+                <label class="w-100 text-center">
+                    <h3 class="form-control-lg mb-2 mt-2 w-100">
+                        {{scenario.type|scenarioName}}
+
+                    </h3>
+                </label>
+
+                <div *ngIf="scenario.type==='SE_SURFACE_CRACK_STRAIGHT_PIPE'" class="card w-100">
+                    <img class="card-img-top" src="../../../assets/scenario1.png" alt="Scenario">
+                </div>
             </div>
-            <div id="collapseTwo" class="collapse" role="tabpanel" aria-labelledby="headingTwo"
-                 data-parent="#accordion">
-                <div class="card-body">
+            <div class="col-12 col-lg-6 col-md-12 col-sm-12 justify-content-center mb-3 ">
 
 
-                    <static-variable-input [parameter]="scenario.parameters.WALL_THICKNESS"
-                                           (changeParameter)="parameterChanged($event)"></static-variable-input>
-                    <static-variable-input [parameter]="scenario.parameters.INNER_RADIUS"
-                                           (changeParameter)="parameterChanged($event)"></static-variable-input>
+                <h1 class="w-80 text-center  mt-4 mb-4">Results</h1>
+                <h1 class="w-80 text-center  mt-4 mb-4">60%</h1>
 
+
+                <div class="col-12 text-center">
+                    <div style="display: block">
+                        <canvas baseChart
+                                [data]="doughnutChartData"
+                                [labels]="doughnutChartLabels"
+                                [chartType]="doughnutChartType"
+                                [colors]="doughnutColorsType"
+                                [options]="doughnutChartOptions"
+                                [legend]="false"
+                                (chartHover)="chartHovered($event)"
+                                (chartClick)="chartClicked($event)">
+
+                            <h1 class="w-80 text-center  mt-4 mb-4">75%</h1>
+                        </canvas>
+                    </div>
 
                 </div>
+            </div>
+        </div>
+
+        <div class="row mt-5">
+
+            <div class="col-12 col-lg-6 col-md-12 col-sm-12 ">
+                <h1 class="w-100 text-center  mt-4 mb-4">Parameters setup</h1>
+                <div id="accordion" role="tablist" class="w-100">
+                    <!--GRIETA-->
+                    <div class="card">
+                        <div class="card-header" role="tab" id="headingOne">
+                            <h5 class="mb-0">
+                                <a data-toggle="collapse" href="#collapseOne" aria-expanded="true"
+                                   aria-controls="collapseOne">
+                                    Crack Geometry
+                                </a>
+                            </h5>
+                        </div>
+
+                        <div id="collapseOne" class="collapse" role="tabpanel" aria-labelledby="headingOne"
+                             data-parent="#accordion">
+                            <div class="card-body">
+
+
+                                <static-variable-output [parameter]="getParameter('CRACK_DEPTH')"
+                                ></static-variable-output>
+                                <static-variable-output [parameter]="getParameter('CRACK_LENGTH')"
+                                ></static-variable-output>
+
+
+                            </div>
+                        </div>
+                    </div>
+
+
+                    <!--COMPONENTE-->
+                    <div class="card">
+                        <div class="card-header" role="tab" id="headingTwo">
+                            <h5 class="mb-0">
+                                <a class="collapsed" data-toggle="collapse" href="#collapseTwo" aria-expanded="false"
+                                   aria-controls="collapseTwo">
+                                    Component Geometry
+                                </a>
+                            </h5>
+                        </div>
+                        <div id="collapseTwo" class="collapse" role="tabpanel" aria-labelledby="headingTwo"
+                             data-parent="#accordion">
+                            <div class="card-body">
+
+
+                                <static-variable-output [parameter]="getParameter('WALL_THICKNESS')"
+                                ></static-variable-output>
+                                <static-variable-output [parameter]="getParameter('INNER_RADIUS')"
+                                ></static-variable-output>
+
+                            </div>
+                        </div>
+                    </div>
+
+
+                    <!--MATERIAL-->
+                    <div class="card">
+                        <div class="card-header" role="tab" id="headingThree">
+                            <h5 class="mb-0">
+                                <a class="collapsed" data-toggle="collapse" href="#collapseThree" aria-expanded="false"
+                                   aria-controls="collapseThree">
+                                    Material Properties
+                                </a>
+                            </h5>
+                        </div>
+                        <div id="collapseThree" class="collapse" role="tabpanel" aria-labelledby="headingThree"
+                             data-parent="#accordion">
+                            <div class="card-body">
+
+                                <div class="form-group col col-12 col-lg-12">
+                                    <div id="languageInput" class="btn-group w-100" data-toggle="buttons">
+                                        <label class="btn btn-secondary active w-50">
+                                            <input type="radio" name="custom" id="customMaterial" autocomplete="off"
+                                                   checked>
+                                            Custom
+                                        </label>
+                                        <label class="btn btn-secondary w-50">
+                                            <input type="radio" name="library" id="libraryMaterial" autocomplete="off">Library
+                                        </label>
+
+                                    </div>
+                                </div>
+
+                                <div class="form-group col col-12 col-lg-12">
+                                    <label class="w-100">
+                                        <select class="custom-select form-control-lg mb-2 mt-2 w-100">
+                                            <option *ngFor="let oo of scenarioTypes" [value]="oo">{{oo|scenarioName}}
+                                            </option>
+
+                                        </select>
+                                    </label>
+                                </div>
+
+                                <static-variable-output [parameter]="getParameter('YIELD_STRESS')"
+                                ></static-variable-output>
+
+                            </div>
+                        </div>
+                    </div>
+                    <!--CARGA-->
+                    <div class="card">
+                        <div class="card-header" role="tab" id="headingFour">
+                            <h5 class="mb-0">
+                                <a class="collapsed" data-toggle="collapse" href="#collapseFour" aria-expanded="false"
+                                   aria-controls="collapseFour">
+                                    Load Properties
+                                </a>
+                            </h5>
+                        </div>
+                        <div id="collapseFour" class="collapse" role="tabpanel" aria-labelledby="headingFour"
+                             data-parent="#accordion">
+                            <div class="card-body">
+
+                                <static-variable-output [parameter]="getParameter('OPERATING_PRESSURE')"
+                                ></static-variable-output>
+
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-12 col-lg-6 col-md-12 col-sm-12 justify-content-center mb-3 ">
+                <h1 class="w-100 text-center  mt-4 mb-4">Configuration</h1>
+
+                <div class="row mt-3 mb-3">
+                    <div class="col-6">
+                        <label for="input-seed">Seed</label>
+
+                    </div>
+                    <div class="col-6">
+                        <input id="input-seed" class="form-control" placeholder="Seed"
+                               [(ngModel)]="scenario.configuration.seed" name="seed">
+                    </div>
+
+                </div>
+
+
+                <div class="row  mt-3 mb-3">
+                    <div class="col-6 ">
+                        <label for="input-presicion">Presicion</label>
+
+                    </div>
+                    <div class="col-6">
+                        <input id="input-presicion" class="form-control"
+                               placeholder="Presicion"
+                               [(ngModel)]="scenario.configuration.presicion" name="presicion">
+                    </div>
+                </div>
+
             </div>
         </div>
     </div>

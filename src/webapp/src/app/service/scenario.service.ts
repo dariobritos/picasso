@@ -29,7 +29,7 @@ export class ScenarioService {
             .catch(this.handleError);
     }
 
-    create(scenario: Object): Promise<string> {
+    create(scenario: Scenario): Promise<string> {
         return this.http
             .post(this.scenarioUrl, JSON.stringify(scenario), {headers: this.headers})
             .toPromise()
