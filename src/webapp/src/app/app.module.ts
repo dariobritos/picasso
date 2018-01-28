@@ -17,6 +17,7 @@ import {CommonModule} from "@angular/common";
 import {UserProfileComponent} from "./component/user-profile/user-profile.component";
 import {MaterialsComponent} from "./component/materials/materials.component";
 import {ChartsModule} from "ng2-charts";
+import {ErrorComponent} from "./component/error/error.component";
 
 
 @NgModule({
@@ -34,6 +35,7 @@ import {ChartsModule} from "ng2-charts";
         AppComponent,
         DashboardComponent,
         HomeComponent,
+        ErrorComponent,
         ScenarioDetailComponent,
         ScenariosComponent,
         SESCIASPComponent,

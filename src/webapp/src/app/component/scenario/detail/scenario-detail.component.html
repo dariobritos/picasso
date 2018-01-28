@@ -17,16 +17,21 @@
                     <img class="card-img-top" src="../../../assets/scenario1.png" alt="Scenario">
                 </div>
             </div>
+
+
             <div class="col-12 col-lg-6 col-md-12 col-sm-12 justify-content-center mb-3 ">
 
 
                 <h1 class="w-80 text-center  mt-4 mb-4">Results</h1>
-                <h1 class="w-80 text-center  mt-4 mb-4">60%</h1>
 
 
-                <div class="col-12 text-center">
+                <h1 class="w-80 text-center  mt-4 mb-4" *ngIf="this.scenario.output">{{this.failurePercentage}}% Failue probability</h1>
+                <h1 class="w-80 text-center  mt-4 mb-5" *ngIf="!this.scenario.output">Calculating...</h1>
+
+
+                <div class="col-12 text-center" *ngIf="this.scenario.output">
                     <div style="display: block">
-                        <canvas baseChart
+                        <canvas id="myChart" baseChart
                                 [data]="doughnutChartData"
                                 [labels]="doughnutChartLabels"
                                 [chartType]="doughnutChartType"
@@ -41,8 +46,16 @@
                     </div>
 
                 </div>
+
+                <div *ngIf="!this.scenario.output" class="col-12 text-center mt-5 animationload">
+                    <div class="osahanloading"></div>
+                </div>
             </div>
+
+
+
         </div>
+
 
         <div class="row mt-5">
 
@@ -80,7 +93,8 @@
                     <div class="card">
                         <div class="card-header" role="tab" id="headingTwo">
                             <h5 class="mb-0">
-                                <a class="collapsed" data-toggle="collapse" href="#collapseTwo" aria-expanded="false"
+                                <a class="collapsed" data-toggle="collapse" href="#collapseTwo"
+                                   aria-expanded="false"
                                    aria-controls="collapseTwo">
                                     Component Geometry
                                 </a>
@@ -105,7 +119,8 @@
                     <div class="card">
                         <div class="card-header" role="tab" id="headingThree">
                             <h5 class="mb-0">
-                                <a class="collapsed" data-toggle="collapse" href="#collapseThree" aria-expanded="false"
+                                <a class="collapsed" data-toggle="collapse" href="#collapseThree"
+                                   aria-expanded="false"
                                    aria-controls="collapseThree">
                                     Material Properties
                                 </a>
@@ -123,7 +138,8 @@
                                             Custom
                                         </label>
                                         <label class="btn btn-secondary w-50">
-                                            <input type="radio" name="library" id="libraryMaterial" autocomplete="off">Library
+                                            <input type="radio" name="library" id="libraryMaterial"
+                                                   autocomplete="off">Library
                                         </label>
 
                                     </div>
@@ -132,7 +148,8 @@
                                 <div class="form-group col col-12 col-lg-12">
                                     <label class="w-100">
                                         <select class="custom-select form-control-lg mb-2 mt-2 w-100">
-                                            <option *ngFor="let oo of scenarioTypes" [value]="oo">{{oo|scenarioName}}
+                                            <option *ngFor="let oo of scenarioTypes" [value]="oo">
+                                                {{oo|scenarioName}}
                                             </option>
 
                                         </select>
@@ -149,7 +166,8 @@
                     <div class="card">
                         <div class="card-header" role="tab" id="headingFour">
                             <h5 class="mb-0">
-                                <a class="collapsed" data-toggle="collapse" href="#collapseFour" aria-expanded="false"
+                                <a class="collapsed" data-toggle="collapse" href="#collapseFour"
+                                   aria-expanded="false"
                                    aria-controls="collapseFour">
                                     Load Properties
                                 </a>
@@ -178,7 +196,7 @@
                     </div>
                     <div class="col-6">
                         <input id="input-seed" class="form-control" placeholder="Seed"
-                               [(ngModel)]="scenario.configuration.seed" name="seed">
+                               [(ngModel)]="getConfiguration('SEED').value" name="seed">
                     </div>
 
                 </div>
@@ -192,7 +210,7 @@
                     <div class="col-6">
                         <input id="input-presicion" class="form-control"
                                placeholder="Presicion"
-                               [(ngModel)]="scenario.configuration.presicion" name="presicion">
+                               [(ngModel)]="getConfiguration('PRECISION').value" name="presicion">
                     </div>
                 </div>
 

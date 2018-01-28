@@ -64,7 +64,6 @@ export class StaticVariableInputComponent implements OnInit {
             this.parameter1 = 0;
         }
 
-        console.log(typeValue);
         this.onChange();
     }
 

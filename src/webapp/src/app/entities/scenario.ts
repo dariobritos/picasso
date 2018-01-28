@@ -27,9 +27,9 @@ export class Parameter {
     }
 }
 
-export class Configuration {
-    seed: number = (new Date()).getTime();
-    presicion: number = 1000000;
+export class ConfigurationItem {
+    code: string;
+    value: string;
 }
 
 export class Output {
@@ -37,34 +37,24 @@ export class Output {
 }
 
 
+class OutputItem {
+    code: string;
+    value: string;
+}
+
 export class Scenario {
+
+    constructor() {
+        this.parameters = [];
+        this.configuration = [];
+    }
+
     id: string;
     type: string;
     unitSystem: string;
     parameters: Array<Parameter>;
-    configuration: Configuration;
-    output: Output;
-
-
-    toObject() {
-        let obj = {};
-
-        obj['id'] = this.id;
-        obj['type'] = this.type;
-        obj['unitSystem'] = this.unitSystem;
-
-        let params = {};
-        this.parameters.forEach((value: Parameter) => {
-            params[value.code] = value;
-        });
-        obj['parameters'] = params;
-        obj['configuration'] = this.configuration;
-        obj['output'] = this.output;
-
-
-
-        return obj;
-
-    }
+    configuration: Array<ConfigurationItem>;
+    comments: string;
+    output: Array<OutputItem>;
 
 }

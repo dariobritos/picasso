@@ -165,7 +165,7 @@
                     </div>
                     <div class="col-6">
                         <input formControlName="seed" id="input-seed" class="form-control" placeholder="Seed"
-                               [(ngModel)]="scenario.configuration.seed" name="seed" required>
+                               [(ngModel)]="seed" name="seed" required>
                     </div>
 
                 </div>
@@ -179,7 +179,7 @@
                     <div class="col-6">
                         <input formControlName="precision" id="input-presicion" class="form-control"
                                placeholder="Presicion"
-                               [(ngModel)]="scenario.configuration.presicion" name="presicion" required>
+                               [(ngModel)]="precision" name="presicion" required>
                     </div>
                 </div>
 
@@ -192,7 +192,7 @@
                 <h1 class="w-80 text-center  mt-4 mb-4">Comment and start</h1>
 
                 <div class="col-12 text-center">
-                    <textarea class="form-control" rows="5" id="comments"></textarea>
+                    <textarea class="form-control" formControlName="comments" rows="5" id="comments" [(ngModel)]="scenario.comments"></textarea>
                 </div>
 
                 <div class="col-12 text-center">

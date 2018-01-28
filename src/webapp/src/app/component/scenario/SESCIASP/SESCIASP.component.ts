@@ -1,5 +1,5 @@
 import {Component, Inject, OnInit} from '@angular/core';
-import {Scenario, Configuration, Parameter} from "../../../entities/scenario";
+import {Scenario, ConfigurationItem, Parameter} from "../../../entities/scenario";
 import {CENTIMETER, DISTANCE, LOG_NORMAL, SE_SURFACE_CRACK_STRAIGHT_PIPE, STATIC} from "../../utils/constant/constants";
 import {Form, FormBuilder, FormControl, FormGroup, Validators} from "@angular/forms";
 import {Router} from "@angular/router";
@@ -14,6 +14,8 @@ import {ScenarioService} from "../../../service/scenario.service";
 export class SESCIASPComponent {
 
     scenario: Scenario;
+    seed: number = (new Date()).getTime();
+    precision: number = 100000;
 
     scenarioType = SE_SURFACE_CRACK_STRAIGHT_PIPE;
 
@@ -35,17 +37,18 @@ export class SESCIASPComponent {
 
         this.scenario.unitSystem = 'INTERNATIONAL';
 
-        this.scenario.configuration = new Configuration();
+
 
 
         //Load data validation
 
         this.form = new FormGroup({
-            'seed': new FormControl(this.scenario.configuration.seed, [
+            'seed': new FormControl(this.seed, [
                 Validators.required]),
-            'precision': new FormControl(this.scenario.configuration.presicion, [
+            'precision': new FormControl(this.precision, [
                 Validators.required,
-                Validators.min(1)])
+                Validators.min(1)]),
+            'comments': new FormControl(this.scenario.comments, [])
         });
     }
 
@@ -57,13 +60,11 @@ export class SESCIASPComponent {
     startScenarioCalculation() {
 
         let valid: boolean = true;
-        console.log(this.scenario.parameters);
-
-        let scenarioObj = {};
         this.scenario.parameters.forEach((value: Parameter) => {
             valid = valid && value.valid;
         });
 
+        this.loadScenarioConfiguration();
 
         console.log(this.scenario);
 
@@ -83,6 +84,19 @@ export class SESCIASPComponent {
             .then(res => {
                 this.router.navigate(['/scenario', res]);
             });
+    }
+
+    private loadScenarioConfiguration() {
+        let confSeed: ConfigurationItem = new ConfigurationItem();
+        confSeed.code = 'SEED';
+        confSeed.value = this.seed.toString();
+
+        let confPrecision: ConfigurationItem = new ConfigurationItem();
+        confPrecision.code= 'PRECISION';
+        confPrecision.value= this.precision.toString();
+
+        this.scenario.configuration.push(confSeed);
+        this.scenario.configuration.push(confPrecision);
     }
 }
 

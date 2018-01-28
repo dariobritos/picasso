@@ -7,6 +7,7 @@ import {HomeComponent} from "../component/home/home.component";
 import {SESCIASPComponent} from "../component/scenario/SESCIASP/SESCIASP.component";
 import {UserProfileComponent} from "../component/user-profile/user-profile.component";
 import {MaterialsComponent} from "../component/materials/materials.component";
+import {ErrorComponent} from "../component/error/error.component";
 
 
 const routes: Routes = [
@@ -17,7 +18,8 @@ const routes: Routes = [
     {path: 'scenarios', component: ScenariosComponent},
     {path: 'new/semi-elliptical-surface-crack-in-a-straight-pipe', component: SESCIASPComponent},
     {path: 'profile', component: UserProfileComponent},
-    {path: 'materials', component: MaterialsComponent}
+    {path: 'materials', component: MaterialsComponent},
+    {path: 'error/:code', component: ErrorComponent}
 ];
 
 @NgModule({

@@ -16,7 +16,6 @@ export class UserProfileComponent implements OnInit {
 
     ngOnInit(): void {
         this.user = USER;
-        console.log(this.user);
     }
 
 

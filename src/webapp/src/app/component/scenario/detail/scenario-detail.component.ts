@@ -1,9 +1,13 @@
-import {Component, OnInit} from '@angular/core';
+import {Component, OnDestroy, OnInit} from '@angular/core';
 import {ActivatedRoute, Params} from '@angular/router';
 import {Location} from '@angular/common';
 import 'rxjs/add/operator/switchMap';
 import {ScenarioService} from "../../../service/scenario.service";
 import {Scenario} from "../../../entities/scenario";
+import {Observable} from "rxjs/Observable";
+import 'rxjs/Rx';
+import {isNullOrUndefined} from "util";
+import {Subscription} from "rxjs/Subscription";
 
 @Component({
     selector: 'scenario-detail',
@@ -11,8 +15,10 @@ import {Scenario} from "../../../entities/scenario";
     styleUrls: ['./scenario-detail.component.css']
 })
 
-export class ScenarioDetailComponent implements OnInit {
+export class ScenarioDetailComponent implements OnInit, OnDestroy {
 
+
+    id: string;
     scenario: Scenario;
 
     constructor(private scenarioService: ScenarioService,
@@ -20,21 +26,37 @@ export class ScenarioDetailComponent implements OnInit {
                 private location: Location) {
     }
 
+    subscription: Subscription;
+
+
+    failurePercentage: number = 0;
+
 
     ngOnInit(): void {
-        console.log(this.route.paramMap);
-        this.route.params
-            .switchMap((params: Params) => this.scenarioService.getScenario(params['id']))
-            .subscribe(scenario => this.scenario = scenario);
-        console.log(this.scenario);
+        this.id = this.route.snapshot.params['id'];
+
+        this.subscription = Observable.interval(500).switchMap(() => this.scenarioService.getScenario(this.id))
+            .subscribe((data) => {
+                this.scenario = data;
+                if (!isNullOrUndefined(data.output)) {
+                    //Cuando el scenario tiene output ya no consultamos su estado
+                    this.processOutput();
+                    this.subscription.unsubscribe();
+                }
+            });
     }
 
-    public doughnutChartLabels: string[] = ['Failure probability'];
-    public doughnutChartData: number[] = [60, 40];
+    ngOnDestroy(): void {
+        this.subscription.unsubscribe();
+    }
+
+    public doughnutChartLabels: string[] = ['Non failure probability', 'Failure probability'];
+    public doughnutChartData: number[] = [100-this.failurePercentage, this.failurePercentage];
     public doughnutChartType: string = 'doughnut';
     public doughnutChartOptions: any = {
         legend: {
-            display: false}
+            display: false
+        }
     };
     public doughnutColorsType: any[] = [{
         backgroundColor: ['#15950d', '#ff0015']
@@ -42,15 +64,17 @@ export class ScenarioDetailComponent implements OnInit {
 
     // events
     public chartClicked(e: any): void {
-        console.log(e);
     }
 
     public chartHovered(e: any): void {
-        console.log(e);
     }
 
-    private getParameter(code: string) {
+    public getParameter(code: string) {
         return this.scenario.parameters.find(p => p.code === code);
+    }
+
+    public getConfiguration(code: string) {
+        return this.scenario.configuration.find(p => p.code === code);
     }
 
     goBack(): void {
@@ -58,4 +82,10 @@ export class ScenarioDetailComponent implements OnInit {
     }
 
 
+    private processOutput() {
+        let fProb: number = +this.scenario.output.find(o => o.code === 'FAILURE_PROBABILITY').value;
+
+        this.failurePercentage = Math.round(fProb * 100);
+        this.doughnutChartData = [100-this.failurePercentage, this.failurePercentage];
+    }
 }

@@ -1,21 +1,29 @@
 package org.proygrad.picasso.rest.api.scenario;
 
 import java.io.Serializable;
+import java.util.Collections;
 import java.util.List;
-import java.util.Map;
 
 public class ScenarioTO implements Serializable {
 
     private String id;
     private String type;
     private String unitSystem;
-    private List< ParameterTO> parameters;
-    private Map<String, ParameterTO> materials;
-    private Map<String, Double> configuration;
-    private Map<String, Object> output;
+    private List<ParameterTO> parameters;
+    private List<ConfigurationItemTO> configuration;
+    private String comments;
+    private List<OutputItemTO> output;
 
+    //TODO: Borrar, es solo para pruebas
+    private Integer age = 0;
 
     public String getId() {
+        age++;
+        //Si es mas viejo que 10, se le crea un output
+        if (age > 15 && output == null) {
+
+            output = Collections.singletonList(new OutputItemTO("FAILURE_PROBABILITY", Double.toString(Math.random())));
+        }
         return id;
     }
 
@@ -47,27 +55,27 @@ public class ScenarioTO implements Serializable {
         this.parameters = parameters;
     }
 
-    public Map<String, ParameterTO> getMaterials() {
-        return materials;
-    }
-
-    public void setMaterials(Map<String, ParameterTO> materials) {
-        this.materials = materials;
-    }
-
-    public Map<String, Double> getConfiguration() {
+    public List<ConfigurationItemTO> getConfiguration() {
         return configuration;
     }
 
-    public void setConfiguration(Map<String, Double> configuration) {
+    public void setConfiguration(List<ConfigurationItemTO> configuration) {
         this.configuration = configuration;
     }
 
-    public Map<String, Object> getOutput() {
+    public String getComments() {
+        return comments;
+    }
+
+    public void setComments(String comments) {
+        this.comments = comments;
+    }
+
+    public List<OutputItemTO> getOutput() {
         return output;
     }
 
-    public void setOutput(Map<String, Object> output) {
+    public void setOutput(List<OutputItemTO> output) {
         this.output = output;
     }
 }
