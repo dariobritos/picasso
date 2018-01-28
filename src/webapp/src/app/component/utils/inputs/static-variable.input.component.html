@@ -31,7 +31,7 @@
 
             <div class="form-group w-100">
                 <select formControlName="type" [(ngModel)]="parameter.type" class="form-control w-100" id="typeSelect"
-                        (change)="typeChange($event.target.value)">
+                        (change)="typeChanges($event.target.value)">
                     <option value="STATIC">Static</option>
                     <option value="LOG_NORMAL">LogNormal</option>
 
@@ -47,7 +47,7 @@
 
         <div class="input-group margin-bottom-sm w-100">
             <input formControlName="parameter-1" type="number" class="form-control w-100" [(ngModel)]="parameter1"
-                   name="parameter1" (keyup)="onChange()" required min="0">
+                   name="parameter1" (keyup)="paramChanges($event.target.value)" required min="0">
 
         </div>
 

@@ -1,11 +1,14 @@
 package org.proygrad.picasso.rest.api.scenario;
 
-public class OutputItemTO {
+public class CommonItem {
 
     private String code;
     private String value;
 
-    public OutputItemTO(String code, String value) {
+    public CommonItem() {
+    }
+
+    public CommonItem(String code, String value) {
         this.code = code;
         this.value = value;
     }

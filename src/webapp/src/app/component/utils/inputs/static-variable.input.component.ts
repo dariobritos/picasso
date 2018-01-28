@@ -1,5 +1,5 @@
 import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
-import {Distribution, Parameter} from "../../../entities/scenario";
+import {CommonItem, Distribution, Parameter} from "../../../entities/scenario";
 import {DISTANCE, LOG_NORMAL} from "../constant/constants";
 import {FormControl, FormGroup, Validators} from "@angular/forms";
 
@@ -42,6 +42,8 @@ export class StaticVariableInputComponent implements OnInit {
         });
 
         this.parameter.valid = this.form.valid;
+
+        this.loadDistribution(this.parameter.type)
     }
 
     onChange() {
@@ -50,22 +52,30 @@ export class StaticVariableInputComponent implements OnInit {
     }
 
 
-    typeChange(typeValue) {
+    typeChanges(typeValue) {
         this.parameter.type = typeValue;
+        this.loadDistribution(typeValue);
+        this.onChange();
+    }
 
+    paramChanges(typeValue) {
+        this.loadDistribution(this.parameter.type);
+        this.onChange();
+    }
+
+
+
+    private loadDistribution(typeValue) {
         if (LOG_NORMAL === typeValue) {
             let d = new Distribution();
-            let params = new Map();
-            params.set("PARAM_1", this.parameter1);
+            d.type = typeValue;
+            let params: Array<CommonItem> = [];
+            params.push(new CommonItem('PARAM_1', this.parameter1.toString()));
             d.parameters = params;
             this.parameter.distribution = d;
         } else {
             this.parameter.distribution = null;
             this.parameter1 = 0;
         }
-
-        this.onChange();
     }
-
-
 }

@@ -1,11 +1,11 @@
 package org.proygrad.picasso.rest.api.scenario;
 
-import java.util.Map;
+import java.util.List;
 
 public class DistributionTO {
 
     private String type;
-    private Map<String, Double> parameters;
+    private List<CommonItem> parameters;
 
     public String getType() {
         return type;
@@ -15,12 +15,11 @@ public class DistributionTO {
         this.type = type;
     }
 
-    public Map<String, Double> getParameters() {
+    public List<CommonItem> getParameters() {
         return parameters;
     }
 
-    public void setParameters(Map<String, Double> parameters) {
+    public void setParameters(List<CommonItem> parameters) {
         this.parameters = parameters;
     }
-
 }

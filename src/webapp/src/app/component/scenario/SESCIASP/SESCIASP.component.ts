@@ -1,5 +1,5 @@
 import {Component, Inject, OnInit} from '@angular/core';
-import {Scenario, ConfigurationItem, Parameter} from "../../../entities/scenario";
+import {Scenario, CommonItem, Parameter} from "../../../entities/scenario";
 import {CENTIMETER, DISTANCE, LOG_NORMAL, SE_SURFACE_CRACK_STRAIGHT_PIPE, STATIC} from "../../utils/constant/constants";
 import {Form, FormBuilder, FormControl, FormGroup, Validators} from "@angular/forms";
 import {Router} from "@angular/router";
@@ -87,13 +87,9 @@ export class SESCIASPComponent {
     }
 
     private loadScenarioConfiguration() {
-        let confSeed: ConfigurationItem = new ConfigurationItem();
-        confSeed.code = 'SEED';
-        confSeed.value = this.seed.toString();
+        let confSeed: CommonItem = new CommonItem('SEED',this.seed.toString());
+        let confPrecision: CommonItem = new CommonItem('PRECISION',this.precision.toString());
 
-        let confPrecision: ConfigurationItem = new ConfigurationItem();
-        confPrecision.code= 'PRECISION';
-        confPrecision.value= this.precision.toString();
 
         this.scenario.configuration.push(confSeed);
         this.scenario.configuration.push(confPrecision);

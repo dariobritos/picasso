@@ -8,9 +8,9 @@
         <div class="input-group margin-bottom-sm">
             <input class="form-control" type="number"
                    placeholder="{{parameter.code|parameterName}}"
-                   [(ngModel)]="parameter.value" name="value"  required>
+                   [(ngModel)]="parameter.value" name="value"  disabled>
             <div class="input-group-btn">
-                <select type="select" class="form-control">
+                <select type="select" class="form-control" disabled>
                     <option *ngIf="international && distance" selected>cm</option>
                     <option *ngIf="international && distance">mm</option>
 
@@ -31,7 +31,7 @@
 
             <div class="form-group w-100">
                 <select [(ngModel)]="parameter.type" class="form-control w-100" id="typeSelect"
-                        (change)="typeChange($event.target.value)">
+                         disabled>
                     <option value="STATIC">Static</option>
                     <option value="LOG_NORMAL">LogNormal</option>
 
@@ -47,7 +47,7 @@
 
         <div class="input-group margin-bottom-sm w-100">
             <input type="number" class="form-control w-100" [(ngModel)]="parameter1"
-                   name="parameter1" required min="0">
+                   name="parameter1" required min="0" disabled>
 
         </div>
 

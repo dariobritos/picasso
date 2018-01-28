@@ -1,6 +1,16 @@
+
+export class CommonItem {
+    constructor(code: string, value: string) {
+        this.code = code;
+        this.value = value;
+    }
+    code: string;
+    value: string;
+}
+
 export class Distribution {
     type: string;
-    parameters: Map<string, number>;
+    parameters: Array<CommonItem>;
 }
 
 export class Parameter {
@@ -27,14 +37,6 @@ export class Parameter {
     }
 }
 
-export class ConfigurationItem {
-    code: string;
-    value: string;
-}
-
-export class Output {
-    values: Map<string, object>;
-}
 
 
 class OutputItem {
@@ -53,7 +55,7 @@ export class Scenario {
     type: string;
     unitSystem: string;
     parameters: Array<Parameter>;
-    configuration: Array<ConfigurationItem>;
+    configuration: Array<CommonItem>;
     comments: string;
     output: Array<OutputItem>;
 

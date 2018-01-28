@@ -12,7 +12,7 @@ public class ScenarioTO implements Serializable {
     private List<ParameterTO> parameters;
     private List<ConfigurationItemTO> configuration;
     private String comments;
-    private List<OutputItemTO> output;
+    private List<CommonItem> output;
 
     //TODO: Borrar, es solo para pruebas
     private Integer age = 0;
@@ -22,7 +22,7 @@ public class ScenarioTO implements Serializable {
         //Si es mas viejo que 10, se le crea un output
         if (age > 15 && output == null) {
 
-            output = Collections.singletonList(new OutputItemTO("FAILURE_PROBABILITY", Double.toString(Math.random())));
+            output = Collections.singletonList(new CommonItem("FAILURE_PROBABILITY", Double.toString(Math.random())));
         }
         return id;
     }
@@ -71,11 +71,11 @@ public class ScenarioTO implements Serializable {
         this.comments = comments;
     }
 
-    public List<OutputItemTO> getOutput() {
+    public List<CommonItem> getOutput() {
         return output;
     }
 
-    public void setOutput(List<OutputItemTO> output) {
+    public void setOutput(List<CommonItem> output) {
         this.output = output;
     }
 }

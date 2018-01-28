@@ -1,6 +1,6 @@
 import {Component, Input, OnInit} from '@angular/core';
 import {Parameter} from "../../../entities/scenario";
-import {DISTANCE} from "../constant/constants";
+import {DISTANCE, LOG_NORMAL} from "../constant/constants";
 
 @Component({
     selector: 'static-variable-output',
@@ -18,13 +18,20 @@ export class StaticVariableOutputComponent implements OnInit {
 
     distance: boolean;
 
-    parameter1: number = 0;
+    parameter1: string = '0';
 
     ngOnInit(): void {
         this.distance = (this.parameter.magnitude === DISTANCE);
+        this.loadDistribution();
     }
 
 
-
+    private loadDistribution() {
+        if (LOG_NORMAL === this.parameter.type) {
+            this.parameter1 = this.parameter.distribution.parameters.find(p => p.code === "PARAM_1").value;
+        } else {
+            this.parameter1 = '0';
+        }
+    }
 
 }
