@@ -70,7 +70,7 @@ export class StaticVariableInputComponent implements OnInit {
             let d = new Distribution();
             d.type = typeValue;
             let params: Array<CommonItem> = [];
-            params.push(new CommonItem('PARAM_1', this.parameter1.toString()));
+            params.push(new CommonItem('VARIANCE', this.parameter1.toString()));
             d.parameters = params;
             this.parameter.distribution = d;
         } else {

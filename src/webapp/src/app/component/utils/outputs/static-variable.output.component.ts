@@ -28,7 +28,7 @@ export class StaticVariableOutputComponent implements OnInit {
 
     private loadDistribution() {
         if (LOG_NORMAL === this.parameter.type) {
-            this.parameter1 = this.parameter.distribution.parameters.find(p => p.code === "PARAM_1").value;
+            this.parameter1 = this.parameter.distribution.parameters.find(p => p.code === "VARIANCE").value;
         } else {
             this.parameter1 = '0';
         }
