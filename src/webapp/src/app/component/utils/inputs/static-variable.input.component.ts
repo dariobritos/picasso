@@ -1,7 +1,8 @@
 import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
 import {CommonItem, Distribution, Parameter} from "../../../entities/scenario";
-import {DISTANCE, LOG_NORMAL} from "../constant/constants";
+import {DISTANCE, LOGNORMAL, NORMAL, STATIC, VARIABLE} from "../constant/constants";
 import {FormControl, FormGroup, Validators} from "@angular/forms";
+import {isNullOrUndefined} from "util";
 
 @Component({
     selector: 'static-variable-input',
@@ -10,13 +11,10 @@ import {FormControl, FormGroup, Validators} from "@angular/forms";
 })
 export class StaticVariableInputComponent implements OnInit {
 
-
     @Input()
     parameter: Parameter;
 
-
     form: FormGroup;
-
 
     @Output()
     changeParameter = new EventEmitter<Parameter>();
@@ -26,7 +24,8 @@ export class StaticVariableInputComponent implements OnInit {
 
     distance: boolean;
 
-    parameter1: number = 0;
+    distributionType: string;
+    parameter1: string;
 
     ngOnInit(): void {
         this.distance = (this.parameter.magnitude === DISTANCE);
@@ -43,7 +42,9 @@ export class StaticVariableInputComponent implements OnInit {
 
         this.parameter.valid = this.form.valid;
 
-        this.loadDistribution(this.parameter.type)
+        this.distributionType = (this.parameter.type === STATIC) ? STATIC : this.parameter.distribution.type;
+        this.parameter1 = (this.parameter.type === STATIC) ? '0' : this.parameter.distribution.parameters[0].value;
+
     }
 
     onChange() {
@@ -52,30 +53,29 @@ export class StaticVariableInputComponent implements OnInit {
     }
 
 
-    typeChanges(typeValue) {
-        this.parameter.type = typeValue;
-        this.loadDistribution(typeValue);
+    typeChanges(type) {
+        this.parameter.type = (type === STATIC) ? STATIC : VARIABLE;
+        this.loadDistribution(type);
         this.onChange();
     }
 
-    paramChanges(typeValue) {
-        this.loadDistribution(this.parameter.type);
+    paramChanges() {
+        this.loadDistribution(this.distributionType);
         this.onChange();
     }
 
 
-
-    private loadDistribution(typeValue) {
-        if (LOG_NORMAL === typeValue) {
-            let d = new Distribution();
-            d.type = typeValue;
-            let params: Array<CommonItem> = [];
-            params.push(new CommonItem('VARIANCE', this.parameter1.toString()));
-            d.parameters = params;
-            this.parameter.distribution = d;
-        } else {
-            this.parameter.distribution = null;
-            this.parameter1 = 0;
+    private loadDistribution(type) {
+        switch (type) {
+            case NORMAL:
+            case LOGNORMAL:
+                let d = new Distribution(type, this.parameter1);
+                this.parameter.distribution = d;
+                break;
+            default:
+                this.parameter.distribution = null;
+                this.parameter1 = '0';
         }
+
     }
 }

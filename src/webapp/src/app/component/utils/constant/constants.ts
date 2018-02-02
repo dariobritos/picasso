@@ -15,4 +15,6 @@ export const DISTANCE = 'DISTANCE';
 
 //TIPO DE PARAMETRO
 export const STATIC = 'STATIC';
-export const LOG_NORMAL = 'LOG_NORMAL';
+export const VARIABLE = 'VARIABLE';
+export const NORMAL = 'NORMAL';
+export const LOGNORMAL = 'LOGNORMAL';

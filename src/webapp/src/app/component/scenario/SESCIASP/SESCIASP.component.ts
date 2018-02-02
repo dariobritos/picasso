@@ -1,6 +1,9 @@
 import {Component, Inject, OnInit} from '@angular/core';
 import {Scenario, CommonItem, Parameter} from "../../../entities/scenario";
-import {CENTIMETER, DISTANCE, LOG_NORMAL, SE_SURFACE_CRACK_STRAIGHT_PIPE, STATIC} from "../../utils/constant/constants";
+import {
+    CENTIMETER, DISTANCE, LOGNORMAL, NORMAL, SE_SURFACE_CRACK_STRAIGHT_PIPE, STATIC,
+    VARIABLE
+} from "../../utils/constant/constants";
 import {Form, FormBuilder, FormControl, FormGroup, Validators} from "@angular/forms";
 import {Router} from "@angular/router";
 import {ScenarioService} from "../../../service/scenario.service";
@@ -25,19 +28,17 @@ export class SESCIASPComponent {
                 private scenarioService: ScenarioService) {
         this.scenario = new Scenario();
         this.scenario.parameters = [
-            new Parameter('CRACK_DEPTH', LOG_NORMAL, 0, CENTIMETER, DISTANCE),
-            new Parameter('CRACK_LENGTH', LOG_NORMAL, 0, CENTIMETER, DISTANCE),
-            new Parameter('WALL_THICKNESS', STATIC, 0, CENTIMETER, DISTANCE),
-            new Parameter('INNER_RADIUS', STATIC, 0, CENTIMETER, DISTANCE),
-            new Parameter('YIELD_STRESS', LOG_NORMAL, 0, CENTIMETER, DISTANCE),
-            new Parameter('OPERATING_PRESSURE', LOG_NORMAL, 0, CENTIMETER, DISTANCE)];
+            new Parameter('CRACK_DEPTH', VARIABLE, LOGNORMAL, 0.1, CENTIMETER, DISTANCE),
+            new Parameter('CRACK_LENGTH', VARIABLE, LOGNORMAL, 0.1, CENTIMETER, DISTANCE),
+            new Parameter('WALL_THICKNESS', STATIC, null, 0.1, CENTIMETER, DISTANCE),
+            new Parameter('INNER_RADIUS', STATIC,null, 0.1, CENTIMETER, DISTANCE),
+            new Parameter('YIELD_STRESS', VARIABLE,NORMAL, 0.1, CENTIMETER, DISTANCE),
+            new Parameter('OPERATING_PRESSURE', VARIABLE,NORMAL, 0.1, CENTIMETER, DISTANCE)];
 
 
         this.scenario.type = 'SE_SURFACE_CRACK_STRAIGHT_PIPE';
 
         this.scenario.unitSystem = 'INTERNATIONAL';
-
-
 
 
         //Load data validation
@@ -87,8 +88,8 @@ export class SESCIASPComponent {
     }
 
     private loadScenarioConfiguration() {
-        let confSeed: CommonItem = new CommonItem('SEED',this.seed.toString());
-        let confPrecision: CommonItem = new CommonItem('PRECISION',this.precision.toString());
+        let confSeed: CommonItem = new CommonItem('SEED', this.seed.toString());
+        let confPrecision: CommonItem = new CommonItem('PRECISION', this.precision.toString());
 
 
         this.scenario.configuration.push(confSeed);

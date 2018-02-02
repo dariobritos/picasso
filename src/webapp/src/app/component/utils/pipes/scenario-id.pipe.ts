@@ -1,6 +1,6 @@
 import {Pipe, PipeTransform} from "@angular/core";
 
-@Pipe({name: 'scenarioName'})
+@Pipe({name: 'scenarioId'})
 export class ScenarioIdPipe implements PipeTransform {
 
 

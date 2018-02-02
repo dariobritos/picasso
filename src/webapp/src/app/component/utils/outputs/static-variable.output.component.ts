@@ -1,6 +1,6 @@
 import {Component, Input, OnInit} from '@angular/core';
 import {Parameter} from "../../../entities/scenario";
-import {DISTANCE, LOG_NORMAL} from "../constant/constants";
+import {DISTANCE, LOGNORMAL, NORMAL, STATIC, VARIABLE} from "../constant/constants";
 
 @Component({
     selector: 'static-variable-output',
@@ -18,6 +18,7 @@ export class StaticVariableOutputComponent implements OnInit {
 
     distance: boolean;
 
+    distributionType: string;
     parameter1: string = '0';
 
     ngOnInit(): void {
@@ -27,11 +28,25 @@ export class StaticVariableOutputComponent implements OnInit {
 
 
     private loadDistribution() {
-        if (LOG_NORMAL === this.parameter.type) {
-            this.parameter1 = this.parameter.distribution.parameters.find(p => p.code === "VARIANCE").value;
-        } else {
-            this.parameter1 = '0';
+        switch (this.parameter.type) {
+            case STATIC:
+                this.distributionType = STATIC;
+                this.parameter1 = '0';
+                break;
+            case VARIABLE:
+                this.distributionType = this.parameter.distribution.type;
+                switch (this.parameter.distribution.type) {
+                    case LOGNORMAL:
+                        this.parameter1 = this.parameter.distribution.parameters.find(p => p.code === "SCALE").value;
+                        break;
+                    case NORMAL:
+                        this.parameter1 = this.parameter.distribution.parameters.find(p => p.code === "VARIANCE").value;
+                        break;
+                }
+                break;
+
         }
+
     }
 
 }

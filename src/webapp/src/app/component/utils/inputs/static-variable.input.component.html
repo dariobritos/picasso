@@ -30,10 +30,11 @@
         <div class="btn-group w-100" role="group" data-toggle="buttons">
 
             <div class="form-group w-100">
-                <select formControlName="type" [(ngModel)]="parameter.type" class="form-control w-100" id="typeSelect"
+                <select formControlName="type" [(ngModel)]="distributionType" class="form-control w-100" id="typeSelect"
                         (change)="typeChanges($event.target.value)">
                     <option value="STATIC">Static</option>
-                    <option value="LOG_NORMAL">LogNormal</option>
+                    <option value="NORMAL">Normal</option>
+                    <option value="LOGNORMAL">LogNormal</option>
 
                 </select>
             </div>
@@ -47,7 +48,7 @@
 
         <div class="input-group margin-bottom-sm w-100">
             <input formControlName="parameter-1" type="number" class="form-control w-100" [(ngModel)]="parameter1"
-                   name="parameter1" (keyup)="paramChanges($event.target.value)" required min="0">
+                   name="parameter1" (keyup)="paramChanges()" required min="0">
 
         </div>
 
