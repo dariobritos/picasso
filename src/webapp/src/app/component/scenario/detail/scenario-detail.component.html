@@ -25,11 +25,11 @@
                 <h1 class="w-80 text-center  mt-4 mb-4">Results</h1>
 
 
-                <h1 class="w-80 text-center  mt-4 mb-4" *ngIf="this.scenario.output">{{this.failurePercentage}}% Failue probability</h1>
-                <h1 class="w-80 text-center  mt-4 mb-5" *ngIf="!this.scenario.output">Calculating...</h1>
+                <h1 class="w-80 text-center  mt-4 mb-4" *ngIf="this.scenario.output.length>0">{{this.failurePercentage}}% Failue probability</h1>
+                <h1 class="w-80 text-center  mt-4 mb-5" *ngIf="this.scenario.output.length===0">Calculating...</h1>
 
 
-                <div class="col-12 text-center" *ngIf="this.scenario.output">
+                <div class="col-12 text-center" *ngIf="this.scenario.output.length>0">
                     <div style="display: block">
                         <canvas id="myChart" baseChart
                                 [data]="doughnutChartData"
@@ -47,7 +47,7 @@
 
                 </div>
 
-                <div *ngIf="!this.scenario.output" class="col-12 text-center mt-5 animationload">
+                <div *ngIf="this.scenario.output.length===0" class="col-12 text-center mt-5 animationload">
                     <div class="osahanloading"></div>
                 </div>
             </div>
@@ -156,9 +156,14 @@
                                     </label>
                                 </div>
 
+                                <static-variable-output [parameter]="getParameter('FRACTURE_TOUGHNESS')"
+                                ></static-variable-output>
+
                                 <static-variable-output [parameter]="getParameter('YIELD_STRESS')"
                                 ></static-variable-output>
 
+                                <static-variable-output [parameter]="getParameter('PLASTIC_COLLAPSE')"
+                                ></static-variable-output>
                             </div>
                         </div>
                     </div>

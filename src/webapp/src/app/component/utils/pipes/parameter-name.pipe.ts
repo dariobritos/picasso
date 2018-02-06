@@ -9,7 +9,9 @@ export class ParameterNamePipe implements PipeTransform {
         ['CRACK_LENGTH', 'Crack lenght'],
         ['WALL_THICKNESS', 'Wall thickness'],
         ['FRACTURE_TOUGHNESS', 'Fracture toughness'],
-        ['YIELD_STRESS', 'Yeld stress'],
+        ['YIELD_STRESS', 'Yield stress'],
+        ['PLASTIC_COLLAPSE', 'Plastic collapse'],
+        ['FRACTURE_TOUGHNESS', 'Fracture toughness'],
         ['OPERATING_PRESSURE', 'Operating Pressure'],
         ['INNER_RADIUS', 'Inner radius']
     ]);

@@ -1,16 +1,22 @@
 package org.proygrad.picasso.rest.client;
 
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+import java.util.UUID;
+
+import javax.annotation.PostConstruct;
+
 import org.proygrad.picasso.rest.api.scenario.ScenarioTO;
 import org.proygrad.picasso.rest.api.user.UserTO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.client.RestTemplate;
 
-import javax.annotation.PostConstruct;
-import java.util.*;
-
 public class TuringClient {
 
-    private static String GET_SCENARIOS = "http://turing/scenario";
+    private final static String TURING_HOST = "http://localhost:9040/";
+    private final static String SCENARIO_PATH = "scenario/";
 
     @Autowired
     private RestTemplate restTemplate;
@@ -18,8 +24,8 @@ public class TuringClient {
 
 
     /*CODIGO TEMPORAL MIENTRAS NO SE TENGAN LOS SERVICIOS DE TURING*/
-    private Map<String,ScenarioTO> scenarios;
-    private Map<String,UserTO> users;
+    private Map<String, ScenarioTO> scenarios;
+    private Map<String, UserTO> users;
 
     @PostConstruct
     private void init() {
@@ -28,43 +34,33 @@ public class TuringClient {
     }
 
 
-    public ScenarioTO getScenario(String id)    {
-        //return restTemplate.getForEntity(GET_SCENARIOS,ScenarioTO.class, id ).getBody();
-
-        // "/scenario/{id}", method = RequestMethod.GET)
-
-        return scenarios.get(id);
-
+    public ScenarioTO getScenario(String id) {
+        return restTemplate.getForEntity(TURING_HOST + SCENARIO_PATH + id, ScenarioTO.class, id).getBody();
     }
 
 
     public List<ScenarioTO> getScenarios() {
 
         // "/user/{id}/scenarios", method = RequestMethod.GET)
+        // "/scenario/?user_id=xxx", method = RequestMethod.GET)
         // vemos de dejar siempre el mismo useddr id dsp ampliamos.
 
         return new ArrayList<>(scenarios.values());
     }
 
 
-
+    //No se harian actualizaciones de un escenario
     public void updateScenario(String id, ScenarioTO scenario) {
 
         // "/scenario/{id}/input", method = RequestMethod.PATCH) // todo menos output
 
         // "/scenario/{id}/output", method = RequestMethod.PATCH) // solo output
 
-        scenarios.put(id,scenario);
+        scenarios.put(id, scenario);
     }
 
     public String addScenario(ScenarioTO scenario) {
-
-        // "/scenario", method = RequestMethod.POST)
-
-        String id = UUID.randomUUID().toString();
-        scenario.setId(id);
-        scenarios.put(id, scenario);
-        return id;
+        return restTemplate.postForEntity(TURING_HOST + SCENARIO_PATH, scenario, String.class).getBody();
     }
 
 
@@ -80,11 +76,11 @@ public class TuringClient {
         return users.get(id);
     }
 
-    public void updateUser(String id,UserTO user) {
+    public void updateUser(String id, UserTO user) {
         //  "/user/{id}", method = RequestMethod.PATCH)
         // TODO: afinar que dejamos editar hoy solo sobreescribe el nomnbre.
 
-        users.put(id,user);
+        users.put(id, user);
     }
 
     public String addUser(UserTO user) {

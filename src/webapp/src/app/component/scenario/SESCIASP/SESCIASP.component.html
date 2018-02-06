@@ -1,209 +1,213 @@
 <div class="main-container container mt-2 justify-content-lg-center">
-    <form id="needs-validation" class="" [formGroup]="form">
+  <form id="needs-validation" class="" [formGroup]="form">
 
 
-        <div class="row m-0 justify-content-center ">
+    <div class="row m-0 justify-content-center ">
 
 
-            <!--TIPO DE PROBLEMA-->
-            <div class="col-12 col-lg-6 col-md-12 col-sm-12 justify-content-center mb-3 ">
-                <h1 class="w-100 text-center  mt-4 mb-4">Scenario</h1>
+      <!--TIPO DE PROBLEMA-->
+      <div class="col-12 col-lg-6 col-md-12 col-sm-12 justify-content-center mb-3 ">
+        <h1 class="w-100 text-center  mt-4 mb-4">Scenario</h1>
 
-                <label class="w-100 text-center">
-                    <h3 class="form-control-lg mb-2 mt-2 w-100">
-                        {{scenarioType|scenarioName}}
+        <label class="w-100 text-center">
+          <h3 class="form-control-lg mb-2 mt-2 w-100">
+            {{scenarioType|scenarioName}}
 
-                    </h3>
-                </label>
+          </h3>
+        </label>
 
-                <div class="card w-100">
-                    <img class="card-img-top" src="../../../assets/scenario1.png" alt="Scenario">
+        <div class="card w-100">
+          <img class="card-img-top" src="../../../assets/scenario1.png" alt="Scenario">
 
 
-                </div>
+        </div>
+      </div>
+
+      <hr class="d-lg-none" style="width: 100%; color: grey; height: 1px; background-color:dimgrey;"/>
+
+
+      <!--SETUP DE PARAMETROS-->
+      <div class="col-12 col-lg-6 col-md-12 col-sm-12 ">
+        <h1 class="w-100 text-center  mt-4 mb-4">Parameters setup</h1>
+        <div id="accordion" role="tablist" class="w-100">
+          <!--GRIETA-->
+          <div class="card">
+            <div class="card-header" role="tab" id="headingOne">
+              <h5 class="mb-0">
+                <a data-toggle="collapse" href="#collapseOne" aria-expanded="true"
+                   aria-controls="collapseOne">
+                  Crack Geometry
+                </a>
+              </h5>
             </div>
 
-            <hr class="d-lg-none" style="width: 100%; color: grey; height: 1px; background-color:dimgrey;"/>
+            <div id="collapseOne" class="collapse show" role="tabpanel" aria-labelledby="headingOne"
+                 data-parent="#accordion">
+              <div class="card-body">
 
 
-            <!--SETUP DE PARAMETROS-->
-            <div class="col-12 col-lg-6 col-md-12 col-sm-12 ">
-                <h1 class="w-100 text-center  mt-4 mb-4">Parameters setup</h1>
-                <div id="accordion" role="tablist" class="w-100">
-                    <!--GRIETA-->
-                    <div class="card">
-                        <div class="card-header" role="tab" id="headingOne">
-                            <h5 class="mb-0">
-                                <a data-toggle="collapse" href="#collapseOne" aria-expanded="true"
-                                   aria-controls="collapseOne">
-                                    Crack Geometry
-                                </a>
-                            </h5>
-                        </div>
-
-                        <div id="collapseOne" class="collapse show" role="tabpanel" aria-labelledby="headingOne"
-                             data-parent="#accordion">
-                            <div class="card-body">
+                <static-variable-input [parameter]="getParameter('CRACK_DEPTH')"
+                                       (changeParameter)="parameterChanged($event)"></static-variable-input>
+                <static-variable-input [parameter]="getParameter('CRACK_LENGTH')"
+                                       (changeParameter)="parameterChanged($event)"></static-variable-input>
 
 
-                                <static-variable-input [parameter]="getParameter('CRACK_DEPTH')"
-                                                       (changeParameter)="parameterChanged($event)"></static-variable-input>
-                                <static-variable-input [parameter]="getParameter('CRACK_LENGTH')"
-                                                       (changeParameter)="parameterChanged($event)"></static-variable-input>
-
-
-                            </div>
-                        </div>
-                    </div>
-
-
-                    <!--COMPONENTE-->
-                    <div class="card">
-                        <div class="card-header" role="tab" id="headingTwo">
-                            <h5 class="mb-0">
-                                <a class="collapsed" data-toggle="collapse" href="#collapseTwo" aria-expanded="false"
-                                   aria-controls="collapseTwo">
-                                    Component Geometry
-                                </a>
-                            </h5>
-                        </div>
-                        <div id="collapseTwo" class="collapse" role="tabpanel" aria-labelledby="headingTwo"
-                             data-parent="#accordion">
-                            <div class="card-body">
-
-
-                                <static-variable-input [parameter]="getParameter('WALL_THICKNESS')"
-                                                       (changeParameter)="parameterChanged($event)"></static-variable-input>
-                                <static-variable-input [parameter]="getParameter('INNER_RADIUS')"
-                                                       (changeParameter)="parameterChanged($event)"></static-variable-input>
-
-                            </div>
-                        </div>
-                    </div>
-
-
-                    <!--MATERIAL-->
-                    <div class="card">
-                        <div class="card-header" role="tab" id="headingThree">
-                            <h5 class="mb-0">
-                                <a class="collapsed" data-toggle="collapse" href="#collapseThree" aria-expanded="false"
-                                   aria-controls="collapseThree">
-                                    Material Properties
-                                </a>
-                            </h5>
-                        </div>
-                        <div id="collapseThree" class="collapse" role="tabpanel" aria-labelledby="headingThree"
-                             data-parent="#accordion">
-                            <div class="card-body">
-
-                                <div class="form-group col col-12 col-lg-12">
-                                    <div id="languageInput" class="btn-group w-100" data-toggle="buttons">
-                                        <label class="btn btn-secondary active w-50">
-                                            <input type="radio" name="custom" id="customMaterial" autocomplete="off"
-                                                   checked>
-                                            Custom
-                                        </label>
-                                        <label class="btn btn-secondary w-50">
-                                            <input type="radio" name="library" id="libraryMaterial" autocomplete="off">Library
-                                        </label>
-
-                                    </div>
-                                </div>
-
-                                <div class="form-group col col-12 col-lg-12">
-                                    <label class="w-100">
-                                        <select class="custom-select form-control-lg mb-2 mt-2 w-100">
-                                            <option *ngFor="let oo of scenarioTypes" [value]="oo">{{oo|scenarioName}}
-                                            </option>
-
-                                        </select>
-                                    </label>
-                                </div>
-
-                                <static-variable-input [parameter]="getParameter('YIELD_STRESS')"
-                                                       (changeParameter)="parameterChanged($event)"></static-variable-input>
-
-                            </div>
-                        </div>
-                    </div>
-                    <!--CARGA-->
-                    <div class="card">
-                        <div class="card-header" role="tab" id="headingFour">
-                            <h5 class="mb-0">
-                                <a class="collapsed" data-toggle="collapse" href="#collapseFour" aria-expanded="false"
-                                   aria-controls="collapseFour">
-                                    Load Properties
-                                </a>
-                            </h5>
-                        </div>
-                        <div id="collapseFour" class="collapse" role="tabpanel" aria-labelledby="headingFour"
-                             data-parent="#accordion">
-                            <div class="card-body">
-
-                                <static-variable-input [parameter]="getParameter('OPERATING_PRESSURE')"
-                                                       (changeParameter)="parameterChanged($event)"></static-variable-input>
-
-
-                            </div>
-                        </div>
-                    </div>
-                </div>
+              </div>
             </div>
+          </div>
 
+
+          <!--COMPONENTE-->
+          <div class="card">
+            <div class="card-header" role="tab" id="headingTwo">
+              <h5 class="mb-0">
+                <a class="collapsed" data-toggle="collapse" href="#collapseTwo" aria-expanded="false"
+                   aria-controls="collapseTwo">
+                  Component Geometry
+                </a>
+              </h5>
+            </div>
+            <div id="collapseTwo" class="collapse" role="tabpanel" aria-labelledby="headingTwo"
+                 data-parent="#accordion">
+              <div class="card-body">
+
+
+                <static-variable-input [parameter]="getParameter('WALL_THICKNESS')"
+                                       (changeParameter)="parameterChanged($event)"></static-variable-input>
+                <static-variable-input [parameter]="getParameter('INNER_RADIUS')"
+                                       (changeParameter)="parameterChanged($event)"></static-variable-input>
+
+              </div>
+            </div>
+          </div>
+
+
+          <!--MATERIAL-->
+          <div class="card">
+            <div class="card-header" role="tab" id="headingThree">
+              <h5 class="mb-0">
+                <a class="collapsed" data-toggle="collapse" href="#collapseThree" aria-expanded="false"
+                   aria-controls="collapseThree">
+                  Material Properties
+                </a>
+              </h5>
+            </div>
+            <div id="collapseThree" class="collapse" role="tabpanel" aria-labelledby="headingThree"
+                 data-parent="#accordion">
+              <div class="card-body">
+
+                <div class="form-group col col-12 col-lg-12">
+                  <div id="languageInput" class="btn-group w-100" data-toggle="buttons">
+                    <label class="btn btn-secondary active w-50">
+                      <input type="radio" name="custom" id="customMaterial" autocomplete="off"
+                             checked>
+                      Custom
+                    </label>
+                    <label class="btn btn-secondary w-50">
+                      <input type="radio" name="library" id="libraryMaterial" autocomplete="off">Library
+                    </label>
+
+                  </div>
+                </div>
+
+                <div class="form-group col col-12 col-lg-12">
+                  <label class="w-100">
+                    <select class="custom-select form-control-lg mb-2 mt-2 w-100">
+                      <option *ngFor="let oo of scenarioTypes" [value]="oo">{{oo|scenarioName}}
+                      </option>
+
+                    </select>
+                  </label>
+                </div>
+
+                <static-variable-input [parameter]="getParameter('FRACTURE_TOUGHNESS')"
+                                       (changeParameter)="parameterChanged($event)"></static-variable-input>
+                <static-variable-input [parameter]="getParameter('YIELD_STRESS')"
+                                       (changeParameter)="parameterChanged($event)"></static-variable-input>
+                <static-variable-input [parameter]="getParameter('PLASTIC_COLLAPSE')"
+                                       (changeParameter)="parameterChanged($event)"></static-variable-input>
+
+              </div>
+            </div>
+          </div>
+          <!--CARGA-->
+          <div class="card">
+            <div class="card-header" role="tab" id="headingFour">
+              <h5 class="mb-0">
+                <a class="collapsed" data-toggle="collapse" href="#collapseFour" aria-expanded="false"
+                   aria-controls="collapseFour">
+                  Load Properties
+                </a>
+              </h5>
+            </div>
+            <div id="collapseFour" class="collapse" role="tabpanel" aria-labelledby="headingFour"
+                 data-parent="#accordion">
+              <div class="card-body">
+
+                <static-variable-input [parameter]="getParameter('OPERATING_PRESSURE')"
+                                       (changeParameter)="parameterChanged($event)"></static-variable-input>
+
+
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+
+    </div>
+
+
+    <div class="row mt-5">
+      <div class="col-12 col-lg-6 col-md-12 col-sm-12 justify-content-center mb-3 ">
+        <h1 class="w-100 text-center  mt-4 mb-4">Configuration</h1>
+
+        <div class="row mt-3 mb-3">
+          <div class="col-6">
+            <label for="input-seed">Seed</label>
+
+          </div>
+          <div class="col-6">
+            <input formControlName="seed" id="input-seed" class="form-control" placeholder="Seed"
+                   [(ngModel)]="seed" name="seed" required>
+          </div>
 
         </div>
 
 
-        <div class="row mt-5">
-            <div class="col-12 col-lg-6 col-md-12 col-sm-12 justify-content-center mb-3 ">
-                <h1 class="w-100 text-center  mt-4 mb-4">Configuration</h1>
+        <div class="row  mt-3 mb-3">
+          <div class="col-6 ">
+            <label for="input-presicion">Presicion</label>
 
-                <div class="row mt-3 mb-3">
-                    <div class="col-6">
-                        <label for="input-seed">Seed</label>
-
-                    </div>
-                    <div class="col-6">
-                        <input formControlName="seed" id="input-seed" class="form-control" placeholder="Seed"
-                               [(ngModel)]="seed" name="seed" required>
-                    </div>
-
-                </div>
-
-
-                <div class="row  mt-3 mb-3">
-                    <div class="col-6 ">
-                        <label for="input-presicion">Presicion</label>
-
-                    </div>
-                    <div class="col-6">
-                        <input formControlName="precision" id="input-presicion" class="form-control"
-                               placeholder="Presicion"
-                               [(ngModel)]="precision" name="presicion" required>
-                    </div>
-                </div>
-
-            </div>
-
-
-            <div class="col-12 col-lg-6 col-md-12 col-sm-12 justify-content-center mb-3 ">
-
-
-                <h1 class="w-80 text-center  mt-4 mb-4">Comment and start</h1>
-
-                <div class="col-12 text-center">
-                    <textarea class="form-control" formControlName="comments" rows="5" id="comments" [(ngModel)]="scenario.comments"></textarea>
-                </div>
-
-                <div class="col-12 text-center">
-
-                    <button type="submit" (click)="startScenarioCalculation()" class="btn btn-success m-5">Start
-                        scenario
-                    </button>
-
-                </div>
-            </div>
+          </div>
+          <div class="col-6">
+            <input formControlName="precision" id="input-presicion" class="form-control"
+                   placeholder="Presicion"
+                   [(ngModel)]="precision" name="presicion" required>
+          </div>
         </div>
 
-    </form>
+      </div>
+
+
+      <div class="col-12 col-lg-6 col-md-12 col-sm-12 justify-content-center mb-3 ">
+
+
+        <h1 class="w-80 text-center  mt-4 mb-4">Comment and start</h1>
+
+        <div class="col-12 text-center">
+          <textarea class="form-control" formControlName="comments" rows="5" id="comments" [(ngModel)]="scenario.comments"></textarea>
+        </div>
+
+        <div class="col-12 text-center">
+
+          <button type="submit" (click)="startScenarioCalculation()" class="btn btn-success m-5">Start
+            scenario
+          </button>
+
+        </div>
+      </div>
+    </div>
+
+  </form>
 </div>
