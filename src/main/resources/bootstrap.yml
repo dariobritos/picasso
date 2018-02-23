@@ -4,7 +4,7 @@ spring:
     cloud:
         config:
             failFast: true
-            uri: http://localhost:8888
+            uri: http://ec2-52-37-68-174.us-west-2.compute.amazonaws.com:8888
 
 #Cuando se logre configurar oauth con google llevar estas properties a tesla
 security:

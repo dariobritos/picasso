@@ -1,21 +1,16 @@
 package org.proygrad.picasso.rest.client;
 
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
-import java.util.UUID;
-
-import javax.annotation.PostConstruct;
-
 import org.proygrad.picasso.rest.api.scenario.ScenarioTO;
 import org.proygrad.picasso.rest.api.user.UserTO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.client.RestTemplate;
 
+import javax.annotation.PostConstruct;
+import java.util.*;
+
 public class TuringClient {
 
-    private final static String TURING_HOST = "http://localhost:9040/";
+    private final static String TURING_HOST = "http://turing/";
     private final static String SCENARIO_PATH = "scenario/";
 
     @Autowired
