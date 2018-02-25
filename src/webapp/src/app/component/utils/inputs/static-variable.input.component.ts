@@ -1,8 +1,7 @@
 import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
-import {CommonItem, Distribution, Parameter} from "../../../entities/scenario";
+import {Distribution, Parameter} from "../../../entities/scenario";
 import {DISTANCE, LOGNORMAL, NORMAL, STATIC, VARIABLE} from "../constant/constants";
 import {FormControl, FormGroup, Validators} from "@angular/forms";
-import {isNullOrUndefined} from "util";
 
 @Component({
     selector: 'static-variable-input',

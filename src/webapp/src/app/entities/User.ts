@@ -11,16 +11,15 @@ export class UserConfiguration {
 
 export class User {
     constructor() {
-        this.email = 'dario.britos@gmail.com';
-        this.name = 'Dario';
-        this.surname = 'Britos';
-        this.configuration = new UserConfiguration();
+
     }
 
+    id:string;
     email: string;
     name: string;
     surname: string;
+    organization:string;
     configuration: UserConfiguration;
 
-
+    token:string;
 }

@@ -1,10 +1,15 @@
-import {Component, Inject, OnInit} from '@angular/core';
-import {Scenario, CommonItem, Parameter} from "../../../entities/scenario";
+import {Component} from '@angular/core';
+import {CommonItem, Parameter, Scenario} from "../../../entities/scenario";
 import {
-    CENTIMETER, DISTANCE, LOGNORMAL, NORMAL, SE_SURFACE_CRACK_STRAIGHT_PIPE, STATIC,
+    CENTIMETER,
+    DISTANCE,
+    LOGNORMAL,
+    NORMAL,
+    SE_SURFACE_CRACK_STRAIGHT_PIPE,
+    STATIC,
     VARIABLE
 } from "../../utils/constant/constants";
-import {Form, FormBuilder, FormControl, FormGroup, Validators} from "@angular/forms";
+import {FormControl, FormGroup, Validators} from "@angular/forms";
 import {Router} from "@angular/router";
 import {ScenarioService} from "../../../service/scenario.service";
 
