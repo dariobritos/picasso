@@ -18,13 +18,22 @@
             <div class="card w-100">
                 <div class="card-body">
                 </div>
-                <img class="card-img-top" src="../../../assets/scenario1.png" alt="Card image cap">
+
+                <div  ng-if="oo.valueOf() == SE_SURFACE_CRACK_STRAIGHT_PIPE">
+                    <img class="card-img-top" src="../../../assets/scenario1.png" alt="Card image cap">
+                </div>
+                <div  ng-if="oo.valueOf()  != SE_SURFACE_CRACK_STRAIGHT_PIPE">
+                    <img class="card-img-top" src="../../../assets/scenario2.png" alt="Card image cap">
+                </div>
 
             </div>
         </div>
 
         <div id="new-calc-container" class="container text-center">
             <button routerLink="/new/semi-elliptical-surface-crack-in-a-straight-pipe" type="button"
+                    class="btn btn-success">Proceed
+            </button>
+            <button routerLink="/new/simple-iron-bar" type="button"
                     class="btn btn-success">Proceed
             </button>
         </div>

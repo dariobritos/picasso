@@ -13,7 +13,11 @@ export class ParameterNamePipe implements PipeTransform {
         ['PLASTIC_COLLAPSE', 'Plastic collapse'],
         ['FRACTURE_TOUGHNESS', 'Fracture toughness'],
         ['OPERATING_PRESSURE', 'Operating Pressure'],
-        ['INNER_RADIUS', 'Inner radius']
+        ['INNER_RADIUS', 'Inner radius'],
+
+        ['BAR_LOAD', 'Load'],
+        ['BAR_STRENGTH', 'Strength']
+
     ]);
 
 

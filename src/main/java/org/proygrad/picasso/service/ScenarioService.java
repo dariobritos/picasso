@@ -19,8 +19,8 @@ public class ScenarioService {
     }
 
 
-    public List<ScenarioTO> getScenarios() {
-        return turingClient.getScenarios();
+    public List<ScenarioTO> getScenarios(String userId) {
+        return turingClient.getScenarios(userId);
     }
 
 

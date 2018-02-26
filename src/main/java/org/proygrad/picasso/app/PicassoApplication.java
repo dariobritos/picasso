@@ -14,7 +14,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 @RestController
 @SpringBootApplication
-@EnableDiscoveryClient
+// @EnableDiscoveryClient
 @EnableOAuth2Sso
 @ComponentScan("org.proygrad.picasso")
 public class PicassoApplication extends WebSecurityConfigurerAdapter{
