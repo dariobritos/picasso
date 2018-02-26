@@ -19,6 +19,11 @@ import {UserProfileComponent} from "./component/user-profile/user-profile.compon
 import {MaterialsComponent} from "./component/materials/materials.component";
 import {ChartsModule} from "ng2-charts";
 import {ErrorComponent} from "./component/error/error.component";
+import {AuthGuard} from "./service/auth_guard.service";
+import {UserStorage} from "./service/user-storage.service";
+import {UserService} from "./service/user.service";
+import {LoginService} from "./service/login.service";
+import {SignupComponent} from "./component/register/signup.component";
 
 
 @NgModule({
@@ -42,10 +47,10 @@ import {ErrorComponent} from "./component/error/error.component";
         SESCIASPComponent,
         SIBComponent,
         UserProfileComponent,
-        UserProfileComponent,
+        SignupComponent,
         MaterialsComponent
     ],
-    providers: [ScenarioService],
+    providers: [ScenarioService,AuthGuard,UserStorage,UserService,LoginService],
     bootstrap: [AppComponent]
 })
 export class AppModule {
