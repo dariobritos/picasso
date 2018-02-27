@@ -3,6 +3,10 @@ package org.proygrad.picasso.rest.api.user;
 public class UserTO {
 
     private String id;
+    private String password;
+
+
+
     private String name;
     private String surname;
     private String email;
@@ -46,5 +50,13 @@ public class UserTO {
 
     public void setPreferences(UserPreferencesTO preferences) {
         this.preferences = preferences;
+    }
+
+    public String getPassword() {
+        return password;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
     }
 }

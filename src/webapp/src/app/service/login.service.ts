@@ -7,9 +7,10 @@ import 'rxjs/add/operator/catch';
 import {UserStorage} from "./user-storage.service";
 import {UserService} from "./user.service";
 import {User} from "../entities/User";
+import {Http} from "@angular/http";
 
 
-export interface LoginRequestParam {
+export interface Credentials {
     username: string;
     password: string;
 }
@@ -20,23 +21,49 @@ export class LoginService {
 
     constructor(private router: Router,
                 private userService: UserService,
+                private http: Http,
                 private userStorage: UserStorage) {
     }
 
 
-    login(username: string, password: string): Observable<any> {
+    login(username: string, password: string): boolean {
 
 
-        let loginDataSubject: BehaviorSubject<any> = new BehaviorSubject<any>([]); // Will use this BehaviorSubject to emit data that we want after ajax login attempt
+        let credentials:Credentials = {
+            "username": username,
+            "password": password,
+        };
 
-        //TODO: Postear el login y obtener el token y el usuario
 
-        this.userStorage.storeUserInfo(JSON.stringify(new User()));
-        return loginDataSubject;
+        this.http.post('/login', credentials)
+            .subscribe(jsonResp => {
+                    if (jsonResp !== undefined && jsonResp !== null){
+                        //Create a success object that we want to send back to login page
+
+                        let id = jsonResp.json().id;
+                        let token = jsonResp.headers.get("Authorization");
+                        this.userStorage.storeToken(token)
+                        console.log(token);
+                        this.userService.getUser(id).then((u) => {
+                            this.userStorage.storeUserInfo(JSON.stringify(u));
+                        });
+
+                        return true;
+                    }
+                    else {
+                        //Create a faliure object that we want to send back to login page
+                        return false;
+                    }
+                },
+                err => {
+                    console.log(err);
+                });
+
+        return false;
     }
 
     logout(navigatetoLogout = true): void {
-        // clear token remove user from local storage to log user out
+        // clear token remove newUser from local storage to log newUser out
         this.userStorage.removeUserInfo();
         if (navigatetoLogout) {
             this.router.navigate(["home"]);

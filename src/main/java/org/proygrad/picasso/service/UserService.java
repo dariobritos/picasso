@@ -3,12 +3,19 @@ package org.proygrad.picasso.service;
 import org.proygrad.picasso.rest.api.user.UserTO;
 import org.proygrad.picasso.rest.client.TuringClient;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.userdetails.User;
+import org.springframework.security.core.userdetails.UserDetails;
+import org.springframework.security.core.userdetails.UserDetailsService;
+import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
 
+import static java.util.Collections.emptyList;
+
+//UserDetailsService se utiliza en el contexton de seguridad para autorizar y autenticar
 @Service
-public class UserService {
+public class UserService implements UserDetailsService {
 
     @Autowired
     private TuringClient turingClient;
@@ -28,4 +35,19 @@ public class UserService {
     public String addUser(UserTO user) {
         return turingClient.addUser(user);
     }
+
+    public UserTO findByUsername(String username) {
+        return turingClient.findByUsername(username);
+    }
+
+    @Override
+    public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
+        UserTO user = this.findByUsername(username);
+        if (user == null) {
+            throw new UsernameNotFoundException(username);
+        }
+        return new User(user.getEmail(), user.getPassword(), emptyList());
+    }
+
+
 }

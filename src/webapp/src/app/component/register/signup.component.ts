@@ -1,8 +1,9 @@
 import {Component, OnInit} from "@angular/core";
-import {User} from "../../entities/User";
+import {NewUser, User} from "../../entities/User";
 import {scenarioTypesConst, USER} from "../utils/constant/constants";
 import {AuthGuard} from "../../service/auth_guard.service";
 import {Router} from "@angular/router";
+import {UserService} from "../../service/user.service";
 
 @Component({
     selector: 'user-profile',
@@ -11,19 +12,19 @@ import {Router} from "@angular/router";
 })
 export class SignupComponent implements OnInit {
 
-    user: User;
+    newUser: NewUser;
 
     scenarioTypes = scenarioTypesConst;
 
     constructor(
         private authGuard: AuthGuard,
-        private router: Router
+        private router: Router,
+        private userService: UserService
     ) { }
 
 
     ngOnInit(): void {
-        this.user = new User;
-
+        this.newUser = new NewUser;
 
         //Si ya se esta logueado, se redirige a la home
         if(this.authGuard.checkLogin()){
@@ -33,7 +34,7 @@ export class SignupComponent implements OnInit {
     }
 
     signup(): void{
-
+        this.userService.signUp(this.newUser);
     }
 
 }

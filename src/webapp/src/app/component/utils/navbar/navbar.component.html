@@ -33,7 +33,7 @@
             </li>
         </ul>
 
-
+        <p class="text-white my-auto" *ngIf="loggedIn()">{{currentUser().email}}</p>
         <button class="btn btn-outline-success my-2 my-sm-0 mx-2" (click)="signup()" *ngIf="!loggedIn()">Sign up</button>
         <button class="btn btn-outline-success my-2 my-sm-0 mx-2" (click)="logout()" *ngIf="loggedIn()">Logout</button>
 

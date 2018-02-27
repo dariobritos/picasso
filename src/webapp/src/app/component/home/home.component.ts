@@ -2,6 +2,8 @@ import {Component} from "@angular/core";
 import {LoginService} from "../../service/login.service";
 import {AuthGuard} from "../../service/auth_guard.service";
 import {Router} from "@angular/router";
+import {UserStorage} from "../../service/user-storage.service";
+import {User} from "../../entities/User";
 
 @Component({
     selector: 'home',
@@ -13,6 +15,7 @@ export class HomeComponent {
     constructor(
         private loginService: LoginService,
         private authGuard: AuthGuard,
+        private userStorage: UserStorage,
         private router: Router
     ) { }
 
@@ -25,6 +28,10 @@ export class HomeComponent {
         if(this.loggedIn()){
             this.router.navigate(['/scenarios']);
         }
+    }
+
+    currentUser():User{
+        return this.userStorage.getUserInfo();
     }
 
     loggedIn():boolean{

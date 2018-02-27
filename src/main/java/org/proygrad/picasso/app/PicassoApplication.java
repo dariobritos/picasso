@@ -3,27 +3,23 @@ package org.proygrad.picasso.app;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
-import org.springframework.boot.autoconfigure.security.oauth2.client.EnableOAuth2Sso;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.http.converter.json.Jackson2ObjectMapperBuilder;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
-import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
 @SpringBootApplication
 //@EnableDiscoveryClient
-@EnableOAuth2Sso
 @ComponentScan("org.proygrad.picasso")
-public class PicassoApplication extends WebSecurityConfigurerAdapter{
+public class PicassoApplication  {
 
 	public static void main(String[] args) {
 		SpringApplication.run(PicassoApplication.class, args);
 	}
 
 
-	@Override
 	protected void configure(HttpSecurity http) throws Exception {
 		http
 				.antMatcher("/**")

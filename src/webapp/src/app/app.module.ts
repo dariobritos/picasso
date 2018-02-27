@@ -23,6 +23,7 @@ import {UserStorage} from "./service/user-storage.service";
 import {UserService} from "./service/user.service";
 import {LoginService} from "./service/login.service";
 import {SignupComponent} from "./component/register/signup.component";
+import {InterceptorModule} from "./interceptors/interceptors.module";
 
 
 @NgModule({
@@ -34,8 +35,8 @@ import {SignupComponent} from "./component/register/signup.component";
         HttpModule,
         InputsModule,
         CommonModule,
-        ChartsModule
-    ],
+        ChartsModule,
+        InterceptorModule],
     declarations: [
         AppComponent,
         DashboardComponent,
