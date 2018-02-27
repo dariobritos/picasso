@@ -2,7 +2,7 @@ import {Injectable} from '@angular/core';
 import {Headers, Http} from '@angular/http';
 
 import 'rxjs/add/operator/toPromise';
-import {User} from "../entities/user";
+import {User} from "../entities/User";
 import {Router} from "@angular/router";
 import {UserStorage} from "./user-storage.service";
 
