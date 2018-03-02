@@ -32,7 +32,7 @@ export class UserStorage {
         try{
             let userInfoString:string = this.storage.getItem(this.CURRENT_USER);
             if (userInfoString) {
-                let userObj:User = JSON.parse(this.storage.getItem(this.CURRENT_USER));
+                let userObj:User = JSON.parse(atob(this.storage.getItem(this.CURRENT_USER)));
                 return userObj;
             }
             else{

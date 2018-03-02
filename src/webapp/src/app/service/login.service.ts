@@ -42,10 +42,10 @@ export class LoginService {
 
                         let id = jsonResp.json().id;
                         let token = jsonResp.headers.get("Authorization");
-                        this.userStorage.storeToken(token)
+                        this.userStorage.storeToken(token);
                         console.log(token);
                         this.userService.getUser(id).then((u) => {
-                            this.userStorage.storeUserInfo(JSON.stringify(u));
+                            this.userStorage.storeUserInfo(btoa(JSON.stringify(u)));
                         });
 
                         return true;

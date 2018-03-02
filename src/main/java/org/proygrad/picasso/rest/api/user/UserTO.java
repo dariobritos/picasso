@@ -6,9 +6,11 @@ public class UserTO {
     private String password;
 
 
-
     private String name;
     private String surname;
+    private String organization;
+
+
     private String email;
     private UserPreferencesTO preferences;
 
@@ -58,5 +60,14 @@ public class UserTO {
 
     public void setPassword(String password) {
         this.password = password;
+    }
+
+
+    public String getOrganization() {
+        return organization;
+    }
+
+    public void setOrganization(String organization) {
+        this.organization = organization;
     }
 }

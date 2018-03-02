@@ -5,6 +5,7 @@ import 'rxjs/add/operator/toPromise';
 import {User} from "../entities/User";
 import {Router} from "@angular/router";
 import {UserStorage} from "./user-storage.service";
+import {Observable} from "rxjs/Observable";
 
 
 @Injectable()
@@ -25,12 +26,9 @@ export class UserService {
     }
 
 
-    signUp(user: User): Promise<string> {
+    signUp(user: User): Observable<any> {
         return this.http
-            .post(this.signupUrl, JSON.stringify(user), {headers: this.buildHeaders()})
-            .toPromise()
-            .then(res => res.text())
-            .catch(this.handleError);
+            .post(this.signupUrl, JSON.stringify(user), {headers: this.buildHeaders()});
     }
 
     update(user: User): Promise<User> {
