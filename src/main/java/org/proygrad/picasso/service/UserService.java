@@ -9,8 +9,6 @@ import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
 
-import java.util.List;
-
 import static java.util.Collections.emptyList;
 
 //UserDetailsService se utiliza en el contexton de seguridad para autorizar y autenticar
@@ -20,9 +18,6 @@ public class UserService implements UserDetailsService {
     @Autowired
     private TuringClient turingClient;
 
-    public List<UserTO> getUsers() {
-        return turingClient.getUsers();
-    }
 
     public UserTO getUser(String id) {
         return turingClient.getUser(id);

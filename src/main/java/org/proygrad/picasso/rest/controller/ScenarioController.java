@@ -26,11 +26,6 @@ public class ScenarioController {
         return scenarioService.getScenario(id);
     }
 
-    @RequestMapping(value = "/rest/scenario/{id}", method = RequestMethod.PUT)
-    public ScenarioTO updateScenario(@PathVariable String id, @RequestBody ScenarioTO scenario) {
-        scenarioService.updateScenario(id,scenario);
-        return scenarioService.getScenario(id);
-    }
 
     @RequestMapping(value = "/rest/scenario", method = RequestMethod.POST)
     public String addScenario(@RequestBody ScenarioTO data) {

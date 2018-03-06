@@ -7,8 +7,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.List;
-
 @RestController()
 public class UserController {
 
@@ -17,12 +15,6 @@ public class UserController {
 
     @Autowired
     private BCryptPasswordEncoder bCryptPasswordEncoder;
-
-
-    @RequestMapping(value = "/rest/user", method = RequestMethod.GET)
-    public List<UserTO> Users() {
-        return userService.getUsers();
-    }
 
 
     @RequestMapping(value = "/rest/user/{id}", method = RequestMethod.GET)

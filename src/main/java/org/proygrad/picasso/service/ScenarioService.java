@@ -24,10 +24,6 @@ public class ScenarioService {
     }
 
 
-    public void updateScenario(String id, ScenarioTO scenario) {
-        turingClient.updateScenario(id,scenario);
-    }
-
     public String addScenario(ScenarioTO scenario) {
         return turingClient.addScenario(scenario);
     }

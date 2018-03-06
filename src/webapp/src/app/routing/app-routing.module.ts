@@ -10,6 +10,7 @@ import {UserProfileComponent} from "../component/user-profile/user-profile.compo
 import {MaterialsComponent} from "../component/materials/materials.component";
 import {ErrorComponent} from "../component/error/error.component";
 import {SignupComponent} from "../component/register/signup.component";
+import {AuthGuard} from "../service/auth_guard.service";
 
 
 const routes: Routes = [
