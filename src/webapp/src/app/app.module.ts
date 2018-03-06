@@ -12,6 +12,7 @@ import {ScenariosComponent} from "./component/scenario/scenarios.component";
 import {ScenarioService} from "./service/scenario.service";
 import {HomeComponent} from "./component/home/home.component";
 import {SESCIASPComponent} from "./component/scenario/SESCIASP/SESCIASP.component";
+import {SIBComponent} from "./component/scenario/SIB/SIB.component";
 import {InputsModule} from "./component/utils/utils-module";
 import {CommonModule} from "@angular/common";
 import {UserProfileComponent} from "./component/user-profile/user-profile.component";
@@ -45,6 +46,7 @@ import {InterceptorModule} from "./interceptors/interceptors.module";
         ScenarioDetailComponent,
         ScenariosComponent,
         SESCIASPComponent,
+        SIBComponent,
         UserProfileComponent,
         SignupComponent,
         MaterialsComponent

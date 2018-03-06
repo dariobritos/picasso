@@ -4,7 +4,9 @@ import {Router} from "@angular/router";
 import {ScenarioService} from "../../service/scenario.service";
 import {Scenario} from "../../entities/scenario";
 import {scenarioTypesConst} from "../utils/constant/constants";
+import {ScenarioTypePipe} from "../utils/pipes/scenario-type.pipe";
 import {AuthGuard} from "../../service/auth_guard.service";
+
 
 @Component({
     selector: 'my-scenarios',
@@ -16,6 +18,8 @@ export class ScenariosComponent implements OnInit {
     scenario: Scenario[];
     selectedScenario: Scenario;
 
+    selectedTypeScenario: string ='SE_SURFACE_CRACK_STRAIGHT_PIPE'
+
     scenarioTypes = scenarioTypesConst;
 
     constructor(private router: Router,
@@ -23,11 +27,13 @@ export class ScenariosComponent implements OnInit {
                 private scenarioService: ScenarioService) {
     }
 
-    getScenarios(): void {
+    scenarioTypesPipe: ScenarioTypePipe = new ScenarioTypePipe();
+
+  /*  getScenarios(): void {
         this.scenarioService.getScenarios().then(scenario => {
             this.scenario = scenario;
         });
-    }
+    }*/
 
     ngOnInit(): void {
         this.authGuard.verifyLocation();
@@ -37,13 +43,33 @@ export class ScenariosComponent implements OnInit {
         this.selectedScenario = scenario;
     }
 
+    update(): void {
+        this.selectedTypeScenario = '1';
+    }
+
+
+    getPicture(): string {
+
+        if(this.selectedTypeScenario === 'SE_SURFACE_CRACK_STRAIGHT_PIPE'){
+            return 'scenario1';
+        }
+
+        return 'scenario2';
+    }
+
+    getEndLink(): string {
+
+        if(this.selectedTypeScenario === 'SE_SURFACE_CRACK_STRAIGHT_PIPE'){
+            return 'semi-elliptical-surface-crack-in-a-straight-pipe';
+        }
+
+        return 'simple-iron-bar';
+    }
+
+
     gotoDetail(): void {
         this.router.navigate(['/scenario', this.selectedScenario.id]);
     }
 
-    add(name: string): void {
-
-    }
 }
-
 

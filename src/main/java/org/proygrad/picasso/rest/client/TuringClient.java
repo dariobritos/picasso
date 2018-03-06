@@ -13,7 +13,13 @@ import java.util.*;
 public class TuringClient {
 
     private final static String TURING_HOST = "http://turing/";
+
     private final static String SCENARIO_PATH = "scenario/";
+    private final static String INPUT_PATH = "{}/input";
+    private final static String SCENARIO_USER_PATH = "scenario?user_id={}";
+
+    private final static String USER_PATH = "user/";
+    private final static String ALL_USER_PATH = "all";
 
     @Autowired
     private RestTemplate restTemplate;
@@ -45,24 +51,18 @@ public class TuringClient {
     }
 
 
-    public List<ScenarioTO> getScenarios() {
+    public List<ScenarioTO> getScenarios(String userId) {
+        // Recordar que esta limitado a los ultimos 10
+        ResponseEntity<ScenarioTO[]> responseEntity = restTemplate.getForEntity(TURING_HOST + SCENARIO_USER_PATH, ScenarioTO[].class, userId);
+        ScenarioTO[] objects = responseEntity.getBody();
 
-        // "/user/{id}/scenarios", method = RequestMethod.GET)
-        // "/scenario/?user_id=xxx", method = RequestMethod.GET)
-        // vemos de dejar siempre el mismo useddr id dsp ampliamos.
-
-        return new ArrayList<>(scenarios.values());
-    }
+        return  new ArrayList(Arrays.asList(objects));
+   }
 
 
     //No se harian actualizaciones de un escenario
-    public void updateScenario(String id, ScenarioTO scenario) {
-
-        // "/scenario/{id}/input", method = RequestMethod.PATCH) // todo menos output
-
-        // "/scenario/{id}/output", method = RequestMethod.PATCH) // solo output
-
-        scenarios.put(id, scenario);
+    public String updateScenario(String id, ScenarioTO scenario) {
+        return restTemplate.patchForObject(TURING_HOST + SCENARIO_PATH + INPUT_PATH, (Object) scenario, String.class, scenario.getId());
     }
 
     public String addScenario(ScenarioTO scenario) {
@@ -71,22 +71,19 @@ public class TuringClient {
 
 
     public List<UserTO> getUsers() {
-        // TODO:
+        // Recordar que esta limitado a 10, ver si se usara...
+        ResponseEntity<UserTO[]> responseEntity = restTemplate.getForEntity(TURING_HOST + SCENARIO_USER_PATH + ALL_USER_PATH, UserTO[].class);
+        UserTO[] objects = responseEntity.getBody();
 
-        return new ArrayList<>(users.values());
+        return  new ArrayList(Arrays.asList(objects));
     }
 
     public UserTO getUser(String id) {
-        // "/user/{id}", method = RequestMethod.GET)
-
-        return users.get(id);
+        return restTemplate.getForEntity(TURING_HOST + USER_PATH + id, UserTO.class, id).getBody();
     }
 
-    public void updateUser(String id, UserTO user) {
-        //  "/user/{id}", method = RequestMethod.PATCH)
-        // TODO: afinar que dejamos editar hoy solo sobreescribe el nomnbre.
-
-        users.put(id, user);
+    public String updateUser(String id, UserTO user) {
+        return restTemplate.patchForObject(TURING_HOST + USER_PATH + id, (Object) user, String.class);
     }
 
     public String addUser(UserTO user) {
@@ -98,6 +95,9 @@ public class TuringClient {
         user.setId(id);
         users.put(id, user);
         return id;
+
+ 		return restTemplate.postForEntity(TURING_HOST + USER_PATH, user, String.class).getBody();
+  
     }
 
     public UserTO findByUsername(String username) {

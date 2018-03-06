@@ -5,6 +5,7 @@ import {ScenarioDetailComponent} from "../component/scenario/detail/scenario-det
 import {DashboardComponent} from "../component/dashboard/dashboard.component";
 import {HomeComponent} from "../component/home/home.component";
 import {SESCIASPComponent} from "../component/scenario/SESCIASP/SESCIASP.component";
+import {SIBComponent} from "../component/scenario/SIB/SIB.component";
 import {UserProfileComponent} from "../component/user-profile/user-profile.component";
 import {MaterialsComponent} from "../component/materials/materials.component";
 import {ErrorComponent} from "../component/error/error.component";
@@ -20,8 +21,9 @@ const routes: Routes = [
     {path: 'new/semi-elliptical-surface-crack-in-a-straight-pipe', component: SESCIASPComponent},
     {path: 'profile', component: UserProfileComponent},
     {path: 'signup', component: SignupComponent},
-    {path: 'materials', component: MaterialsComponent},
-    {path: 'error/:code', component: ErrorComponent}
+    {path: 'new/simple-iron-bar', component: SIBComponent},
+    {path: 'materials', component: MaterialsComponent,canActivate:[AuthGuard]},
+    {path: 'error/:code', component: ErrorComponent,canActivate:[AuthGuard]}
 ];
 
 @NgModule({

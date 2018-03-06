@@ -11,7 +11,7 @@
                    [(ngModel)]="parameter.value" name="value"  disabled>
             <div class="input-group-btn">
                 <select type="select" class="form-control" disabled>
-                    <option *ngIf="international && distance" selected>cm</option>
+                    <option *ngIf="international && distance" selected>this.selectedTypeScenario.cm</option>
                     <option *ngIf="international && distance">mm</option>
 
                     <option *ngIf="unitedstates && distance">yrd</option>

@@ -17,10 +17,9 @@ public class ScenarioController {
 
 
     @RequestMapping(value = "/rest/scenario", method = RequestMethod.GET)
-    public List<ScenarioTO> scenarios() {
-        return scenarioService.getScenarios();
+    public List<ScenarioTO> scenarios(@RequestParam(value = "user_id", required = false) String userId) {
+        return scenarioService.getScenarios(userId);
     }
-
 
     @RequestMapping(value = "/rest/scenario/{id}", method = RequestMethod.GET)
     public ScenarioTO scenario(@PathVariable String id) {

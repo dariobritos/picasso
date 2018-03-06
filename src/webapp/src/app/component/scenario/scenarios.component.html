@@ -9,22 +9,27 @@
             <h1 class="w-100 text-center m-3">Scenario</h1>
 
             <label class="w-100">
-                <select class="custom-select form-control-lg mb-2 mt-2 w-100">
-                    <option *ngFor="let oo of scenarioTypes" [value]="oo">{{oo|scenarioName}}</option>
+                <select [(ngModel)]="selectedTypeScenario" class="custom-select form-control-lg mb-2 mt-2 w-100" >
+
+                    <option *ngFor="let oo of scenarioTypes" [ngValue]="oo" >{{oo|scenarioName}} </option>
 
                 </select>
+
             </label>
 
             <div class="card w-100">
                 <div class="card-body">
                 </div>
-                <img class="card-img-top" src="https://s3-sa-east-1.amazonaws.com/images-crackintelligence/scenario1.png" alt="Card image cap">
+
+                <div>
+                    <img class="card-img-top" src="../../../assets/{{getPicture()}}.png" alt="Card image cap">
+                </div>
 
             </div>
         </div>
 
         <div id="new-calc-container" class="container text-center">
-            <button routerLink="/new/semi-elliptical-surface-crack-in-a-straight-pipe" type="button"
+            <button routerLink="/new/{{getEndLink()}}" type="button"
                     class="btn btn-success">Proceed
             </button>
         </div>
