@@ -25,4 +25,11 @@ export class AuthGuard implements CanActivate, CanActivateChild {
         }
         return false;
     }
+
+    verifyLocation(){
+        if(!this.checkLogin()){
+            console.log("home");
+            this.router.navigate(["/home"]);
+        }
+    }
 }

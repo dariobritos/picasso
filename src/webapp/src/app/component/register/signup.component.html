@@ -9,7 +9,7 @@
 
                 <div class="row justify-content-center">
                     <div class="form-group col col-12 col-lg-8">
-                        <input [(ngModel)]="user.email" name="email" type="email" class="form-control" id="fieldEmail"
+                        <input [(ngModel)]="newUser.email" name="email" type="email" class="form-control" id="fieldEmail"
                                aria-describedby="emailHelp"
                                placeholder="Email">
                         <small id="emailHelp" class="form-text text-muted">This will be your username.
@@ -18,19 +18,28 @@
                 </div>
 
                 <div class="row justify-content-center">
+                    <div class="form-group col col-12 col-lg-8">
+                        <input [(ngModel)]="newUser.password" name="password" type="password" class="form-control" id="fieldPassword"
+                               aria-describedby="passwordHelp"
+                               placeholder="Password">
+                        <small id="passwordHelp" class="form-text text-muted">Top secret
+                        </small>
+                    </div>
+                </div>
+
+                <div class="row justify-content-center">
 
                     <div class="form-group col col-12 col-lg-8">
-                        <input [(ngModel)]="user.name" name="name" type="text" class="form-control" id="inputName"
+                        <input [(ngModel)]="newUser.name" name="name" type="text" class="form-control" id="inputName"
                                placeholder="Name">
                     </div>
-
 
                 </div>
 
 
                 <div class="row justify-content-center">
                     <div class="form-group col col-12 col-lg-8">
-                        <input [(ngModel)]="user.surname" name="surname" type="text" class="form-control"
+                        <input [(ngModel)]="newUser.surname" name="surname" type="text" class="form-control"
                                id="inputSurname" placeholder="Surname">
                     </div>
 
@@ -39,7 +48,7 @@
 
                 <div class="row justify-content-center">
                     <div class="form-group col col-12 col-lg-8">
-                        <input [(ngModel)]="user.organization" name="organization" type="text" class="form-control"
+                        <input [(ngModel)]="newUser.organization" name="organization" type="text" class="form-control"
                                id="inputOrganizatin" placeholder="Organization">
                     </div>
 

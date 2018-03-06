@@ -5,6 +5,8 @@ import {ScenarioService} from "../../service/scenario.service";
 import {Scenario} from "../../entities/scenario";
 import {scenarioTypesConst} from "../utils/constant/constants";
 import {ScenarioTypePipe} from "../utils/pipes/scenario-type.pipe";
+import {AuthGuard} from "../../service/auth_guard.service";
+
 
 @Component({
     selector: 'my-scenarios',
@@ -21,6 +23,7 @@ export class ScenariosComponent implements OnInit {
     scenarioTypes = scenarioTypesConst;
 
     constructor(private router: Router,
+                private authGuard: AuthGuard,
                 private scenarioService: ScenarioService) {
     }
 
@@ -33,7 +36,11 @@ export class ScenariosComponent implements OnInit {
     }*/
 
     ngOnInit(): void {
-        //this.getScenarios();
+        this.authGuard.verifyLocation();
+    }
+
+    onSelect(scenario: Scenario): void {
+        this.selectedScenario = scenario;
     }
 
     update(): void {

@@ -1,4 +1,4 @@
-import {Component} from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {CommonItem, Parameter, Scenario} from "../../../entities/scenario";
 import {
     CENTIMETER,
@@ -12,6 +12,7 @@ import {
 import {FormControl, FormGroup, Validators} from "@angular/forms";
 import {Router} from "@angular/router";
 import {ScenarioService} from "../../../service/scenario.service";
+import {AuthGuard} from "../../../service/auth_guard.service";
 
 
 @Component({
@@ -19,7 +20,8 @@ import {ScenarioService} from "../../../service/scenario.service";
     templateUrl: './SESCIASP.component.html',
     styleUrls: ['./SESCIASP.component.css']
 })
-export class SESCIASPComponent {
+export class SESCIASPComponent implements OnInit{
+
 
     scenario: Scenario;
     seed: number = (new Date()).getTime();
@@ -30,7 +32,15 @@ export class SESCIASPComponent {
     form: FormGroup;
 
     constructor(private router: Router,
-                private scenarioService: ScenarioService) {
+                private scenarioService: ScenarioService,
+                private authGuard: AuthGuard) {
+
+    }
+
+    ngOnInit(): void {
+
+        this.authGuard.verifyLocation();
+
         this.scenario = new Scenario();
         this.scenario.parameters = [
             new Parameter('CRACK_DEPTH', VARIABLE, LOGNORMAL, 0.1, CENTIMETER, DISTANCE),
@@ -59,7 +69,6 @@ export class SESCIASPComponent {
             'comments': new FormControl(this.scenario.comments, [])
         });
     }
-
 
     parameterChanged(event: Parameter) {
         this.scenario.parameters.push(event);

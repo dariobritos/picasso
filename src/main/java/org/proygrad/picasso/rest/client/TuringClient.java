@@ -1,10 +1,10 @@
 package org.proygrad.picasso.rest.client;
 
-import org.apache.commons.lang.StringUtils;
+import org.apache.log4j.Logger;
 import org.proygrad.picasso.rest.api.scenario.ScenarioTO;
 import org.proygrad.picasso.rest.api.user.UserTO;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.ResponseEntity;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.web.client.RestTemplate;
 
 import javax.annotation.PostConstruct;
@@ -23,6 +23,28 @@ public class TuringClient {
 
     @Autowired
     private RestTemplate restTemplate;
+
+    private static final Logger LOGGER = Logger.getLogger(TuringClient.class);
+
+
+    /*CODIGO TEMPORAL MIENTRAS NO SE TENGAN LOS SERVICIOS DE TURING*/
+    private Map<String, ScenarioTO> scenarios;
+    private Map<String, UserTO> users;
+
+    @PostConstruct
+    private void init() {
+        scenarios = new HashMap<>();
+        users = new HashMap<>();
+
+        //TODO: QUITAR, es solo para pruebas
+        UserTO admin = new UserTO();
+        admin.setId("admin");
+        admin.setEmail("admin@admin.com");
+        admin.setName("Admin");
+        admin.setPassword(new BCryptPasswordEncoder().encode("admin"));
+        users.put("admin@admin.com",admin);
+    }
+
 
     public ScenarioTO getScenario(String id) {
         return restTemplate.getForEntity(TURING_HOST + SCENARIO_PATH + id, ScenarioTO.class, id).getBody();
@@ -65,7 +87,20 @@ public class TuringClient {
     }
 
     public String addUser(UserTO user) {
-        return restTemplate.postForEntity(TURING_HOST + USER_PATH, user, String.class).getBody();
+        //  "/user/{id}", method = RequestMethod.GET)
+
+        LOGGER.info("User added " + user.getEmail() + " " + user.getPassword());
+
+        String id = UUID.randomUUID().toString();
+        user.setId(id);
+        users.put(id, user);
+        return id;
+
+ 		return restTemplate.postForEntity(TURING_HOST + USER_PATH, user, String.class).getBody();
+  
     }
 
+    public UserTO findByUsername(String username) {
+        return users.values().stream().filter(u->u.getEmail().equals(username)).findFirst().get();
+    }
 }
