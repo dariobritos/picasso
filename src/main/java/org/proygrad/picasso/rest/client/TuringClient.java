@@ -5,12 +5,14 @@ import org.proygrad.picasso.rest.api.scenario.ScenarioTO;
 import org.proygrad.picasso.rest.api.user.UserTO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
+import org.springframework.stereotype.Component;
 import org.springframework.web.client.RestTemplate;
 
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
+@Component
 public class TuringClient {
 
     private final static String TURING_HOST = "http://localhost:9040/";
@@ -19,7 +21,7 @@ public class TuringClient {
     private final static String SCENARIO_USER_PATH = "scenario?user_id={}";
 
     private final static String USER_PATH = "user/";
-    private final static String USER_BY_EMAIL_PATH = "user?email={}";
+    private final static String USER_BY_EMAIL_PATH = "user?email=";
 
     @Autowired
     private RestTemplate restTemplate;
@@ -58,7 +60,7 @@ public class TuringClient {
     }
 
     public UserTO findByUsername(String username) {
-        return restTemplate.getForEntity(TURING_HOST + USER_BY_EMAIL_PATH, UserTO.class, username).getBody();
+        return restTemplate.getForEntity(TURING_HOST + USER_BY_EMAIL_PATH + username, UserTO.class).getBody();
 
     }
 }

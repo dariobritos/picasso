@@ -1,6 +1,8 @@
 package org.proygrad.picasso.rest.api.user;
 
-public class UserTO {
+import java.io.Serializable;
+
+public class UserTO implements Serializable {
 
     private String id;
     private String password;
