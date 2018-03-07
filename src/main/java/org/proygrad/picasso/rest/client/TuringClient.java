@@ -26,10 +26,6 @@ public class TuringClient {
 
     private static final Logger LOGGER = Logger.getLogger(TuringClient.class);
 
-
-
-
-
     public ScenarioTO getScenario(String id) {
         return restTemplate.getForEntity(TURING_HOST + SCENARIO_PATH + id, ScenarioTO.class, id).getBody();
     }
@@ -62,6 +58,7 @@ public class TuringClient {
     }
 
     public UserTO findByUsername(String username) {
-        return restTemplate.postForEntity(TURING_HOST + USER_BY_EMAIL_PATH, username, UserTO.class).getBody();
+        return restTemplate.getForEntity(TURING_HOST + USER_BY_EMAIL_PATH, UserTO.class, username).getBody();
+
     }
 }
