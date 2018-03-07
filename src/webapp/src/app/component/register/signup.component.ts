@@ -15,6 +15,8 @@ export class SignupComponent implements OnInit {
 
     newUser: NewUser;
 
+    language : string = 'EN';
+
     scenarioTypes = scenarioTypesConst;
 
     constructor(
@@ -37,7 +39,6 @@ export class SignupComponent implements OnInit {
     signup(): void{
         this.userService.signUp(this.newUser).toPromise().then((s)=>{
             this.login();
-            this.router.navigate(["/home"]);
         });
     }
 
@@ -45,4 +46,11 @@ export class SignupComponent implements OnInit {
         this.loginService.login(this.newUser.email,this.newUser.password);
     }
 
+    languageSelect(lan: string) {
+        this.newUser.preferences.language = lan;
+    }
+
+    unitSystemSelect(unitSys: string) {
+        this.newUser.preferences.unitSystem = unitSys;
+    }
 }

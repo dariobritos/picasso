@@ -46,6 +46,7 @@ export class LoginService {
                         console.log(token);
                         this.userService.getUser(id).then((u) => {
                             this.userStorage.storeUserInfo(btoa(JSON.stringify(u)));
+                            this.router.navigate(["/home"]);
                         });
 
                         return true;

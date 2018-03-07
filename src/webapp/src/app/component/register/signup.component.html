@@ -9,7 +9,8 @@
 
                 <div class="row justify-content-center">
                     <div class="form-group col col-12 col-lg-8">
-                        <input [(ngModel)]="newUser.email" name="email" type="email" class="form-control" id="fieldEmail"
+                        <input [(ngModel)]="newUser.email" name="email" type="email" class="form-control"
+                               id="fieldEmail"
                                aria-describedby="emailHelp"
                                placeholder="Email">
                         <small id="emailHelp" class="form-text text-muted">This will be your username.
@@ -19,7 +20,8 @@
 
                 <div class="row justify-content-center">
                     <div class="form-group col col-12 col-lg-8">
-                        <input [(ngModel)]="newUser.password" name="password" type="password" class="form-control" id="fieldPassword"
+                        <input [(ngModel)]="newUser.password" name="password" type="password" class="form-control"
+                               id="fieldPassword"
                                aria-describedby="passwordHelp"
                                placeholder="Password">
                         <small id="passwordHelp" class="form-text text-muted">Top secret
@@ -61,12 +63,14 @@
                     <div class="form-group col col-12 col-lg-6">
                         <label for="unitSystemInput" class="w-100">Unit System</label>
                         <div id="unitSystemInput" class="btn-group w-100" data-toggle="buttons">
-                            <label class="btn btn-secondary active w-50">
-                                <input type="radio" name="options" id="option1" autocomplete="off" checked>
+                            <label class="btn btn-secondary active w-50" (click)="unitSystemSelect('INT')">
+                                <input type="radio" name="options" id="unitINT" autocomplete="off"
+                                       (click)="unitSystemSelect('INT')" checked>
                                 International
                             </label>
-                            <label class="btn btn-secondary w-50">
-                                <input type="radio" name="options" id="option2" autocomplete="off"> United States
+                            <label class="btn btn-secondary w-50" (click)="unitSystemSelect('US')">
+                                <input type="radio" name="options" id="unitUS" autocomplete="off"
+                                       > United States
                             </label>
 
                         </div>
@@ -78,12 +82,13 @@
                     <div class="form-group col col-12 col-lg-6">
                         <label for="languageInput" class="w-100">Language</label>
                         <div id="languageInput" class="btn-group w-100" data-toggle="buttons">
-                            <label class="btn btn-secondary active w-50">
-                                <input type="radio" name="options" id="languageEN" autocomplete="off" checked>
-                                English
+                            <label class="btn btn-secondary active w-50" (click)="languageSelect('EN')">
+                                <input type="radio" name="options" id="languageEN" autocomplete="off"
+                                       [(ngModel)]="language" [value]="'EN'"> English
                             </label>
-                            <label class="btn btn-secondary w-50">
-                                <input type="radio" name="options" id="languageES" autocomplete="off"> Spanish
+                            <label class="btn btn-secondary w-50" (click)="languageSelect('ES')">
+                                <input type="radio" name="options" id="languageES" autocomplete="off"
+                                       [(ngModel)]="language" [value]="'ES'"> Spanish
                             </label>
 
                         </div>
