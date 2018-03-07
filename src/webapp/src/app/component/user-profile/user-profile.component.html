@@ -50,11 +50,11 @@
                     <div class="form-group col col-12 col-lg-6">
                         <label for="unitSystemInput" class="w-100">Unit System</label>
                         <div id="unitSystemInput" class="btn-group w-100" data-toggle="buttons">
-                            <label class="btn btn-secondary active w-50">
-                                <input type="radio" name="options" id="option1" autocomplete="off" checked>
+                            <label class="btn btn-secondary w-50" [ngClass]="{ 'active' : 'INT' == user.preferences.unitSystem }">
+                                <input type="radio" name="options" id="option1" autocomplete="off" >
                                 International
                             </label>
-                            <label class="btn btn-secondary w-50">
+                            <label class="btn btn-secondary w-50" [ngClass]="{ 'active' : 'US' == user.preferences.unitSystem }">
                                 <input type="radio" name="options" id="option2" autocomplete="off"> United States
                             </label>
 
@@ -65,11 +65,11 @@
                     <div class="form-group col col-12 col-lg-6">
                         <label for="languageInput" class="w-100">Language</label>
                         <div id="languageInput" class="btn-group w-100" data-toggle="buttons">
-                            <label class="btn btn-secondary active w-50">
+                            <label class="btn btn-secondary w-50" [ngClass]="{ 'active' : 'EN' == user.preferences.language }">
                                 <input type="radio" name="options" id="languageEN" autocomplete="off" checked>
                                 English
                             </label>
-                            <label class="btn btn-secondary w-50">
+                            <label class="btn btn-secondary w-50" [ngClass]="{ 'active' : 'ES' == user.preferences.language }">
                                 <input type="radio" name="options" id="languageES" autocomplete="off"> Spanish
                             </label>
 
