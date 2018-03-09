@@ -6,6 +6,7 @@ import {
     VARIABLE
 } from "../constant/constants";
 import {FormControl, FormGroup, Validators} from "@angular/forms";
+import {forEach} from "@angular/router/src/utils/collection";
 
 @Component({
     selector: 'static-variable-input',
@@ -16,6 +17,9 @@ export class StaticVariableInputComponent implements OnInit {
 
     @Input()
     parameter: Parameter;
+
+    @Input()
+    staticField: Boolean;
 
     form: FormGroup;
 
@@ -57,6 +61,14 @@ export class StaticVariableInputComponent implements OnInit {
             'parameter-1': new FormControl(this.parameter.value, [
                 Validators.required])
         });
+
+        if(this.staticField) {
+            this.form.controls['value'].disable();
+            this.form.controls['type'].disable();
+            this.form.controls['intUnit'].disable();
+            this.form.controls['usUnit'].disable();
+            this.form.controls['parameter-1'].disable();
+        }
 
         this.parameter.valid = this.form.valid;
 
