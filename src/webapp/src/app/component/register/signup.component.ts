@@ -1,6 +1,6 @@
 import {Component, OnInit} from "@angular/core";
 import {NewUser, User} from "../../entities/User";
-import {scenarioTypesConst, USER} from "../utils/constant/constants";
+import {SCENARIO_TYPES, USER} from "../utils/constant/constants";
 import {AuthGuard} from "../../service/auth_guard.service";
 import {Router} from "@angular/router";
 import {UserService} from "../../service/user.service";
@@ -17,7 +17,7 @@ export class SignupComponent implements OnInit {
 
     language : string = 'EN';
 
-    scenarioTypes = scenarioTypesConst;
+    scenarioTypes = SCENARIO_TYPES;
 
     constructor(
         private authGuard: AuthGuard,

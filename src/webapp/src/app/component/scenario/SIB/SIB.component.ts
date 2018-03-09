@@ -1,7 +1,7 @@
 import {Component, Inject, OnInit} from '@angular/core';
 import {Scenario, CommonItem, Parameter} from "../../../entities/scenario";
 import {
-    CENTIMETER, DISTANCE, LOGNORMAL, NORMAL, SE_SURFACE_CRACK_STRAIGHT_PIPE, SIMPLE_IRON_BAR, STATIC,
+    CENTIMETER, DISTANCE, INTERNATIONAL, LOGNORMAL, NORMAL, SE_SURFACE_CRACK_STRAIGHT_PIPE, SIMPLE_IRON_BAR, STATIC,
     VARIABLE
 } from "../../utils/constant/constants";
 import {Form, FormBuilder, FormControl, FormGroup, Validators} from "@angular/forms";
@@ -28,8 +28,8 @@ export class SIBComponent {
                 private scenarioService: ScenarioService) {
         this.scenario = new Scenario();
         this.scenario.parameters = [
-            new Parameter('BAR_LOAD', VARIABLE, LOGNORMAL, 0.1, CENTIMETER, DISTANCE),
-            new Parameter('BAR_STRENGTH', VARIABLE, LOGNORMAL, 0.1, CENTIMETER, DISTANCE)
+            new Parameter('BAR_LOAD', VARIABLE, LOGNORMAL, 0.1, INTERNATIONAL, DISTANCE),
+            new Parameter('BAR_STRENGTH', VARIABLE, LOGNORMAL, 0.1, INTERNATIONAL, DISTANCE)
         ]; 
 
         this.scenario.type = 'SE_SURFACE_CRACK_STRAIGHT_PIPE';

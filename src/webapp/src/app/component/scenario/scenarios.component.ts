@@ -3,7 +3,7 @@ import {Component, OnInit} from '@angular/core';
 import {Router} from "@angular/router";
 import {ScenarioService} from "../../service/scenario.service";
 import {Scenario} from "../../entities/scenario";
-import {scenarioTypesConst} from "../utils/constant/constants";
+import {SCENARIO_TYPES} from "../utils/constant/constants";
 import {ScenarioTypePipe} from "../utils/pipes/scenario-type.pipe";
 import {AuthGuard} from "../../service/auth_guard.service";
 
@@ -20,7 +20,7 @@ export class ScenariosComponent implements OnInit {
 
     selectedTypeScenario: string ='SE_SURFACE_CRACK_STRAIGHT_PIPE'
 
-    scenarioTypes = scenarioTypesConst;
+    scenarioTypes = SCENARIO_TYPES;
 
     constructor(private router: Router,
                 private authGuard: AuthGuard,

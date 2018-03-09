@@ -1,6 +1,10 @@
 import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
 import {Distribution, Parameter} from "../../../entities/scenario";
-import {DISTANCE, LOGNORMAL, NORMAL, STATIC, VARIABLE} from "../constant/constants";
+import {
+    DISTANCE, FRACTURE_TOUGHNESS, INTERNATIONAL, INTERNATIONAL_UNITS, LOGNORMAL, NORMAL, PREASURE, STATIC, UNITEDSTATES,
+    UNITEDSTATES_UNITS,
+    VARIABLE
+} from "../constant/constants";
 import {FormControl, FormGroup, Validators} from "@angular/forms";
 
 @Component({
@@ -18,16 +22,29 @@ export class StaticVariableInputComponent implements OnInit {
     @Output()
     changeParameter = new EventEmitter<Parameter>();
 
+    internationalUnits = INTERNATIONAL_UNITS;
+    unitedStatesUnits = UNITEDSTATES_UNITS;
+
     international: boolean = true;
     unitedstates: boolean = false;
 
     distance: boolean;
+    preasure: boolean;
+    fractureToughness: boolean;
+
+
 
     distributionType: string;
     parameter1: string;
 
     ngOnInit(): void {
+
+        this.international = (this.parameter.unitSystem===INTERNATIONAL);
+        this.unitedstates = (this.parameter.unitSystem===UNITEDSTATES);
+
         this.distance = (this.parameter.magnitude === DISTANCE);
+        this.preasure = (this.parameter.magnitude === PREASURE);
+        this.fractureToughness = (this.parameter.magnitude === FRACTURE_TOUGHNESS);
 
         this.form = new FormGroup({
             'value': new FormControl(this.parameter.value, [
@@ -35,6 +52,8 @@ export class StaticVariableInputComponent implements OnInit {
                 Validators.min(0.000000001)]),
             'type': new FormControl(this.parameter.value, [
                 Validators.required]),
+            'intUnit': new FormControl(this.parameter.value, []),
+            'usUnit': new FormControl(this.parameter.value, []),
             'parameter-1': new FormControl(this.parameter.value, [
                 Validators.required])
         });
@@ -49,6 +68,7 @@ export class StaticVariableInputComponent implements OnInit {
     onChange() {
         this.parameter.valid = this.form.valid;
         this.changeParameter.emit(this.parameter);
+        console.log(this.parameter);
     }
 
 

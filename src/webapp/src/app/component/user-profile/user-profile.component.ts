@@ -1,6 +1,6 @@
 import {Component, OnInit} from "@angular/core";
 import {User} from "../../entities/User";
-import {scenarioTypesConst} from "../utils/constant/constants";
+import {SCENARIO_TYPES} from "../utils/constant/constants";
 import {AuthGuard} from "../../service/auth_guard.service";
 import {UserStorage} from "../../service/user-storage.service";
 
@@ -18,7 +18,7 @@ export class UserProfileComponent implements OnInit {
 
     user: User;
 
-    scenarioTypes = scenarioTypesConst;
+    scenarioTypes = SCENARIO_TYPES;
 
 
     ngOnInit(): void {

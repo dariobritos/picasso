@@ -10,14 +10,36 @@
                    placeholder="{{parameter.code|parameterName}}"
                    [(ngModel)]="parameter.value" name="value" (keyup)="onChange()" required>
             <div class="input-group-btn">
-                <select type="select" class="form-control">
-                    <option *ngIf="international && distance" selected>cm</option>
-                    <option *ngIf="international && distance">mm</option>
 
-                    <option *ngIf="unitedstates && distance">yrd</option>
-                    <option *ngIf="unitedstates && distance">lala</option>
+
+
+
+
+                <select [(ngModel)]="parameter.unit" *ngIf="international" (change)="paramChanges()" formControlName="intUnit" type="select" class="form-control">
+                    <option *ngIf="distance" value="MM">{{'MM'|abbreviations}}</option>
+                    <option *ngIf="distance" value="CM">{{'CM'|abbreviations}}</option>
+
+
+                    <option *ngIf="preasure" value="MPA">{{'MPA'|abbreviations}}</option>
+                    <option *ngIf="preasure" value="KPA">{{'KPA'|abbreviations}}</option>
+
+                    <option *ngIf="fractureToughness" value="MEGAPASCAL_METER_0_5">{{'MEGAPASCAL_METER_0_5'|abbreviations}}5</option>
 
                 </select>
+
+                <select [(ngModel)]="parameter.unit" *ngIf="unitedstates" (change)="paramChanges()" formControlName="usUnit" type="select" class="form-control">
+                    <option *ngIf="distance" value="INCH">{{'INCH'|abbreviations}}</option>
+                    <option *ngIf="distance" value="FOOT">{{'FOOT'|abbreviations}}</option>
+                    <option *ngIf="distance" value="THOU">{{'THOU'|abbreviations}}</option>
+
+
+                    <option *ngIf="preasure" value="NW_MM2">{{'NW_MM2'|abbreviations}}</option>
+                    <option *ngIf="preasure" value="NW_CM2">{{'NW_CM2'|abbreviations}}</option>
+
+                    <option *ngIf="fractureToughness" value="MEGAPASCAL_METER_0_5">{{'MEGAPASCAL_METER_0_5'|abbreviations}}</option>
+
+                </select>
+
 
             </div>
         </div>

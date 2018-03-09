@@ -2,9 +2,9 @@ import {Component, OnInit} from '@angular/core';
 import {CommonItem, Parameter, Scenario} from "../../../entities/scenario";
 import {
     CENTIMETER,
-    DISTANCE,
-    LOGNORMAL,
-    NORMAL,
+    DISTANCE, FRACTURE_TOUGHNESS, INCH, INTERNATIONAL,
+    LOGNORMAL, MEGAPASCAL, MEGAPASCAL_METER_0_5, MILLIMETER, NEWTON_MILLIMETER_2,
+    NORMAL, PREASURE,
     SE_SURFACE_CRACK_STRAIGHT_PIPE,
     STATIC,
     VARIABLE
@@ -13,6 +13,7 @@ import {FormControl, FormGroup, Validators} from "@angular/forms";
 import {Router} from "@angular/router";
 import {ScenarioService} from "../../../service/scenario.service";
 import {AuthGuard} from "../../../service/auth_guard.service";
+import {UserStorage} from "../../../service/user-storage.service";
 
 
 @Component({
@@ -33,7 +34,8 @@ export class SESCIASPComponent implements OnInit{
 
     constructor(private router: Router,
                 private scenarioService: ScenarioService,
-                private authGuard: AuthGuard) {
+                private authGuard: AuthGuard,
+                private userStorage:UserStorage) {
 
     }
 
@@ -41,21 +43,23 @@ export class SESCIASPComponent implements OnInit{
 
         this.authGuard.verifyLocation();
 
+        let unitSystem = this.userStorage.getUserInfo().preferences.unitSystem;
+
         this.scenario = new Scenario();
         this.scenario.parameters = [
-            new Parameter('CRACK_DEPTH', VARIABLE, LOGNORMAL, 0.1, CENTIMETER, DISTANCE),
-            new Parameter('CRACK_LENGTH', VARIABLE, LOGNORMAL, 0.1, CENTIMETER, DISTANCE),
-            new Parameter('WALL_THICKNESS', STATIC, null, 0.1, CENTIMETER, DISTANCE),
-            new Parameter('INNER_RADIUS', STATIC,null, 0.1, CENTIMETER, DISTANCE),
-            new Parameter('FRACTURE_TOUGHNESS', VARIABLE,NORMAL, 0.1, CENTIMETER, DISTANCE),
-            new Parameter('YIELD_STRESS', VARIABLE,NORMAL, 2, CENTIMETER, DISTANCE),
-            new Parameter('PLASTIC_COLLAPSE', VARIABLE,NORMAL, 0.1, CENTIMETER, DISTANCE),
-            new Parameter('OPERATING_PRESSURE', VARIABLE,NORMAL, 0.1, CENTIMETER, DISTANCE)];
+            new Parameter('CRACK_DEPTH', VARIABLE, LOGNORMAL, 0.1, unitSystem, DISTANCE),
+            new Parameter('CRACK_LENGTH', VARIABLE, LOGNORMAL, 0.1, unitSystem, DISTANCE),
+            new Parameter('WALL_THICKNESS', STATIC, null, 0.1, unitSystem, DISTANCE),
+            new Parameter('INNER_RADIUS', STATIC,null, 0.1, unitSystem, DISTANCE),
+            new Parameter('FRACTURE_TOUGHNESS', VARIABLE,NORMAL, 0.1, unitSystem, FRACTURE_TOUGHNESS),
+            new Parameter('YIELD_STRESS', VARIABLE,NORMAL, 2, unitSystem, PREASURE),
+            new Parameter('PLASTIC_COLLAPSE', VARIABLE,NORMAL, 1, unitSystem, PREASURE),
+            new Parameter('OPERATING_PRESSURE', VARIABLE,NORMAL, 0.1, unitSystem, PREASURE)];
 
 
         this.scenario.type = 'SE_SURFACE_CRACK_STRAIGHT_PIPE';
 
-        this.scenario.unitSystem = 'INTERNATIONAL';
+        this.scenario.unitSystem = unitSystem;
 
 
         //Load data validation

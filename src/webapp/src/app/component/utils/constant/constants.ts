@@ -3,16 +3,47 @@ import {User} from "../../../entities/User";
 
 export const SE_SURFACE_CRACK_STRAIGHT_PIPE = 'SE_SURFACE_CRACK_STRAIGHT_PIPE'
 export const SIMPLE_IRON_BAR = 'SIMPLE_IRON_BAR'
-export const scenarioTypesConst = [SE_SURFACE_CRACK_STRAIGHT_PIPE, SIMPLE_IRON_BAR];
+export const SCENARIO_TYPES = [SE_SURFACE_CRACK_STRAIGHT_PIPE, SIMPLE_IRON_BAR];
 export const USER = new User();
 
-//UNIDADES
-export const CENTIMETER = 'CENTIMETER';
-export const MILLIMETER = 'MILLIMETER';
+
+export const INTERNATIONAL = 'INT';
+export const UNITEDSTATES = 'US';
+
+
+//UNIDADES INTERNATIONAL
+//DISTANCIA
+export const CENTIMETER = 'CM';
+export const MILLIMETER = 'MM';
+
+//PRESION
+export const KILOPASCAL = 'KPA';
+export const MEGAPASCAL = 'MPA';
+
+//FRACTURE_TOUGHNESS
+export const MEGAPASCAL_METER_0_5 = 'MEGAPASCAL_METER_0_5';
+
+export const INTERNATIONAL_UNITS = [CENTIMETER, MILLIMETER,KILOPASCAL,MEGAPASCAL,MEGAPASCAL_METER_0_5];
+
+
+//UNIDADES US
+//DISTANCIA
+export const INCH = 'INCH';
+export const FOOT = 'FOOT';
+export const THOU = 'THOU';
+
+//PRESION
+export const NEWTON_MILLIMETER_2 = 'NW_MM2';
+export const NEWTON_CENTIMETER_2 = 'NW_CM2';
+
+
+export const UNITEDSTATES_UNITS = [INCH, FOOT,THOU,NEWTON_MILLIMETER_2,NEWTON_CENTIMETER_2];
 
 
 //MAGNITUDES
 export const DISTANCE = 'DISTANCE';
+export const PREASURE = 'PREASURE';
+export const FRACTURE_TOUGHNESS = 'FRACTURE_TOUGHNESS';
 
 //TIPO DE PARAMETRO
 export const STATIC = 'STATIC';
