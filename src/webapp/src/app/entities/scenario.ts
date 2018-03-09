@@ -51,9 +51,6 @@ export class Parameter {
                 this.unit = FRACTURE_TOUGHNESS;
                 break;
         }
-
-        this.unitSystem = system;
-
     }
 
     code: string;
@@ -61,7 +58,6 @@ export class Parameter {
     value: number;
     magnitude: string;
     unit: string;
-    unitSystem:string;
     distribution: Distribution;
 
     valid: boolean = false;

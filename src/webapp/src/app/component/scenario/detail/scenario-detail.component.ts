@@ -33,6 +33,8 @@ export class ScenarioDetailComponent implements OnInit, OnDestroy {
 
 
   ngOnInit(): void {
+
+
     this.id = this.route.snapshot.params['id'];
 
     this.scenarioService.getScenario(this.id).then((sc) => {
@@ -41,6 +43,7 @@ export class ScenarioDetailComponent implements OnInit, OnDestroy {
       if (!isNullOrUndefined(this.scenario.output)) {
         //Cuando el scenario tiene output ya no consultamos su estado
         this.processOutput();
+          console.log(this.scenario);
       }
     });
 

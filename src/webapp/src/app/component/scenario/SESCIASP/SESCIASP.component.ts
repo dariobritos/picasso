@@ -21,7 +21,7 @@ import {UserStorage} from "../../../service/user-storage.service";
     templateUrl: './SESCIASP.component.html',
     styleUrls: ['./SESCIASP.component.css']
 })
-export class SESCIASPComponent implements OnInit{
+export class SESCIASPComponent implements OnInit {
 
 
     scenario: Scenario;
@@ -32,10 +32,12 @@ export class SESCIASPComponent implements OnInit{
 
     form: FormGroup;
 
+    unitSystem: string;
+
     constructor(private router: Router,
                 private scenarioService: ScenarioService,
                 private authGuard: AuthGuard,
-                private userStorage:UserStorage) {
+                private userStorage: UserStorage) {
 
     }
 
@@ -43,23 +45,23 @@ export class SESCIASPComponent implements OnInit{
 
         this.authGuard.verifyLocation();
 
-        let unitSystem = this.userStorage.getUserInfo().preferences.unitSystem;
+        this.unitSystem = this.userStorage.getUserInfo().preferences.unitSystem;
 
         this.scenario = new Scenario();
         this.scenario.parameters = [
-            new Parameter('CRACK_DEPTH', VARIABLE, LOGNORMAL, 0.1, unitSystem, DISTANCE),
-            new Parameter('CRACK_LENGTH', VARIABLE, LOGNORMAL, 0.1, unitSystem, DISTANCE),
-            new Parameter('WALL_THICKNESS', STATIC, null, 0.1, unitSystem, DISTANCE),
-            new Parameter('INNER_RADIUS', STATIC,null, 0.1, unitSystem, DISTANCE),
-            new Parameter('FRACTURE_TOUGHNESS', VARIABLE,NORMAL, 0.1, unitSystem, FRACTURE_TOUGHNESS),
-            new Parameter('YIELD_STRESS', VARIABLE,NORMAL, 2, unitSystem, PREASURE),
-            new Parameter('PLASTIC_COLLAPSE', VARIABLE,NORMAL, 1, unitSystem, PREASURE),
-            new Parameter('OPERATING_PRESSURE', VARIABLE,NORMAL, 0.1, unitSystem, PREASURE)];
+            new Parameter('CRACK_DEPTH', VARIABLE, LOGNORMAL, 0.1, this.unitSystem, DISTANCE),
+            new Parameter('CRACK_LENGTH', VARIABLE, LOGNORMAL, 0.1, this.unitSystem, DISTANCE),
+            new Parameter('WALL_THICKNESS', STATIC, null, 0.1, this.unitSystem, DISTANCE),
+            new Parameter('INNER_RADIUS', STATIC, null, 0.1, this.unitSystem, DISTANCE),
+            new Parameter('FRACTURE_TOUGHNESS', VARIABLE, NORMAL, 0.1, this.unitSystem, FRACTURE_TOUGHNESS),
+            new Parameter('YIELD_STRESS', VARIABLE, NORMAL, 2, this.unitSystem, PREASURE),
+            new Parameter('PLASTIC_COLLAPSE', VARIABLE, NORMAL, 1, this.unitSystem, PREASURE),
+            new Parameter('OPERATING_PRESSURE', VARIABLE, NORMAL, 0.1, this.unitSystem, PREASURE)];
 
 
         this.scenario.type = 'SE_SURFACE_CRACK_STRAIGHT_PIPE';
 
-        this.scenario.unitSystem = unitSystem;
+        this.scenario.unitSystem = this.unitSystem;
 
 
         //Load data validation
@@ -75,6 +77,7 @@ export class SESCIASPComponent implements OnInit{
     }
 
     parameterChanged(event: Parameter) {
+        this.scenario.parameters = this.scenario.parameters.filter(item => item.code !== event.code);
         this.scenario.parameters.push(event);
     }
 

@@ -66,7 +66,7 @@
     </div>
 
 
-    <div class="col-6 col-lg-4 mb-3" *ngIf="!parameter.isStatic()">
+    <div class="col-6 col-lg-4 mb-3" *ngIf="'STATIC' !== parameter.type">
 
         <div class="input-group margin-bottom-sm w-100">
             <input formControlName="parameter-1" type="number" class="form-control w-100" [(ngModel)]="parameter1"

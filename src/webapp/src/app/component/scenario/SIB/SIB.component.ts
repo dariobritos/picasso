@@ -7,6 +7,8 @@ import {
 import {Form, FormBuilder, FormControl, FormGroup, Validators} from "@angular/forms";
 import {Router} from "@angular/router";
 import {ScenarioService} from "../../../service/scenario.service";
+import {AuthGuard} from "../../../service/auth_guard.service";
+import {UserStorage} from "../../../service/user-storage.service";
 
 
 @Component({
@@ -14,7 +16,8 @@ import {ScenarioService} from "../../../service/scenario.service";
     templateUrl: './SIB.component.html',
     styleUrls: ['./SIB.component.css']
 })
-export class SIBComponent {
+export class SIBComponent implements OnInit {
+
 
     scenario: Scenario;
     seed: number = (new Date()).getTime();
@@ -24,17 +27,31 @@ export class SIBComponent {
 
     form: FormGroup;
 
+    unitSystem: string;
+
     constructor(private router: Router,
-                private scenarioService: ScenarioService) {
+                private scenarioService: ScenarioService,
+                private authGuard: AuthGuard,
+                private userStorage: UserStorage) {
+
+    }
+
+    ngOnInit(): void {
+
+
+        this.authGuard.verifyLocation();
+
+        this.unitSystem = this.userStorage.getUserInfo().preferences.unitSystem;
+
+
         this.scenario = new Scenario();
         this.scenario.parameters = [
-            new Parameter('BAR_LOAD', VARIABLE, LOGNORMAL, 0.1, INTERNATIONAL, DISTANCE),
-            new Parameter('BAR_STRENGTH', VARIABLE, LOGNORMAL, 0.1, INTERNATIONAL, DISTANCE)
-        ]; 
+            new Parameter('BAR_LOAD', VARIABLE, LOGNORMAL, 0.1, this.unitSystem, DISTANCE),
+            new Parameter('BAR_STRENGTH', VARIABLE, LOGNORMAL, 0.1, this.unitSystem, DISTANCE)
+        ];
 
-        this.scenario.type = 'SE_SURFACE_CRACK_STRAIGHT_PIPE';
-
-        this.scenario.unitSystem = 'INTERNATIONAL';
+        this.scenario.type = SIMPLE_IRON_BAR;
+        this.scenario.unitSystem=this.unitSystem;
 
 
         //Load data validation
@@ -51,6 +68,7 @@ export class SIBComponent {
 
 
     parameterChanged(event: Parameter) {
+        this.scenario.parameters = this.scenario.parameters.filter(item => item.code !== event.code);
         this.scenario.parameters.push(event);
     }
 

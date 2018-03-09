@@ -45,9 +45,9 @@
                         <div class="card-body">
 
 
-                            <static-variable-input [parameter]="getParameter('BAR_LOAD')"
+                            <static-variable-input [parameter]="getParameter('BAR_LOAD')" [unitSystem]="this.unitSystem"
                                                    (changeParameter)="parameterChanged($event)"></static-variable-input>
-                            <static-variable-input [parameter]="getParameter('BAR_STRENGTH')"
+                            <static-variable-input [parameter]="getParameter('BAR_STRENGTH')" [unitSystem]="this.unitSystem"
                                                    (changeParameter)="parameterChanged($event)"></static-variable-input>
 
 

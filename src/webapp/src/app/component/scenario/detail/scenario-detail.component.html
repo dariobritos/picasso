@@ -13,9 +13,8 @@
                     </h3>
                 </label>
 
-                <div *ngIf="scenario.type==='SE_SURFACE_CRACK_STRAIGHT_PIPE'" class="card w-100">
+                <div  class="card w-100">
                     <img class="card-img-top" src="https://s3-sa-east-1.amazonaws.com/images-crackintelligence/{{getPicture()}}.png" alt="Scenario">
-
                 </div>
             </div>
 
@@ -66,9 +65,9 @@
                 <!-- SEPARADOR *************************************************************************************** -->
 
 
-                <tr *ng-for="let pp of this.scenario.parameters" [ngValue]="pp">
-                    <static-variable-output [parameter]="getParameter(pp.code)"></static-variable-output>
-                </tr>
+                <div *ngFor="let parameter of scenario.parameters">
+                    <static-variable-input [parameter]="parameter" [unitSystem]="scenario.unitSystem" [staticField]="true"></static-variable-input>
+                </div>
 
 
                 <!-- SEPARADOR *************************************************************************************** -->

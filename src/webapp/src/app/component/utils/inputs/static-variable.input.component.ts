@@ -21,6 +21,9 @@ export class StaticVariableInputComponent implements OnInit {
     @Input()
     staticField: Boolean;
 
+    @Input()
+    unitSystem: String;
+
     form: FormGroup;
 
     @Output()
@@ -43,8 +46,8 @@ export class StaticVariableInputComponent implements OnInit {
 
     ngOnInit(): void {
 
-        this.international = (this.parameter.unitSystem===INTERNATIONAL);
-        this.unitedstates = (this.parameter.unitSystem===UNITEDSTATES);
+        this.international = (this.unitSystem===INTERNATIONAL);
+        this.unitedstates = (this.unitSystem===UNITEDSTATES);
 
         this.distance = (this.parameter.magnitude === DISTANCE);
         this.preasure = (this.parameter.magnitude === PREASURE);

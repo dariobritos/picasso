@@ -46,9 +46,9 @@
               <div class="card-body">
 
 
-                <static-variable-input [parameter]="getParameter('CRACK_DEPTH')"
+                <static-variable-input [parameter]="getParameter('CRACK_DEPTH')" [unitSystem]="unitSystem"
                                        (changeParameter)="parameterChanged($event)"></static-variable-input>
-                <static-variable-input [parameter]="getParameter('CRACK_LENGTH')"
+                <static-variable-input [parameter]="getParameter('CRACK_LENGTH')" [unitSystem]="unitSystem"
                                        (changeParameter)="parameterChanged($event)"></static-variable-input>
 
 
@@ -72,9 +72,9 @@
               <div class="card-body">
 
 
-                <static-variable-input [parameter]="getParameter('WALL_THICKNESS')"
+                <static-variable-input [parameter]="getParameter('WALL_THICKNESS')" [unitSystem]="unitSystem"
                                        (changeParameter)="parameterChanged($event)"></static-variable-input>
-                <static-variable-input [parameter]="getParameter('INNER_RADIUS')"
+                <static-variable-input [parameter]="getParameter('INNER_RADIUS')" [unitSystem]="unitSystem"
                                        (changeParameter)="parameterChanged($event)"></static-variable-input>
 
               </div>
@@ -120,11 +120,11 @@
                   </label>
                 </div>
 
-                <static-variable-input [parameter]="getParameter('FRACTURE_TOUGHNESS')"
+                <static-variable-input [parameter]="getParameter('FRACTURE_TOUGHNESS')" [unitSystem]="unitSystem"
                                        (changeParameter)="parameterChanged($event)"></static-variable-input>
-                <static-variable-input [parameter]="getParameter('YIELD_STRESS')"
+                <static-variable-input [parameter]="getParameter('YIELD_STRESS')" [unitSystem]="unitSystem"
                                        (changeParameter)="parameterChanged($event)"></static-variable-input>
-                <static-variable-input [parameter]="getParameter('PLASTIC_COLLAPSE')"
+                <static-variable-input [parameter]="getParameter('PLASTIC_COLLAPSE')" [unitSystem]="unitSystem"
                                        (changeParameter)="parameterChanged($event)"></static-variable-input>
 
               </div>
@@ -144,7 +144,7 @@
                  data-parent="#accordion">
               <div class="card-body">
 
-                <static-variable-input [parameter]="getParameter('OPERATING_PRESSURE')"
+                <static-variable-input [parameter]="getParameter('OPERATING_PRESSURE')" [unitSystem]="unitSystem"
                                        (changeParameter)="parameterChanged($event)"></static-variable-input>
 
 
