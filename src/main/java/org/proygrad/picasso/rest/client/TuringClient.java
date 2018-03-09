@@ -18,7 +18,7 @@ public class TuringClient {
     private final static String TURING_HOST = "http://localhost:9040/";
 
     private final static String SCENARIO_PATH = "scenario/";
-    private final static String SCENARIO_USER_PATH = "scenario?user_id={}";
+    private final static String SCENARIO_USER_PATH = "scenario?user_id=";
 
     private final static String USER_PATH = "user/";
     private final static String USER_BY_EMAIL_PATH = "user?email=";
@@ -35,7 +35,7 @@ public class TuringClient {
 
     public List<ScenarioTO> getScenarios(String userId) {
         // Recordar que esta limitado a los ultimos 10
-        ResponseEntity<ScenarioTO[]> responseEntity = restTemplate.getForEntity(TURING_HOST + SCENARIO_USER_PATH, ScenarioTO[].class, userId);
+        ResponseEntity<ScenarioTO[]> responseEntity = restTemplate.getForEntity(TURING_HOST + SCENARIO_USER_PATH+userId, ScenarioTO[].class);
         ScenarioTO[] objects = responseEntity.getBody();
 
         return new ArrayList(Arrays.asList(objects));

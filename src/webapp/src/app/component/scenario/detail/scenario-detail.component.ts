@@ -100,4 +100,11 @@ export class ScenarioDetailComponent implements OnInit, OnDestroy {
       this.doughnutChartData = [100 - this.failurePercentage, this.failurePercentage];
     }
   }
+
+    getPicture(): string {
+        if(this.scenario.type === 'SE_SURFACE_CRACK_STRAIGHT_PIPE'){
+            return 'scenario1';
+        }
+        return 'scenario2';
+    }
 }

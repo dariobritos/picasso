@@ -15,8 +15,6 @@ import {AuthGuard} from "../../service/auth_guard.service";
     providers: [ScenarioService]
 })
 export class ScenariosComponent implements OnInit {
-    scenario: Scenario[];
-    selectedScenario: Scenario;
 
     selectedTypeScenario: string ='SE_SURFACE_CRACK_STRAIGHT_PIPE'
 
@@ -29,19 +27,11 @@ export class ScenariosComponent implements OnInit {
 
     scenarioTypesPipe: ScenarioTypePipe = new ScenarioTypePipe();
 
-  /*  getScenarios(): void {
-        this.scenarioService.getScenarios().then(scenario => {
-            this.scenario = scenario;
-        });
-    }*/
 
     ngOnInit(): void {
         this.authGuard.verifyLocation();
     }
 
-    onSelect(scenario: Scenario): void {
-        this.selectedScenario = scenario;
-    }
 
     update(): void {
         this.selectedTypeScenario = '1';
@@ -64,11 +54,6 @@ export class ScenariosComponent implements OnInit {
         }
 
         return 'simple-iron-bar';
-    }
-
-
-    gotoDetail(): void {
-        this.router.navigate(['/scenario', this.selectedScenario.id]);
     }
 
 }
