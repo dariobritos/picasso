@@ -22,7 +22,7 @@ export class SignupComponent implements OnInit {
 
     scenarioTypes = SCENARIO_TYPES;
 
-    private loading: boolean;
+    loading: boolean;
 
     constructor(private authGuard: AuthGuard,
                 private router: Router,

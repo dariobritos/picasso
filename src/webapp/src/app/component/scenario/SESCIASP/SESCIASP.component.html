@@ -113,7 +113,7 @@
                 <div class="form-group col col-12 col-lg-12">
                   <label class="w-100">
                     <select class="custom-select form-control-lg mb-2 mt-2 w-100">
-                      <option *ngFor="let oo of scenarioTypes" [value]="oo">{{oo|scenarioName}}
+                      <option value="1" name="1">
                       </option>
 
                     </select>
@@ -125,7 +125,7 @@
                 <static-variable-input [parameter]="getParameter('YIELD_STRESS')" [unitSystem]="unitSystem"
                                        (changeParameter)="parameterChanged($event)"></static-variable-input>
                 <static-input [parameter]="getParameter('PLASTIC_COLLAPSE')" [unitSystem]="unitSystem"
-                                       (changeParameter)="parameterChanged($event)"></static-input>
+                              (changeParameter)="parameterChanged($event)"></static-input>
 
               </div>
             </div>

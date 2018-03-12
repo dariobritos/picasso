@@ -89,7 +89,7 @@ export class SIBComponent implements OnInit {
 
     }
 
-    private getParameter(code: string) {
+    getParameter(code: string) {
         return this.scenario.parameters.find(p => p.code === code);
     }
 
