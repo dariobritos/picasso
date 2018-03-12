@@ -1,6 +1,8 @@
 package org.proygrad.picasso.security;
 
+import com.fasterxml.jackson.databind.ObjectMapper;
 import org.proygrad.picasso.service.UserService;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
@@ -21,6 +23,9 @@ public class WebSecurity extends WebSecurityConfigurerAdapter {
 
     private BCryptPasswordEncoder bCryptPasswordEncoder;
 
+    @Autowired
+    private ObjectMapper mapper;
+
     public WebSecurity(UserService userService, BCryptPasswordEncoder bCryptPasswordEncoder) {
         this.userService = userService;
         this.bCryptPasswordEncoder = bCryptPasswordEncoder;
@@ -29,10 +34,10 @@ public class WebSecurity extends WebSecurityConfigurerAdapter {
     @Override
     protected void configure(HttpSecurity http) throws Exception {
         http.cors().and().csrf().disable().authorizeRequests()
-                .antMatchers("/","/home","/dashboard","/scenarios","/scenario/**","/materials","/profile","/new/**","/error/**","/login**","/rest/login","/assets/**", "/*.js", "/*.css","/signup**","/rest/sign-up").permitAll()
+                .antMatchers("/", "/home", "/dashboard", "/scenarios", "/scenario/**", "/materials", "/profile", "/new/**", "/error/**", "/login**", "/rest/login", "/assets/**", "/*.js", "/*.css", "/signup**", "/rest/sign-up").permitAll()
                 .anyRequest().authenticated()
                 .and()
-                .addFilter(new JWTAuthenticationFilter(authenticationManager(), userService))
+                .addFilter(new JWTAuthenticationFilter(authenticationManager(), userService,mapper))
                 .addFilter(new JWTAuthorizationFilter(authenticationManager()))
                 // this disables session creation on Spring Security
                 .sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS);

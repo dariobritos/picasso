@@ -25,7 +25,7 @@
                 <h1 class="w-80 text-center  mt-4 mb-4">Results</h1>
 
 
-                <h1 class="w-80 text-center  mt-4 mb-4" *ngIf="this.scenario.output.length>0">{{this.failurePercentage}}% Failue probability</h1>
+                <h1 class="w-80 text-center  mt-4 mb-4" *ngIf="this.scenario.output.length>0">Failue probability: {{this.failurePercentageScientific}} </h1>
                 <h1 class="w-80 text-center  mt-4 mb-5" *ngIf="this.scenario.output.length===0">Calculating...</h1>
 
 
@@ -93,7 +93,7 @@
 
                 <div class="row  mt-3 mb-3">
                     <div class="col-6 ">
-                        <label for="input-presicion">Presicion</label>
+                        <label for="input-presicion">Montecarlo sample size</label>
 
                     </div>
                     <div class="col-6">

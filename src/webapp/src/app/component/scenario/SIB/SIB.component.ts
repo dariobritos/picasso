@@ -1,7 +1,7 @@
 import {Component, Inject, OnInit} from '@angular/core';
 import {Scenario, CommonItem, Parameter} from "../../../entities/scenario";
 import {
-    CENTIMETER, DISTANCE, INTERNATIONAL, LOGNORMAL, NORMAL, SE_SURFACE_CRACK_STRAIGHT_PIPE, SIMPLE_IRON_BAR, STATIC,
+    CENTIMETER, DISTANCE, INTERNATIONAL, LOGNORMAL, NORMAL, SE_SURFACE_CRACK_STRAIGHT_PIPE, SIMPLE_IRON_BAR, DETERMINISTIC,
     VARIABLE
 } from "../../utils/constant/constants";
 import {Form, FormBuilder, FormControl, FormGroup, Validators} from "@angular/forms";
@@ -81,7 +81,6 @@ export class SIBComponent implements OnInit {
 
         this.loadScenarioConfiguration();
 
-        console.log(this.scenario);
 
         if (valid) {
             this.postAndRoute();

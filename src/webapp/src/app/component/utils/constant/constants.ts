@@ -33,20 +33,25 @@ export const FOOT = 'FOOT';
 export const THOU = 'THOU';
 
 //PRESION
-export const NEWTON_MILLIMETER_2 = 'NW_MM2';
-export const NEWTON_CENTIMETER_2 = 'NW_CM2';
+export const KSI = 'KSI';
+export const PSI = 'PSI';
+
+//FRACTURE_TOUGHNESS
+export const KSI_INCH_0_5 = 'KSI_INCH_0_5';
 
 
-export const UNITEDSTATES_UNITS = [INCH, FOOT,THOU,NEWTON_MILLIMETER_2,NEWTON_CENTIMETER_2];
+
+export const UNITEDSTATES_UNITS = [INCH, FOOT,THOU,KSI,PSI,KSI_INCH_0_5];
 
 
 //MAGNITUDES
 export const DISTANCE = 'DISTANCE';
 export const PREASURE = 'PREASURE';
 export const FRACTURE_TOUGHNESS = 'FRACTURE_TOUGHNESS';
+export const PLASTIC_COLLAPSE = 'PLASTIC_COLLAPSE';
 
 //TIPO DE PARAMETRO
-export const STATIC = 'STATIC';
+export const DETERMINISTIC = 'DETERMINISTIC';
 export const VARIABLE = 'VARIABLE';
 export const NORMAL = 'NORMAL';
 export const LOGNORMAL = 'LOGNORMAL';

@@ -124,8 +124,8 @@
                                        (changeParameter)="parameterChanged($event)"></static-variable-input>
                 <static-variable-input [parameter]="getParameter('YIELD_STRESS')" [unitSystem]="unitSystem"
                                        (changeParameter)="parameterChanged($event)"></static-variable-input>
-                <static-variable-input [parameter]="getParameter('PLASTIC_COLLAPSE')" [unitSystem]="unitSystem"
-                                       (changeParameter)="parameterChanged($event)"></static-variable-input>
+                <static-input [parameter]="getParameter('PLASTIC_COLLAPSE')" [unitSystem]="unitSystem"
+                                       (changeParameter)="parameterChanged($event)"></static-input>
 
               </div>
             </div>
@@ -177,7 +177,7 @@
 
         <div class="row  mt-3 mb-3">
           <div class="col-6 ">
-            <label for="input-presicion">Presicion</label>
+            <label for="input-presicion">Montecarlo sample size</label>
 
           </div>
           <div class="col-6">

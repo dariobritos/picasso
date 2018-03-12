@@ -72,4 +72,8 @@ public class UserTO implements Serializable {
     public void setOrganization(String organization) {
         this.organization = organization;
     }
+
+    public void erasePassword(){
+        this.password = "";
+    }
 }

@@ -3,6 +3,7 @@ package org.proygrad.picasso.rest.client;
 import org.apache.log4j.Logger;
 import org.proygrad.picasso.rest.api.scenario.ScenarioTO;
 import org.proygrad.picasso.rest.api.user.UserTO;
+import org.proygrad.picasso.rest.exception.NotFoundException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Component;
@@ -29,7 +30,11 @@ public class TuringClient {
     private static final Logger LOGGER = Logger.getLogger(TuringClient.class);
 
     public ScenarioTO getScenario(String id) {
-        return restTemplate.getForEntity(TURING_HOST + SCENARIO_PATH + id, ScenarioTO.class, id).getBody();
+        ScenarioTO scenario = restTemplate.getForEntity(TURING_HOST + SCENARIO_PATH + id, ScenarioTO.class, id).getBody();
+        if(scenario==null){
+            throw new NotFoundException();
+        }
+        return scenario;
     }
 
 
@@ -42,7 +47,10 @@ public class TuringClient {
     }
 
     public String addScenario(ScenarioTO scenario) {
-        return restTemplate.postForEntity(TURING_HOST + SCENARIO_PATH, scenario, String.class).getBody();
+        LOGGER.info("Adding scenario...");
+        String id = restTemplate.postForEntity(TURING_HOST + SCENARIO_PATH, scenario, String.class).getBody();
+        LOGGER.info("Scenario added: " + id);
+        return id;
     }
 
 

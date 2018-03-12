@@ -1,13 +1,13 @@
 import {Injectable} from '@angular/core';
 import {Router} from '@angular/router';
-
-import {BehaviorSubject, Observable} from 'rxjs';
 import 'rxjs/add/operator/map';
 import 'rxjs/add/operator/catch';
 import {UserStorage} from "./user-storage.service";
 import {UserService} from "./user.service";
-import {User} from "../entities/User";
 import {Http} from "@angular/http";
+import {User} from "../entities/User";
+import {Observable} from "rxjs/Observable";
+import {Subscription} from "rxjs/Subscription";
 
 
 export interface Credentials {
@@ -26,42 +26,23 @@ export class LoginService {
     }
 
 
-    login(username: string, password: string): boolean {
-
-
-        let credentials:Credentials = {
+    login(username: string, password: string) : Promise<any> {
+        let credentials: Credentials = {
             "username": username,
             "password": password,
         };
-
-
-        this.http.post('/login', credentials)
-            .subscribe(jsonResp => {
-                    if (jsonResp !== undefined && jsonResp !== null){
-                        //Create a success object that we want to send back to login page
-
-                        let id = jsonResp.json().id;
-                        let token = jsonResp.headers.get("Authorization");
-                        this.userStorage.storeToken(token);
-                        console.log(token);
-                        this.userService.getUser(id).then((u) => {
-                            this.userStorage.storeUserInfo(btoa(JSON.stringify(u)));
-                            this.router.navigate(["/home"]);
-                        });
-
-                        return true;
-                    }
-                    else {
-                        //Create a faliure object that we want to send back to login page
-                        return false;
-                    }
-                },
-                err => {
-                    console.log(err);
-                });
-
-        return false;
+        return this.http
+            .post('/login', JSON.stringify(credentials), {})
+            .toPromise()
+            .then(res => {
+                let user: User = res.json() as User;
+                let token = res.headers.get("Authorization");
+                this.userStorage.storeToken(token);
+                this.userStorage.storeUserInfo(btoa(JSON.stringify(user)));
+            })
+            .catch();
     }
+
 
     logout(navigatetoLogout = true): void {
         // clear token remove newUser from local storage to log newUser out

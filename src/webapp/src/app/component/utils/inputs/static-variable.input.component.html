@@ -33,10 +33,10 @@
                     <option *ngIf="distance" value="THOU">{{'THOU'|abbreviations}}</option>
 
 
-                    <option *ngIf="preasure" value="NW_MM2">{{'NW_MM2'|abbreviations}}</option>
-                    <option *ngIf="preasure" value="NW_CM2">{{'NW_CM2'|abbreviations}}</option>
+                    <option *ngIf="preasure" value="KSI">{{'KSI'|abbreviations}}</option>
+                    <option *ngIf="preasure" value="PSI">{{'PSI'|abbreviations}}</option>
 
-                    <option *ngIf="fractureToughness" value="MEGAPASCAL_METER_0_5">{{'MEGAPASCAL_METER_0_5'|abbreviations}}</option>
+                    <option *ngIf="fractureToughness" value="KSI_INCH_0_5">{{'KSI_INCH_0_5'|abbreviations}}</option>
 
                 </select>
 
@@ -54,7 +54,7 @@
             <div class="form-group w-100">
                 <select formControlName="type" [(ngModel)]="distributionType" class="form-control w-100" id="typeSelect"
                         (change)="typeChanges($event.target.value)">
-                    <option value="STATIC">Static</option>
+                    <option value="DETERMINISTIC">Deterministic</option>
                     <option value="NORMAL">Normal</option>
                     <option value="LOGNORMAL">LogNormal</option>
 
@@ -66,7 +66,7 @@
     </div>
 
 
-    <div class="col-6 col-lg-4 mb-3" *ngIf="'STATIC' !== parameter.type">
+    <div class="col-6 col-lg-4 mb-3" *ngIf="'DETERMINISTIC' !== parameter.type">
 
         <div class="input-group margin-bottom-sm w-100">
             <input formControlName="parameter-1" type="number" class="form-control w-100" [(ngModel)]="parameter1"

@@ -1,7 +1,7 @@
 import {
     DISTANCE, FRACTURE_TOUGHNESS,
-    INCH, INTERNATIONAL, MEGAPASCAL, MILLIMETER, NEWTON_MILLIMETER_2, NORMAL, PREASURE,
-    VARIABLE
+    INCH, INTERNATIONAL, MEGAPASCAL, MILLIMETER, KSI, NORMAL, PREASURE,
+    VARIABLE, KSI_INCH_0_5, MEGAPASCAL_METER_0_5, PLASTIC_COLLAPSE
 } from "../component/utils/constant/constants";
 
 export class CommonItem {
@@ -45,10 +45,13 @@ export class Parameter {
                 this.unit = (system === INTERNATIONAL) ? MILLIMETER : INCH;
                 break;
             case PREASURE:
-                this.unit = (system === INTERNATIONAL) ? MEGAPASCAL : NEWTON_MILLIMETER_2;
+                this.unit = (system === INTERNATIONAL) ? MEGAPASCAL : KSI;
                 break;
             case FRACTURE_TOUGHNESS:
-                this.unit = FRACTURE_TOUGHNESS;
+                this.unit = (system === INTERNATIONAL) ? MEGAPASCAL_METER_0_5 : KSI_INCH_0_5;
+                break;
+            case PLASTIC_COLLAPSE:
+                this.unit = PLASTIC_COLLAPSE;
                 break;
         }
     }
@@ -63,7 +66,7 @@ export class Parameter {
     valid: boolean = false;
 
     isStatic(): boolean {
-        return ("STATIC" == this.type);
+        return ("DETERMINISTIC" == this.type);
     }
 }
 

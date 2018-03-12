@@ -1,7 +1,7 @@
 import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
 import {Distribution, Parameter} from "../../../entities/scenario";
 import {
-    DISTANCE, FRACTURE_TOUGHNESS, INTERNATIONAL, INTERNATIONAL_UNITS, LOGNORMAL, NORMAL, PREASURE, STATIC, UNITEDSTATES,
+    DISTANCE, FRACTURE_TOUGHNESS, INTERNATIONAL, INTERNATIONAL_UNITS, LOGNORMAL, NORMAL, PREASURE, DETERMINISTIC, UNITEDSTATES,
     UNITEDSTATES_UNITS,
     VARIABLE
 } from "../constant/constants";
@@ -75,20 +75,19 @@ export class StaticVariableInputComponent implements OnInit {
 
         this.parameter.valid = this.form.valid;
 
-        this.distributionType = (this.parameter.type === STATIC) ? STATIC : this.parameter.distribution.type;
-        this.parameter1 = (this.parameter.type === STATIC) ? '0' : this.parameter.distribution.parameters[0].value;
+        this.distributionType = (this.parameter.type === DETERMINISTIC) ? DETERMINISTIC : this.parameter.distribution.type;
+        this.parameter1 = (this.parameter.type === DETERMINISTIC) ? '0' : this.parameter.distribution.parameters[0].value;
 
     }
 
     onChange() {
         this.parameter.valid = this.form.valid;
         this.changeParameter.emit(this.parameter);
-        console.log(this.parameter);
     }
 
 
     typeChanges(type) {
-        this.parameter.type = (type === STATIC) ? STATIC : VARIABLE;
+        this.parameter.type = (type === DETERMINISTIC) ? DETERMINISTIC : VARIABLE;
         this.loadDistribution(type);
         this.onChange();
     }

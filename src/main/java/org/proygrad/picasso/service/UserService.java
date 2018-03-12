@@ -2,12 +2,14 @@ package org.proygrad.picasso.service;
 
 import org.proygrad.picasso.rest.api.user.UserTO;
 import org.proygrad.picasso.rest.client.TuringClient;
+import org.proygrad.picasso.rest.exception.ServiceUnavailableException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.userdetails.User;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
+import org.springframework.web.client.HttpClientErrorException;
 
 import static java.util.Collections.emptyList;
 
@@ -32,7 +34,19 @@ public class UserService implements UserDetailsService {
     }
 
     public UserTO findByUsername(String username) {
-        return turingClient.findByUsername(username);
+        try {
+            return turingClient.findByUsername(username);
+        } catch (HttpClientErrorException e) {
+            switch (e.getStatusCode()){
+                case NOT_FOUND:
+                    throw new UsernameNotFoundException(username);
+                case INTERNAL_SERVER_ERROR:
+                case SERVICE_UNAVAILABLE:
+                    throw new ServiceUnavailableException();
+            }
+
+        }
+        return null;
     }
 
     @Override
@@ -41,7 +55,7 @@ public class UserService implements UserDetailsService {
         if (user == null) {
             throw new UsernameNotFoundException(username);
         }
-        return new User(user.getEmail(), user.getPassword(), emptyList());
+        return new User(user.getEmail(), user.getPassword(),emptyList());
     }
 
 

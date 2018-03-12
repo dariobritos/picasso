@@ -5,7 +5,7 @@ export class ParameterNamePipe implements PipeTransform {
 
 
     parameterNames: Map<string, string> = new Map([
-        ['CRACK_DEPTH', 'Carck depth'],
+        ['CRACK_DEPTH', 'Crack depth'],
         ['CRACK_LENGTH', 'Crack lenght'],
         ['WALL_THICKNESS', 'Wall thickness'],
         ['FRACTURE_TOUGHNESS', 'Fracture toughness'],

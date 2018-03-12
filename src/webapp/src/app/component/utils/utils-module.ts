@@ -9,11 +9,12 @@ import {AppRoutingModule} from "../../routing/app-routing.module";
 import {ScenarioIdPipe} from "./pipes/scenario-id.pipe";
 import {StaticVariableOutputComponent} from "./outputs/static-variable.output.component";
 import {AbbreviationPipe} from "./pipes/abbreviation.pipe";
+import {StaticInputComponent} from "./inputs/static.input.component";
 
 @NgModule({
     imports: [CommonModule, FormsModule, ReactiveFormsModule, AppRoutingModule],
-    declarations: [StaticVariableInputComponent,StaticVariableOutputComponent, ScenarioTypePipe, ScenarioIdPipe, ParameterNamePipe,AbbreviationPipe, NavbarComponent],
-    exports: [StaticVariableInputComponent,StaticVariableOutputComponent, ScenarioTypePipe, ParameterNamePipe,AbbreviationPipe, NavbarComponent]
+    declarations: [StaticInputComponent,StaticVariableInputComponent,StaticVariableOutputComponent, ScenarioTypePipe, ScenarioIdPipe, ParameterNamePipe,AbbreviationPipe, NavbarComponent],
+    exports: [StaticInputComponent,StaticVariableInputComponent,StaticVariableOutputComponent, ScenarioTypePipe, ParameterNamePipe,AbbreviationPipe, NavbarComponent]
 })
 export class InputsModule {
 }

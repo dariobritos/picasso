@@ -1,13 +1,14 @@
 import {Component, OnInit} from '@angular/core';
 import {CommonItem, Parameter, Scenario} from "../../../entities/scenario";
 import {
-    CENTIMETER,
-    DISTANCE, FRACTURE_TOUGHNESS, INCH, INTERNATIONAL,
-    LOGNORMAL, MEGAPASCAL, MEGAPASCAL_METER_0_5, MILLIMETER, NEWTON_MILLIMETER_2,
-    NORMAL, PREASURE,
+    DISTANCE,
+    FRACTURE_TOUGHNESS,
+    LOGNORMAL,
+    NORMAL,
+    PREASURE,
     SE_SURFACE_CRACK_STRAIGHT_PIPE,
-    STATIC,
-    VARIABLE
+    DETERMINISTIC,
+    VARIABLE, PLASTIC_COLLAPSE
 } from "../../utils/constant/constants";
 import {FormControl, FormGroup, Validators} from "@angular/forms";
 import {Router} from "@angular/router";
@@ -51,11 +52,11 @@ export class SESCIASPComponent implements OnInit {
         this.scenario.parameters = [
             new Parameter('CRACK_DEPTH', VARIABLE, LOGNORMAL, 0.1, this.unitSystem, DISTANCE),
             new Parameter('CRACK_LENGTH', VARIABLE, LOGNORMAL, 0.1, this.unitSystem, DISTANCE),
-            new Parameter('WALL_THICKNESS', STATIC, null, 0.1, this.unitSystem, DISTANCE),
-            new Parameter('INNER_RADIUS', STATIC, null, 0.1, this.unitSystem, DISTANCE),
+            new Parameter('WALL_THICKNESS', DETERMINISTIC, null, 0.1, this.unitSystem, DISTANCE),
+            new Parameter('INNER_RADIUS', DETERMINISTIC, null, 0.1, this.unitSystem, DISTANCE),
             new Parameter('FRACTURE_TOUGHNESS', VARIABLE, NORMAL, 0.1, this.unitSystem, FRACTURE_TOUGHNESS),
             new Parameter('YIELD_STRESS', VARIABLE, NORMAL, 2, this.unitSystem, PREASURE),
-            new Parameter('PLASTIC_COLLAPSE', VARIABLE, NORMAL, 1, this.unitSystem, PREASURE),
+            new Parameter('PLASTIC_COLLAPSE', DETERMINISTIC, null, 1, this.unitSystem, PLASTIC_COLLAPSE),
             new Parameter('OPERATING_PRESSURE', VARIABLE, NORMAL, 0.1, this.unitSystem, PREASURE)];
 
 
@@ -89,8 +90,6 @@ export class SESCIASPComponent implements OnInit {
         });
 
         this.loadScenarioConfiguration();
-
-        console.log(this.scenario);
 
         if (valid) {
             this.postAndRoute();

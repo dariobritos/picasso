@@ -1,8 +1,8 @@
 import {Pipe, PipeTransform} from "@angular/core";
 import {
-    CENTIMETER, FOOT, INCH, KILOPASCAL, MEGAPASCAL, MEGAPASCAL_METER_0_5, MILLIMETER, NEWTON_CENTIMETER_2,
-    NEWTON_MILLIMETER_2,
-    THOU
+    CENTIMETER, FOOT, INCH, KILOPASCAL, MEGAPASCAL, MEGAPASCAL_METER_0_5, MILLIMETER, PSI,
+    KSI,
+    THOU, KSI_INCH_0_5
 } from "../constant/constants";
 
 @Pipe({name: 'abbreviations'})
@@ -12,14 +12,15 @@ export class AbbreviationPipe implements PipeTransform {
     parameterNames: Map<string, string> = new Map([
         [MILLIMETER, 'mm'],
         [CENTIMETER, 'cm'],
-        [KILOPASCAL, 'kpa'],
-        [MEGAPASCAL, 'mpa'],
+        [KILOPASCAL, 'KPa'],
+        [MEGAPASCAL, 'MPa'],
         [INCH, 'inch'],
         [FOOT, 'foot'],
         [THOU, 'thou'],
-        [NEWTON_MILLIMETER_2, 'nw/mm2'],
-        [NEWTON_CENTIMETER_2, 'nw/cm2'],
-        [MEGAPASCAL_METER_0_5, 'mpa.m0.5']
+        [KSI, 'psi'],
+        [PSI, 'ksi'],
+        [MEGAPASCAL_METER_0_5, 'mpa*m0.5'],
+        [KSI_INCH_0_5, 'ksi*inch^0.5']
 
 
     ]);

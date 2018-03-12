@@ -1,6 +1,6 @@
 import {Component, Input, OnInit} from '@angular/core';
 import {Parameter} from "../../../entities/scenario";
-import {DISTANCE, LOGNORMAL, NORMAL, STATIC, VARIABLE} from "../constant/constants";
+import {DISTANCE, LOGNORMAL, NORMAL, DETERMINISTIC, VARIABLE} from "../constant/constants";
 
 @Component({
     selector: 'static-variable-output',
@@ -29,8 +29,8 @@ export class StaticVariableOutputComponent implements OnInit {
 
     private loadDistribution() {
         switch (this.parameter.type) {
-            case STATIC:
-                this.distributionType = STATIC;
+            case DETERMINISTIC:
+                this.distributionType = DETERMINISTIC;
                 this.parameter1 = '0';
                 break;
             case VARIABLE:

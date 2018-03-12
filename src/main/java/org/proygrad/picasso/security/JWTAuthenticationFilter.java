@@ -1,9 +1,12 @@
 package org.proygrad.picasso.security;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
+import org.apache.log4j.Logger;
 import org.proygrad.picasso.rest.api.user.CredentialsTO;
+import org.proygrad.picasso.rest.api.user.UserTO;
 import org.proygrad.picasso.service.UserService;
 import org.springframework.security.authentication.AuthenticationManager;
+import org.springframework.security.authentication.BadCredentialsException;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.AuthenticationException;
@@ -21,12 +24,18 @@ import static org.proygrad.picasso.security.SecurityUtils.HEADER_STRING_AUTHORIZ
 import static org.proygrad.picasso.security.SecurityUtils.TOKEN_PREFIX_BEARER;
 
 public class JWTAuthenticationFilter extends UsernamePasswordAuthenticationFilter {
+
+    private static final Logger LOGGER = Logger.getLogger(JWTAuthenticationFilter.class);
+
+
     private AuthenticationManager authenticationManager;
     private UserService userService;
+    private ObjectMapper mapper;
 
-    public JWTAuthenticationFilter(AuthenticationManager authenticationManager, UserService userService) {
+    public JWTAuthenticationFilter(AuthenticationManager authenticationManager, UserService userService, ObjectMapper mapper) {
         this.authenticationManager = authenticationManager;
         this.userService = userService;
+        this.mapper = mapper;
     }
 
 
@@ -45,9 +54,13 @@ public class JWTAuthenticationFilter extends UsernamePasswordAuthenticationFilte
                             creds.getPassword(),
                             new ArrayList<>())
             );
-        } catch (IOException e) {
-            throw new RuntimeException(e);
+        }catch (BadCredentialsException bex){
+            throw bex;
         }
+        catch (Exception e){
+            res.setStatus(HttpServletResponse.SC_SERVICE_UNAVAILABLE);
+        }
+        return null;
     }
 
     //Este metodo se ejecuta cuando se realiza correctamente la autenticacion del usuario.
@@ -60,15 +73,22 @@ public class JWTAuthenticationFilter extends UsernamePasswordAuthenticationFilte
 
         String email = ((User) auth.getPrincipal()).getUsername();
 
-        String token = SecurityUtils.generateToken(email);
+        res.setStatus(HttpServletResponse.SC_OK);
 
+        UserTO user = userService.findByUsername(email);
+        user.erasePassword();
+
+        String userJson = mapper.writeValueAsString(user);
+
+
+        String token = SecurityUtils.generateToken(userJson);
         res.addHeader(HEADER_STRING_AUTHORIZATION, TOKEN_PREFIX_BEARER + token);
 
-        res.setStatus(HttpServletResponse.SC_OK);
-        String id = userService.findByUsername(email).getId();
-        String json = "{\"id\":\"" + id +"\"}";
-        res.getWriter().write(json);
+
+        res.getWriter().write(userJson);
         res.getWriter().flush();
         res.getWriter().close();
+
+
     }
 }
