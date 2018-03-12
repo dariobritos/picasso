@@ -100,11 +100,11 @@ export class SESCIASPComponent implements OnInit {
 
     }
 
-    private getParameter(code: string) {
+    getParameter(code: string) {
         return this.scenario.parameters.find(p => p.code === code);
     }
 
-    private postAndRoute() {
+    postAndRoute() {
         this.loading = true;
         this.scenarioService.create(this.scenario)
             .then(res => {
@@ -115,7 +115,7 @@ export class SESCIASPComponent implements OnInit {
         });
     }
 
-    private loadScenarioConfiguration() {
+    loadScenarioConfiguration() {
         let confSeed: CommonItem = new CommonItem('SEED', this.seed.toString());
         let confPrecision: CommonItem = new CommonItem('PRECISION', this.precision.toString());
 
