@@ -16,7 +16,7 @@ import java.util.List;
 @Component
 public class TuringClient {
 
-    private final static String TURING_HOST = "http://localhost:9040/";
+    private final static String TURING_HOST = "http://turing/";
 
     private final static String SCENARIO_PATH = "scenario/";
     private final static String SCENARIO_USER_PATH = "scenario?user_id=";
