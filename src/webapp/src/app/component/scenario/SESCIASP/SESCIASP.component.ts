@@ -32,6 +32,7 @@ export class SESCIASPComponent implements OnInit {
     scenarioType = SE_SURFACE_CRACK_STRAIGHT_PIPE;
 
     form: FormGroup;
+    loading: boolean;
 
     unitSystem: string;
 
@@ -45,6 +46,7 @@ export class SESCIASPComponent implements OnInit {
     ngOnInit(): void {
 
         this.authGuard.verifyLocation();
+        this.loading = false;
 
         this.unitSystem = this.userStorage.getUserInfo().preferences.unitSystem;
 
@@ -103,10 +105,14 @@ export class SESCIASPComponent implements OnInit {
     }
 
     private postAndRoute() {
+        this.loading = true;
         this.scenarioService.create(this.scenario)
             .then(res => {
                 this.router.navigate(['/scenario', res]);
-            });
+                this.loading = false;
+            }).catch(() => {
+            this.loading = false;
+        });
     }
 
     private loadScenarioConfiguration() {

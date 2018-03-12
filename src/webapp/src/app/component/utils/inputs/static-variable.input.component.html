@@ -9,13 +9,11 @@
             <input formControlName="value" class="form-control" type="number"
                    placeholder="{{parameter.code|parameterName}}"
                    [(ngModel)]="parameter.value" name="value" (keyup)="onChange()" required>
-            <div class="input-group-btn">
+            <div class="input-group-btn w-50">
 
 
-
-
-
-                <select [(ngModel)]="parameter.unit" *ngIf="international" (change)="paramChanges()" formControlName="intUnit" type="select" class="form-control">
+                <select [(ngModel)]="parameter.unit" *ngIf="international" (change)="paramChanges()"
+                        formControlName="intUnit" type="select" class="form-control">
                     <option *ngIf="distance" value="MM">{{'MM'|abbreviations}}</option>
                     <option *ngIf="distance" value="CM">{{'CM'|abbreviations}}</option>
 
@@ -23,11 +21,14 @@
                     <option *ngIf="preasure" value="MPA">{{'MPA'|abbreviations}}</option>
                     <option *ngIf="preasure" value="KPA">{{'KPA'|abbreviations}}</option>
 
-                    <option *ngIf="fractureToughness" value="MEGAPASCAL_METER_0_5">{{'MEGAPASCAL_METER_0_5'|abbreviations}}5</option>
+                    <option *ngIf="fractureToughness" value="MEGAPASCAL_METER_0_5">
+                        {{'MEGAPASCAL_METER_0_5'|abbreviations}}5
+                    </option>
 
                 </select>
 
-                <select [(ngModel)]="parameter.unit" *ngIf="unitedstates" (change)="paramChanges()" formControlName="usUnit" type="select" class="form-control">
+                <select [(ngModel)]="parameter.unit" *ngIf="unitedstates" (change)="paramChanges()"
+                        formControlName="usUnit" type="select" class="form-control">
                     <option *ngIf="distance" value="INCH">{{'INCH'|abbreviations}}</option>
                     <option *ngIf="distance" value="FOOT">{{'FOOT'|abbreviations}}</option>
                     <option *ngIf="distance" value="THOU">{{'THOU'|abbreviations}}</option>

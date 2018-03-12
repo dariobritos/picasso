@@ -201,8 +201,7 @@
 
         <div class="col-12 text-center">
 
-          <button type="submit" (click)="startScenarioCalculation()" class="btn btn-success m-5">Start
-            scenario
+          <button [disabled]="this.loading" type="submit" (click)="startScenarioCalculation()" class="button btn btn-success m-5"><span>Start scenario</span>
           </button>
 
         </div>
