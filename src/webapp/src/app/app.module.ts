@@ -25,6 +25,8 @@ import {UserService} from "./service/user.service";
 import {LoginService} from "./service/login.service";
 import {SignupComponent} from "./component/register/signup.component";
 import {InterceptorModule} from "./interceptors/interceptors.module";
+import {MaterialService} from "./service/material.service";
+import {MaterialDetailComponent} from "./component/materials/detail/material-detail.component";
 
 
 @NgModule({
@@ -44,6 +46,7 @@ import {InterceptorModule} from "./interceptors/interceptors.module";
         HomeComponent,
         ErrorComponent,
         ScenarioDetailComponent,
+        MaterialDetailComponent,
         ScenariosComponent,
         SESCIASPComponent,
         SIBComponent,
@@ -51,7 +54,7 @@ import {InterceptorModule} from "./interceptors/interceptors.module";
         SignupComponent,
         MaterialsComponent
     ],
-    providers: [ScenarioService,AuthGuard,UserStorage,UserService,LoginService],
+    providers: [ScenarioService,MaterialService,AuthGuard,UserStorage,UserService,LoginService],
     bootstrap: [AppComponent]
 })
 export class AppModule {
