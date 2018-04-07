@@ -70,13 +70,13 @@
                                    [ngClass]="{ 'active' : 'EN' == user.preferences.language }"
                                    (click)="languageSelect('EN')">
                                 <input formControlName="languageEN" type="radio" name="languageEN" id="languageEN" autocomplete="off"
-                                       [(ngModel)]="language" [value]="'EN'"> {{'signup.english'|translate}}
+                                       [(ngModel)]="user.preferences.language" [value]="'EN'"> {{'signup.english'|translate}}
                             </label>
                             <label class="btn btn-secondary w-50"
                                    [ngClass]="{ 'active' : 'ES' == user.preferences.language }"
                                    (click)="languageSelect('ES')">
                                 <input formControlName="languageES" type="radio" name="languageES" id="languageES" autocomplete="off"
-                                       [(ngModel)]="language" [value]="'ES'"> {{'signup.spanish'|translate}}
+                                       [(ngModel)]="user.preferences.language" [value]="'ES'"> {{'signup.spanish'|translate}}
                             </label>
 
                         </div>
