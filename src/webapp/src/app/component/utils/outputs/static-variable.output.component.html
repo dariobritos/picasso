@@ -1,18 +1,18 @@
 <label for="input-value" class="h5">
     {{'params.'+parameter.code|translate}}
 </label>
-<div class="form-row" id="input-value" [formGroup]="form">
+<div class="form-row" id="input-value">
 
     <div class="col-12 col-lg-4 mb-2">
 
         <div class="input-group margin-bottom-sm">
             <input formControlName="value" class="form-control" type="number"
                    placeholder="{{'params.'+parameter.code|translate}}"
-                   [(ngModel)]="parameter.value" name="value" (keyup)="onChange()" disabled>
+                   [(ngModel)]="parameter.value" name="value" disabled>
             <div class="input-group-btn w-50">
 
 
-                <select [(ngModel)]="parameter.unit" *ngIf="international" (change)="paramChanges()"
+                <select [(ngModel)]="parameter.unit" *ngIf="international"
                         formControlName="intUnit" type="select" class="form-control" disabled>
                     <option *ngIf="distance" value="MM">{{'MM'|abbreviations}}</option>
                     <option *ngIf="distance" value="CM">{{'CM'|abbreviations}}</option>
@@ -27,7 +27,7 @@
 
                 </select>
 
-                <select [(ngModel)]="parameter.unit" *ngIf="unitedstates" (change)="paramChanges()"
+                <select [(ngModel)]="parameter.unit" *ngIf="unitedstates"
                         formControlName="usUnit" type="select" class="form-control" disabled>
                     <option *ngIf="distance" value="INCH">{{'INCH'|abbreviations}}</option>
                     <option *ngIf="distance" value="FOOT">{{'FOOT'|abbreviations}}</option>
@@ -54,7 +54,7 @@
 
             <div class="form-group w-100">
                 <select formControlName="type" [(ngModel)]="distributionType" class="form-control w-100" id="typeSelect"
-                        (change)="typeChanges($event.target.value)" disabled>
+                        disabled>
                     <option value="DETERMINISTIC">{{'params.distribution.deterministic'|translate}}</option>
                     <option value="NORMAL">{{'params.distribution.normal'|translate}}</option>
                     <option value="LOGNORMAL">{{'params.distribution.logNormal'|translate}}</option>
@@ -71,7 +71,7 @@
 
         <div class="input-group margin-bottom-sm w-100">
             <input formControlName="parameter-1" type="number" class="form-control w-100" [(ngModel)]="parameter1"
-                   name="parameter1" (keyup)="paramChanges()" required min="0" disabled>
+                   name="parameter1" required min="0" disabled>
 
         </div>
 
