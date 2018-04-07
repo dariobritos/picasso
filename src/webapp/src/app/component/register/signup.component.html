@@ -5,15 +5,15 @@
 
             <form id="form" [formGroup]="form">
 
-                <h1 class="w-100 text-center mt-4 mb-4">Sign up</h1>
+                <h1 class="w-100 text-center mt-4 mb-4">{{'signup.signup'|translate}}</h1>
 
                 <div class="row justify-content-center">
                     <div class="form-group col col-12 col-lg-8">
                         <input [(ngModel)]="newUser.email" name="email" formControlName="email" type="email" class="form-control"
                                id="fieldEmail"
                                aria-describedby="emailHelp"
-                               placeholder="Email" required>
-                        <small id="emailHelp" class="form-text text-muted">This will be your username.
+                               placeholder="{{'signup.emailAddress'|translate}}" required>
+                        <small id="emailHelp" class="form-text text-muted">{{'signup.thisWillBe'|translate}}.
                         </small>
                     </div>
                 </div>
@@ -23,8 +23,8 @@
                         <input [(ngModel)]="newUser.password" name="password" formControlName="password" type="password" class="form-control"
                                id="fieldPassword"
                                aria-describedby="passwordHelp"
-                               placeholder="Password" required>
-                        <small id="passwordHelp" class="form-text text-muted">Top secret
+                               placeholder="{{'signup.password'|translate}}" required>
+                        <small id="passwordHelp" class="form-text text-muted">{{'signup.topSecret'|translate}}
                         </small>
                     </div>
                 </div>
@@ -33,7 +33,7 @@
 
                     <div class="form-group col col-12 col-lg-8">
                         <input [(ngModel)]="newUser.name" name="name" formControlName="name" type="text" class="form-control" id="inputName"
-                               placeholder="Name" required>
+                               placeholder="{{'signup.name'|translate}}" required>
                     </div>
 
                 </div>
@@ -42,7 +42,7 @@
                 <div class="row justify-content-center">
                     <div class="form-group col col-12 col-lg-8">
                         <input [(ngModel)]="newUser.surname" name="surname" formControlName="surname" type="text" class="form-control"
-                               id="inputSurname" placeholder="Surname" required>
+                               id="inputSurname" placeholder="{{'signup.surname'|translate}}" required>
                     </div>
 
 
@@ -51,26 +51,26 @@
                 <div class="row justify-content-center">
                     <div class="form-group col col-12 col-lg-8">
                         <input [(ngModel)]="newUser.organization" name="organization" formControlName="organization" type="text" class="form-control"
-                               id="inputOrganizatin" placeholder="Organization" required>
+                               id="inputOrganizatin" placeholder="{{'signup.organization'|translate}}" required>
                     </div>
 
 
                 </div>
 
-                <h1 class="w-100 text-center mt-4 mb-4">Preferences</h1>
+                <h1 class="w-100 text-center mt-4 mb-4">{{'signup.preferences'|translate}}</h1>
 
                 <div class="row justify-content-center">
                     <div class="form-group col col-12 col-lg-6">
-                        <label for="unitSystemInput" class="w-100">Unit System</label>
+                        <label for="unitSystemInput" class="w-100">{{'signup.unitSystem'|translate}}</label>
                         <div id="unitSystemInput" class="btn-group w-100" data-toggle="buttons">
                             <label class="btn btn-secondary active w-50" (click)="unitSystemSelect('INT')">
                                 <input formControlName="unitINT" type="radio" name="unitINT" id="unitINT" autocomplete="off"
                                        (click)="unitSystemSelect('INT')" checked>
-                                International
+                                {{'signup.international'|translate}}
                             </label>
                             <label class="btn btn-secondary w-50" (click)="unitSystemSelect('US')">
                                 <input formControlName="unitUS" type="radio" name="unitUS" id="unitUS" autocomplete="off"
-                                       > United States
+                                       >{{'signup.unitedStates'|translate}}
                             </label>
 
                         </div>
@@ -80,15 +80,15 @@
 
 
                     <div class="form-group col col-12 col-lg-6">
-                        <label for="languageInput" class="w-100">Language</label>
+                        <label for="languageInput" class="w-100">{{'signup.language'|translate}}</label>
                         <div id="languageInput" class="btn-group w-100" data-toggle="buttons">
                             <label class="btn btn-secondary active w-50" (click)="languageSelect('EN')">
                                 <input formControlName="languageEN" type="radio" name="languageEN" id="languageEN" autocomplete="off"
-                                       [(ngModel)]="language" [value]="'EN'"> English
+                                       [(ngModel)]="language" [value]="'EN'"> {{'signup.english'|translate}}
                             </label>
                             <label class="btn btn-secondary w-50" (click)="languageSelect('ES')">
                                 <input formControlName="languageES" type="radio" name="languageES" id="languageES" autocomplete="off"
-                                       [(ngModel)]="language" [value]="'ES'"> Spanish
+                                       [(ngModel)]="language" [value]="'ES'"> {{'signup.spanish'|translate}}
                             </label>
 
                         </div>
@@ -100,8 +100,8 @@
                 <div class="row justify-content-center">
                     <div class="col col-12 col-lg-12 text-center">
                         <button [disabled]="this.loading" type="submit" (click)="signup()" class="button btn btn-success m-5"
-                                style="background-color: green">
-                            <span>Sign up</span>
+                                style="background-color: green!important">
+                            <span>{{'signup.toSignup'|translate}}</span>
                         </button>
                     </div>
                 </div>

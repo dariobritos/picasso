@@ -39,7 +39,7 @@ public class TuringClient {
 
     public ScenarioTO getScenario(String id) {
         ScenarioTO scenario = restTemplate.getForEntity(TURING_HOST + SCENARIO_PATH + id, ScenarioTO.class, id).getBody();
-        if(scenario==null){
+        if (scenario == null) {
             throw new NotFoundException();
         }
         return scenario;
@@ -48,7 +48,7 @@ public class TuringClient {
 
     public List<ScenarioTO> getScenarios(String userId) {
         // Recordar que esta limitado a los ultimos 10
-        ResponseEntity<ScenarioTO[]> responseEntity = restTemplate.getForEntity(TURING_HOST + SCENARIO_USER_PATH+userId, ScenarioTO[].class);
+        ResponseEntity<ScenarioTO[]> responseEntity = restTemplate.getForEntity(TURING_HOST + SCENARIO_USER_PATH + userId, ScenarioTO[].class);
         ScenarioTO[] objects = responseEntity.getBody();
 
         return new ArrayList(Arrays.asList(objects));
@@ -66,8 +66,8 @@ public class TuringClient {
         return restTemplate.getForEntity(TURING_HOST + USER_PATH + id, UserTO.class, id).getBody();
     }
 
-    public String updateUser(String id, UserTO user) {
-        return restTemplate.patchForObject(TURING_HOST + USER_PATH + id, (Object) user, String.class);
+    public void updateUser(String id, UserTO user) {
+        restTemplate.put(TURING_HOST + USER_PATH + id, user);
     }
 
     public String addUser(UserTO user) {
@@ -80,7 +80,7 @@ public class TuringClient {
 
     }
 
-    public String addMaterial(MaterialTO material){
+    public String addMaterial(MaterialTO material) {
         LOGGER.info("Material added " + material.getDescription() + " for " + material.getUserId());
 
         return "material_1_mock";
@@ -108,7 +108,7 @@ public class TuringClient {
         */
     }
 
-    private List<MaterialTO> getMockMaterials(){
+    private List<MaterialTO> getMockMaterials() {
 
         List<MaterialTO> mockMaterials = new ArrayList<MaterialTO>();
 
@@ -120,25 +120,25 @@ public class TuringClient {
         return mockMaterials;
     }
 
-    private MaterialTO giveMaterialMock(String id){
+    private MaterialTO giveMaterialMock(String id) {
         List<PropertyTO> mockPropertiesTO = new ArrayList<PropertyTO>();
 
         List<ParameterDistributionTO> parameters = new ArrayList<ParameterDistributionTO>();
 
         ParameterDistributionTO parameterDistribution_1 = new ParameterDistributionTO();
-        parameterDistribution_1.setId("PARAMETER_DISTRIBUTION_"+id+"_ID");
-        parameterDistribution_1.setCode("PARAMETER_DISTRIBUTION_"+id+"_CODE");
+        parameterDistribution_1.setId("PARAMETER_DISTRIBUTION_" + id + "_ID");
+        parameterDistribution_1.setCode("PARAMETER_DISTRIBUTION_" + id + "_CODE");
         parameterDistribution_1.setValue("VALUE");
         parameters.add(parameterDistribution_1);
 
         PropertyDistributionTO propertyDistribution_1 = new PropertyDistributionTO();
-        propertyDistribution_1.setId("PROPERTY_DISTRIBUTION_"+id);
+        propertyDistribution_1.setId("PROPERTY_DISTRIBUTION_" + id);
         propertyDistribution_1.setType("VARIABLE");
         propertyDistribution_1.setParameters(parameters);
 
         PropertyTO property_1 = new PropertyTO();
-        property_1.setId("PROPERTY_"+id);
-        property_1.setCode("CODE_PROPERTY_"+id);
+        property_1.setId("PROPERTY_" + id);
+        property_1.setCode("CODE_PROPERTY_" + id);
         property_1.setDistribution(propertyDistribution_1);
         property_1.setMagnitude("MAGNITUDE");
         property_1.setType("VARIABLE");
@@ -148,8 +148,8 @@ public class TuringClient {
         mockPropertiesTO.add(property_1);
 
         MaterialTO mockMaterial_1 = new MaterialTO();
-        mockMaterial_1.setId("MATERIAL_"+id);
-        mockMaterial_1.setDescription("desc material_"+id);
+        mockMaterial_1.setId("MATERIAL_" + id);
+        mockMaterial_1.setDescription("desc material_" + id);
         mockMaterial_1.setProperties(mockPropertiesTO);
         mockMaterial_1.setUserId("USER_PEPEITO_ID");
 

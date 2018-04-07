@@ -96,7 +96,7 @@ export class SIBComponent implements OnInit {
     private postAndRoute() {
         this.scenarioService.create(this.scenario)
             .then(res => {
-                this.router.navigate(['/scenario', res]);
+                this.router.navigate(['/scenarios', res]);
             });
     }
 

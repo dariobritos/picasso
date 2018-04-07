@@ -6,12 +6,12 @@
 
         <!--TIPO DE PROBLEMA-->
         <div class="col-12 col-lg-6 col-md-12 col-sm-12 justify-content-center mb-3 ">
-            <h1 class="w-100 text-center m-3">Scenario</h1>
+            <h1 class="w-100 text-center m-3">{{'scenario.scenario'|translate}}</h1>
 
             <label class="w-100">
                 <select [(ngModel)]="selectedTypeScenario" class="custom-select form-control-lg mb-2 mt-2 w-100" >
 
-                    <option *ngFor="let oo of scenarioTypes" [ngValue]="oo" >{{oo|scenarioName}} </option>
+                    <option *ngFor="let oo of scenarioTypes" [ngValue]="oo" >{{'scenario.'+oo|translate}} </option>
 
                 </select>
 
@@ -30,7 +30,7 @@
 
         <div id="new-calc-container" class="container text-center">
             <button routerLink="/new/{{getEndLink()}}" type="button"
-                    class="btn btn-success">Proceed
+                    class="btn btn-success">{{'scenario.proceed'|translate}}
             </button>
         </div>
     </div>

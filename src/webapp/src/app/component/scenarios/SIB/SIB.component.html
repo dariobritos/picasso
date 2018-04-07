@@ -7,11 +7,11 @@
 
       <!--TIPO DE PROBLEMA-->
       <div class="col-12 col-lg-6 col-md-12 col-sm-12 justify-content-center mb-3 ">
-        <h1 class="w-100 text-center  mt-4 mb-4">Scenario</h1>
+        <h1 class="w-100 text-center  mt-4 mb-4">{{'scenario.scenario'|translate}}</h1>
 
         <label class="w-100 text-center">
           <h3 class="form-control-lg mb-2 mt-2 w-100">
-            {{scenarioType|scenarioName}}
+            {{'scenario.'+scenarioType|translate}}
 
           </h3>
         </label>
@@ -27,7 +27,7 @@
 
         <!--SETUP DE PARAMETROS-->
         <div class="col-12 col-lg-6 col-md-12 col-sm-12 ">
-            <h1 class="w-100 text-center  mt-4 mb-4">Parameters setup</h1>
+            <h1 class="w-100 text-center  mt-4 mb-4">{{'scenario.parametersSetup'|translate}}p</h1>
             <div id="accordion" role="tablist" class="w-100">
 
                 <!--CARGA-->
@@ -36,7 +36,7 @@
                         <h5 class="mb-0">
                             <a class="collapsed" data-toggle="collapse" href="#collapseFour" aria-expanded="false"
                                aria-controls="collapseFour">
-                                Load Properties
+                                {{'scenario.loadProperties'|translate}}
                             </a>
                         </h5>
                     </div>
@@ -62,15 +62,15 @@
 
     <div class="row mt-5">
       <div class="col-12 col-lg-6 col-md-12 col-sm-12 justify-content-center mb-3 ">
-        <h1 class="w-100 text-center  mt-4 mb-4">Configuration</h1>
+        <h1 class="w-100 text-center  mt-4 mb-4">{{'scenario.configuration'|translate}}</h1>
 
         <div class="row mt-3 mb-3">
           <div class="col-6">
-            <label for="input-seed">Seed</label>
+            <label for="input-seed">{{'scenario.seed'|translate}}</label>
 
           </div>
           <div class="col-6">
-            <input formControlName="seed" id="input-seed" class="form-control" placeholder="Seed"
+            <input formControlName="seed" id="input-seed" class="form-control" placeholder="{{'scenario.seed'|translate}}"
                    [(ngModel)]="seed" name="seed" required>
           </div>
 
@@ -79,12 +79,12 @@
 
         <div class="row  mt-3 mb-3">
           <div class="col-6 ">
-            <label for="input-presicion">Montecarlo sample size</label>
+            <label for="input-presicion">{{'scenario.montecarloSampleSize'|translate}}</label>
 
           </div>
           <div class="col-6">
             <input formControlName="precision" id="input-presicion" class="form-control"
-                   placeholder="Montecarlo sample size"
+                   placeholder="{{'scenario.montecarloSampleSize'|translate}}"
                    [(ngModel)]="precision" name="presicion" required>
           </div>
         </div>
@@ -95,7 +95,7 @@
       <div class="col-12 col-lg-6 col-md-12 col-sm-12 justify-content-center mb-3 ">
 
 
-        <h1 class="w-80 text-center  mt-4 mb-4">Comment and start</h1>
+        <h1 class="w-80 text-center  mt-4 mb-4">{{'scenario.commentAndStart'|translate}}</h1>
 
         <div class="col-12 text-center">
           <textarea class="form-control" formControlName="comments" rows="5" id="comments" [(ngModel)]="scenario.comments"></textarea>
@@ -103,8 +103,8 @@
 
         <div class="col-12 text-center">
 
-          <button type="submit" (click)="startScenarioCalculation()" class="btn btn-success m-5">Start
-            scenario
+          <button type="submit" (click)="startScenarioCalculation()" class="btn btn-success m-5">
+              {{'scenario.startScenario'|translate}}
           </button>
 
         </div>

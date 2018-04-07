@@ -14,7 +14,7 @@ export class UserService {
     private signupUrl = 'rest/sign-up';  // URL to web api
     private headers = new Headers({'Content-Type': 'application/json'});
 
-    constructor(private http: Http,private router: Router, private storage: UserStorage) {
+    constructor(private http: Http, private router: Router, private storage: UserStorage) {
     }
 
     getUser(id: string): Promise<User> {
@@ -36,7 +36,6 @@ export class UserService {
         return this.http
             .put(url, JSON.stringify(user), {headers: this.buildHeaders()})
             .toPromise()
-            .then(() => user)
             .catch(this.handleError);
     }
 
@@ -46,9 +45,9 @@ export class UserService {
         return Promise.reject(error.message || error);
     }
 
-    private buildHeaders():Headers{
+    private buildHeaders(): Headers {
         //Agregamos el header de autorizacion
-        this.headers.set("Authorization",this.storage.getStoredToken());
+        this.headers.set("Authorization", this.storage.getStoredToken());
         return this.headers;
     }
 

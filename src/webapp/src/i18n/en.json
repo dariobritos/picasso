@@ -1,0 +1,92 @@
+{
+  "home": {
+    "welcome": "Welcome",
+    "email": "Email",
+    "password": "Password",
+    "letsgo": "Lets go!"
+  },
+  "navbar": {
+    "home": "Home",
+    "dashboard": "Dashboard",
+    "scenarios": "Scenarios",
+    "materials": "Materials",
+    "profile": "Profile",
+    "fastScenario": "Fast scenario",
+    "signup": "Sign up",
+    "logout": "Logout"
+  },
+  "scenario": {
+    "scenario": "Scenario",
+    "proceed": "Proceed",
+    "SE_SURFACE_CRACK_STRAIGHT_PIPE": "Semi-elliptical surface crack in a straight pipe.",
+    "SIMPLE_IRON_BAR": "Simple iron bar load-strength",
+    "parametersSetup": "Parameters setup",
+    "crackGeometry": "Crack geometry",
+    "componentGeometry": "Component geometry",
+    "materialProperties": "Material properties",
+    "loadProperties": "Load properties",
+    "configuration": "Configuration",
+    "seed": "Seed",
+    "montecarloSampleSize": "Montecarlo sample size",
+    "commentAndStart": "Comment and start",
+    "startScenario": "Start scenario",
+    "failureProbability": "Failure probability",
+    "calculating": "Calculating",
+    "custom": "Custom",
+    "library": "Library",
+    "results": "Results"
+  },
+  "profile": {
+    "userProfile": "User profile",
+    "emailAddress": "Email address",
+    "neverShare": "We'll never share your email with anyone else.",
+    "name": "Name",
+    "surname": "Surname",
+    "organization": "Organization",
+    "preferences": "Preferences",
+    "unitSystem": "Unit system",
+    "language": "Language",
+    "international": "International",
+    "unitedStates": "United States",
+    "english": "English",
+    "spanish": "Spanish",
+    "fastScenario": "Fast scenario",
+    "update":"Update"
+  },
+  "signup": {
+    "signup": "Signup",
+    "toSignup": "Signup",
+    "emailAddress": "Email address",
+    "password": "Password",
+    "thisWillBe": "This will be your username",
+    "topSecret": "Top secret",
+    "name": "Name",
+    "surname": "Surname",
+    "organization": "Organization",
+    "preferences": "Preferences",
+    "unitSystem": "Unit system",
+    "language": "Language",
+    "international": "International",
+    "unitedStates": "United States",
+    "english": "English",
+    "spanish": "Spanish",
+    "fastScenario": "Fast scenario"
+  },
+  "params": {
+    "CRACK_DEPTH": "Crack depth",
+    "CRACK_LENGTH": "Crack lenght",
+    "WALL_THICKNESS": "Wall thickness",
+    "FRACTURE_TOUGHNESS": "Fracture toughness",
+    "YIELD_STRESS": "Yield stress",
+    "PLASTIC_COLLAPSE": "Plastic collapse",
+    "OPERATING_PRESSURE": "Operating Pressure",
+    "INNER_RADIUS": "Inner radius",
+    "BAR_LOAD": "Load",
+    "BAR_STRENGTH": "Strength",
+    "distribution": {
+      "deterministic":"Deterministic",
+      "normal":"Normal",
+      "logNormal":"Log normal"
+    }
+  }
+}

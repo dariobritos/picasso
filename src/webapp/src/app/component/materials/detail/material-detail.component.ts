@@ -30,7 +30,11 @@ export class MaterialDetailComponent implements OnInit, OnDestroy {
 
         this.materialService.getMaterial(this.id).then((sc) => {
             this.material = sc;
-        });
+        }).catch(
+            () => {
+                this.material = new Material()
+            }
+        );
 
     }
 

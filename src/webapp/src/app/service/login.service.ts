@@ -8,6 +8,8 @@ import {Http} from "@angular/http";
 import {User} from "../entities/User";
 import {Observable} from "rxjs/Observable";
 import {Subscription} from "rxjs/Subscription";
+import {TranslateService} from "ng2-translate";
+import {LanguageService} from "./language.service";
 
 
 export interface Credentials {
@@ -20,9 +22,8 @@ export class LoginService {
 
 
     constructor(private router: Router,
-                private userService: UserService,
                 private http: Http,
-                private userStorage: UserStorage) {
+                private userStorage: UserStorage,private ln:LanguageService) {
     }
 
 
@@ -39,16 +40,21 @@ export class LoginService {
                 let token = res.headers.get("Authorization");
                 this.userStorage.storeToken(token);
                 this.userStorage.storeUserInfo(btoa(JSON.stringify(user)));
+                this.ln.reloadLanguage();
+                this.router.navigate(["home"]);
             })
             .catch();
     }
 
 
-    logout(navigatetoLogout = true): void {
+    logout(): void {
         // clear token remove newUser from local storage to log newUser out
         this.userStorage.removeUserInfo();
-        if (navigatetoLogout) {
-            this.router.navigate(["home"]);
-        }
+        this.ln.reloadLanguage();
+        this.router.navigate(["home"]);
+
     }
+
+
+
 }

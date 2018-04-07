@@ -1,8 +1,41 @@
 <div class="main-container container mt-2 justify-content-lg-center">
+    <div class="row m-0 justify-content-center ">
 
-    Material
-    <div *ngIf="material">
+        <div class="col-12 col-lg-6 col-md-12 col-sm-12 justify-content-center mb-3 mt-3">
+            <div class="input-group mb-3">
+                <div class="input-group-prepend">
+                    <span class="input-group-text" id="basic-addon1">Name</span>
+                </div>
+                <input type="text" class="form-control" placeholder="Name" aria-label="Username" aria-describedby="basic-addon1">
+            </div>
+            <div class="input-group">
+                <div class="input-group-prepend">
+                    <span class="input-group-text" id="basic-addon2">New property</span>
+                </div>
+                <select class="custom-select" id="inputGroupSelect04">
+                    <option selected>Choose...</option>
+                    <option value="1">Yield stress</option>
+                    <option value="2">Plastic collapse</option>
+                    <option value="3">Fracture thougness</option>
+                </select>
+                <div class="input-group-append">
+                    <button class="btn btn-outline-success" type="button">Add</button>
+                </div>
+            </div>
+        </div>
 
+
+    </div>
+    <div class="row m-0 justify-content-center ">
+
+        <div class="text-center">
+            <button routerLink="/materials" type="button"
+                    class="btn btn-success">Back
+            </button>
+            <button routerLink="/materials" type="button"
+                    class="btn btn-success">Save
+            </button>
+        </div>
     </div>
 
 </div>

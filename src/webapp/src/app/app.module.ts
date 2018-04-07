@@ -7,12 +7,12 @@ import {HttpModule} from "@angular/http";
 import {AppRoutingModule} from "./routing/app-routing.module";
 import {AppComponent} from "./component/app/app.component";
 import {DashboardComponent} from "./component/dashboard/dashboard.component";
-import {ScenarioDetailComponent} from "./component/scenario/detail/scenario-detail.component";
-import {ScenariosComponent} from "./component/scenario/scenarios.component";
+import {ScenarioDetailComponent} from "./component/scenarios/detail/scenario-detail.component";
+import {ScenariosComponent} from "./component/scenarios/scenarios.component";
 import {ScenarioService} from "./service/scenario.service";
 import {HomeComponent} from "./component/home/home.component";
-import {SESCIASPComponent} from "./component/scenario/SESCIASP/SESCIASP.component";
-import {SIBComponent} from "./component/scenario/SIB/SIB.component";
+import {SESCIASPComponent} from "./component/scenarios/SESCIASP/SESCIASP.component";
+import {SIBComponent} from "./component/scenarios/SIB/SIB.component";
 import {InputsModule} from "./component/utils/utils-module";
 import {CommonModule} from "@angular/common";
 import {UserProfileComponent} from "./component/user-profile/user-profile.component";
@@ -27,6 +27,8 @@ import {SignupComponent} from "./component/register/signup.component";
 import {InterceptorModule} from "./interceptors/interceptors.module";
 import {MaterialService} from "./service/material.service";
 import {MaterialDetailComponent} from "./component/materials/detail/material-detail.component";
+import {TranslateModule} from "ng2-translate";
+import {LanguageService} from "./service/language.service";
 
 
 @NgModule({
@@ -54,7 +56,7 @@ import {MaterialDetailComponent} from "./component/materials/detail/material-det
         SignupComponent,
         MaterialsComponent
     ],
-    providers: [ScenarioService,MaterialService,AuthGuard,UserStorage,UserService,LoginService],
+    providers: [ScenarioService, MaterialService, AuthGuard,LanguageService, UserStorage, UserService, LoginService],
     bootstrap: [AppComponent]
 })
 export class AppModule {
