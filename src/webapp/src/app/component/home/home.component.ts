@@ -6,6 +6,7 @@ import {UserStorage} from "../../service/user-storage.service";
 import {User} from "../../entities/User";
 import {isNullOrUndefined} from "util";
 import {FormControl, FormGroup, Validators} from "@angular/forms";
+import {TranslateService} from "ng2-translate";
 
 @Component({
     selector: 'home',
@@ -17,8 +18,9 @@ export class HomeComponent implements OnInit {
 
     constructor(private loginService: LoginService,
                 private authGuard: AuthGuard,
-                private userStorage: UserStorage,
-                private router: Router) {
+                private userStorage: UserStorage,private tr:TranslateService) {
+
+
     }
 
     form: FormGroup;
@@ -44,8 +46,8 @@ export class HomeComponent implements OnInit {
                 Validators.minLength(1)])
         });
 
-        console.log(this.form.valid);
     }
+
 
     login() {
 

@@ -10,11 +10,12 @@ import {ScenarioIdPipe} from "./pipes/scenario-id.pipe";
 import {StaticVariableOutputComponent} from "./outputs/static-variable.output.component";
 import {AbbreviationPipe} from "./pipes/abbreviation.pipe";
 import {StaticInputComponent} from "./inputs/static.input.component";
+import {TranslateModule} from "ng2-translate";
 
 @NgModule({
-    imports: [CommonModule, FormsModule, ReactiveFormsModule, AppRoutingModule],
+    imports: [CommonModule, FormsModule, ReactiveFormsModule, AppRoutingModule,TranslateModule.forRoot()],
     declarations: [StaticInputComponent,StaticVariableInputComponent,StaticVariableOutputComponent, ScenarioTypePipe, ScenarioIdPipe, ParameterNamePipe,AbbreviationPipe, NavbarComponent],
-    exports: [StaticInputComponent,StaticVariableInputComponent,StaticVariableOutputComponent, ScenarioTypePipe, ParameterNamePipe,AbbreviationPipe, NavbarComponent]
+    exports: [TranslateModule,StaticInputComponent,StaticVariableInputComponent,StaticVariableOutputComponent, ScenarioTypePipe, ParameterNamePipe,AbbreviationPipe, NavbarComponent]
 })
 export class InputsModule {
 }

@@ -4,17 +4,17 @@
 
         <div class="row m-0 justify-content-center ">
             <div class="col-12 col-lg-6 col-md-12 col-sm-12 justify-content-center mb-3 ">
-                <h1 class="w-100 text-center  mt-4 mb-4">Scenario</h1>
+                <h1 class="w-100 text-center  mt-4 mb-4">{{'scenario.scenario'|translate}}</h1>
 
                 <label class="w-100 text-center">
                     <h3 class="form-control-lg mb-2 mt-2 w-100">
-                        {{scenario.type|scenarioName}}
+                        {{'scenario.'+scenario.type|translate}}
 
                     </h3>
                 </label>
 
                 <div  class="card w-100">
-                    <img class="card-img-top" src="https://s3-sa-east-1.amazonaws.com/images-crackintelligence/{{getPicture()}}.png" alt="Scenario">
+                    <img class="card-img-top" src="https://s3-sa-east-1.amazonaws.com/images-crackintelligence/{{getPicture()}}.png" alt="{{'scenario.scenario'|translate}}">
                 </div>
             </div>
 
@@ -22,11 +22,11 @@
             <div class="col-12 col-lg-6 col-md-12 col-sm-12 justify-content-center mb-3 ">
 
 
-                <h1 class="w-80 text-center  mt-4 mb-4">Results</h1>
+                <h1 class="w-80 text-center  mt-4 mb-4">{{'scenario.results'|translate}}</h1>
 
 
-                <h1 class="w-80 text-center  mt-4 mb-4" *ngIf="this.scenario.output.length>0">Failue probability: {{this.failurePercentageScientific}} </h1>
-                <h1 class="w-80 text-center  mt-4 mb-5" *ngIf="this.scenario.output.length===0">Calculating...</h1>
+                <h1 class="w-80 text-center  mt-4 mb-4" *ngIf="this.scenario.output.length>0">{{'scenario.failureProbability'|translate}}: {{this.failurePercentageScientific}} </h1>
+                <h1 class="w-80 text-center  mt-4 mb-5" *ngIf="this.scenario.output.length===0">{{'scenario.calculating'|translate}}...</h1>
 
 
                 <div class="col-12 text-center" *ngIf="this.scenario.output.length>0">
@@ -60,7 +60,7 @@
         <div class="row mt-5">
 
             <div class="col-12 col-lg-6 col-md-12 col-sm-12 ">
-                <h1 class="w-100 text-center  mt-4 mb-4">Parameters setup</h1>
+                <h1 class="w-100 text-center  mt-4 mb-4">{{'scenario.parametersSetup'|translate}}</h1>
 
                 <!-- SEPARADOR *************************************************************************************** -->
 
@@ -76,15 +76,15 @@
 
             </div>
             <div class="col-12 col-lg-6 col-md-12 col-sm-12 justify-content-center mb-3 ">
-                <h1 class="w-100 text-center  mt-4 mb-4">Configuration</h1>
+                <h1 class="w-100 text-center  mt-4 mb-4">{{'scenario.configuration'|translate}}</h1>
 
                 <div class="row mt-3 mb-3">
                     <div class="col-6">
-                        <label for="input-seed">Seed</label>
+                        <label for="input-seed">{{'scenario.seed'|translate}}</label>
 
                     </div>
                     <div class="col-6">
-                        <input id="input-seed" class="form-control" placeholder="Seed"
+                        <input id="input-seed" class="form-control" placeholder="{{'scenario.seed'|translate}}"
                                [(ngModel)]="getConfiguration('SEED').value" name="seed">
                     </div>
 
@@ -93,12 +93,12 @@
 
                 <div class="row  mt-3 mb-3">
                     <div class="col-6 ">
-                        <label for="input-presicion">Montecarlo sample size</label>
+                        <label for="input-presicion">{{'scenario.montecarloSampleSize'|translate}}</label>
 
                     </div>
                     <div class="col-6">
                         <input id="input-presicion" class="form-control"
-                               placeholder="Presicion"
+                               placeholder="{{'scenario.montecarloSampleSize'|translate}}"
                                [(ngModel)]="getConfiguration('PRECISION').value" name="presicion">
                     </div>
                 </div>

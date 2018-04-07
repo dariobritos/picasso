@@ -1,5 +1,5 @@
 <label for="input-value" class="h5">
-    {{parameter.code|parameterName}}
+    {{'params.'+parameter.code|translate}}
 </label>
 <div class="form-row" id="input-value" [formGroup]="form">
 
@@ -7,7 +7,7 @@
 
         <div class="input-group margin-bottom-sm">
             <input formControlName="value" class="form-control" type="number"
-                   placeholder="{{parameter.code|parameterName}}"
+                   placeholder="{{'params.'+parameter.code|translate}}"
                    [(ngModel)]="parameter.value" name="value" (keyup)="onChange()" required>
 
         </div>

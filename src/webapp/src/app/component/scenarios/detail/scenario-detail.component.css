@@ -64,5 +64,5 @@ chart-legend {
 }
 
 .btn.active, .btn:active {
-    background-color: green;
+    background-color: green!important;
 }

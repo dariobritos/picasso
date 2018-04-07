@@ -1,0 +1,92 @@
+{
+  "home": {
+    "welcome": "Bienvenido",
+    "email": "Correo electronico",
+    "password": "Contraseña",
+    "letsgo": "Comenzar!"
+  },
+  "navbar": {
+    "home": "Inicio",
+    "dashboard": "Dashboard",
+    "scenarios": "Escenarios",
+    "materials": "Materiales",
+    "profile": "Perfil",
+    "fastScenario": "Escenario rapido",
+    "signup": "Registrarse",
+    "logout": "Salir"
+  },
+  "scenario": {
+    "scenario": "Escenario",
+    "proceed": "Proceder",
+    "SE_SURFACE_CRACK_STRAIGHT_PIPE": "ES:Semi-elliptical surface crack in a straight pipe.",
+    "SIMPLE_IRON_BAR": "ES:Simple iron bar load-strength",
+    "parametersSetup": "Configuracion de parametros",
+    "crackGeometry": "Geometria de la fisura",
+    "componentGeometry": "Geometria del componente",
+    "materialProperties": "Propiedades del material",
+    "loadProperties": "Propiedades de la carga",
+    "configuration": "Configuración",
+    "seed": "Semilla",
+    "montecarloSampleSize": "Tamaño de muestreo para Monte Carlo",
+    "commentAndStart": "Comentarios",
+    "startScenario": "Comenzar escenario",
+    "failureProbability": "Probabilidad de falla",
+    "calculating": "Calculando",
+    "custom": "Personalizado",
+    "library": "Libreria",
+    "results": "Resultados"
+  },
+  "profile": {
+    "userProfile": "Perfil de usuario",
+    "emailAddress": "Correo electronico",
+    "neverShare": "No vamos a compartir esta informacion con nadie",
+    "name": "Nombre",
+    "surname": "Apellido",
+    "organization": "Organizacion",
+    "preferences": "Preferencias",
+    "unitSystem": "Sistema de unidades",
+    "language": "Lenguage",
+    "international": "Internacional",
+    "unitedStates": "Estados Unidos",
+    "english": "Ingles",
+    "spanish": "Español",
+    "fastScenario": "Escenario rapido",
+    "update":"Actualizar"
+  },
+  "signup": {
+    "signup": "Registro",
+    "toSignup": "Registrarse",
+    "emailAddress": "Correo electronico",
+    "password": "Contraseña",
+    "thisWillBe": "Sera tu nombre de usuario",
+    "topSecret": "Maximo secreto",
+    "name": "Nombre",
+    "surname": "Apellido",
+    "organization": "Organizacion",
+    "preferences": "Preferencias",
+    "unitSystem": "Sistema de unidades",
+    "language": "Lenguage",
+    "international": "Internacional",
+    "unitedStates": "Estados Unidos",
+    "english": "Ingles",
+    "spanish": "Español",
+    "fastScenario": "Escenario rapido"
+  },
+  "params": {
+    "CRACK_DEPTH": "Profundidad de la grieta",
+    "CRACK_LENGTH": "Largo de la grieta",
+    "WALL_THICKNESS": "Espesor de la pared",
+    "FRACTURE_TOUGHNESS": "Tenacidad a la fractura",
+    "YIELD_STRESS": "Estres",
+    "PLASTIC_COLLAPSE": "Colapso plastico",
+    "OPERATING_PRESSURE": "Presion operativa",
+    "INNER_RADIUS": "Radio interno",
+    "BAR_LOAD": "Carga",
+    "BAR_STRENGTH": "Fuerza",
+    "distribution": {
+      "deterministic": "Deterministico",
+      "normal": "Normal",
+      "logNormal": "Log normal"
+    }
+  }
+}

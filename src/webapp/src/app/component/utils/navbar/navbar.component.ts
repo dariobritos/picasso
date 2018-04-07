@@ -5,6 +5,7 @@ import {Router} from "@angular/router";
 import {User} from "../../../entities/User";
 import {UserStorage} from "../../../service/user-storage.service";
 import {UserService} from "../../../service/user.service";
+import {TranslateService} from "ng2-translate";
 
 declare var jquery: any;
 declare var $: any;
@@ -15,33 +16,34 @@ declare var $: any;
 })
 export class NavbarComponent {
 
-    constructor(
-        private authGuard: AuthGuard,
-        private loginService: LoginService,
-        private userStorage: UserStorage,
-        private router: Router
-    ) { }
+    constructor(private authGuard: AuthGuard,
+                private loginService: LoginService,
+                private userStorage: UserStorage,
+                private router: Router,
+                private tr: TranslateService) {
+
+    }
 
     itemClick() {
         $('.navbar-collapse').collapse('hide');
     }
 
-    signup(){
+    signup() {
         this.router.navigate(['signup']);
         this.itemClick();
     }
 
-    logout(){
+    logout() {
         this.loginService.logout();
         this.itemClick();
     }
 
 
-    loggedIn():boolean{
+    loggedIn(): boolean {
         return this.authGuard.checkLogin();
     }
 
-    currentUser():User{
+    currentUser(): User {
         return this.userStorage.getUserInfo();
     }
 }

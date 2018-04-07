@@ -8,34 +8,34 @@
     <div class="collapse navbar-collapse" id="navbarTogglerDemo02">
         <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
             <li class="nav-item ">
-                <a class="nav-link" routerLink="/home" (click)="itemClick()" routerLinkActive="active">Home <span
+                <a class="nav-link" routerLink="/home" (click)="itemClick()" routerLinkActive="active">{{'navbar.home'| translate}}<span
                         class="sr-only">(current)</span></a>
             </li>
             <li class="nav-item" *ngIf="loggedIn()">
                 <a routerLink="/dashboard" (click)="itemClick()" class="nav-link"
-                   routerLinkActive="active">Dashboard</a>
+                   routerLinkActive="active">{{'navbar.dashboard'| translate}}</a>
             </li>
             <li class="nav-item" *ngIf="loggedIn()">
                 <a routerLink="/scenarios" (click)="itemClick()" class="nav-link"
-                   routerLinkActive="active">Scenarios</a>
+                   routerLinkActive="active">{{'navbar.scenarios'| translate}}</a>
             </li>
             <li class="nav-item" *ngIf="loggedIn()">
                 <a routerLink="/materials" (click)="itemClick()" class="nav-link"
-                   routerLinkActive="active">Materials</a>
+                   routerLinkActive="active">{{'navbar.materials'| translate}}</a>
             </li>
             <li class="nav-item" *ngIf="loggedIn()">
-                <a routerLink="/profile" (click)="itemClick()" class="nav-link" routerLinkActive="active">Profile</a>
+                <a routerLink="/profile" (click)="itemClick()" class="nav-link" routerLinkActive="active">{{'navbar.profile'| translate}}</a>
             </li>
             <li class="nav-item" *ngIf="loggedIn()">
                 <button routerLink="/new/semi-elliptical-surface-crack-in-a-straight-pipe"
-                        class="btn btn-outline-success my-2 my-sm-0 mx-2" (click)="itemClick()">Fast scenario
+                        class="btn btn-outline-success my-2 my-sm-0 mx-2" (click)="itemClick()">{{'navbar.fastScenario'| translate}}
                 </button>
             </li>
         </ul>
 
         <p class="text-white my-auto" *ngIf="loggedIn()">{{currentUser().email}}</p>
-        <button class="button btn btn-outline-success my-2 my-sm-0 mx-2" (click)="signup()" *ngIf="!loggedIn()"><span>Sign up</span></button>
-        <button class="btn btn-outline-success my-2 my-sm-0 mx-2" (click)="logout()" *ngIf="loggedIn()">Logout</button>
+        <button class="button btn btn-outline-success my-2 my-sm-0 mx-2" (click)="signup()" *ngIf="!loggedIn()"><span>{{'navbar.signup'| translate}}</span></button>
+        <button class="btn btn-outline-success my-2 my-sm-0 mx-2" (click)="logout()" *ngIf="loggedIn()">{{'navbar.logout'| translate}}</button>
 
         <!--<button class="btn btn-outline-success my-2 my-sm-0 mx-2">Login</button>-->
 

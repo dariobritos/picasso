@@ -9,6 +9,7 @@
       "outDir": "../main/webapp",
       "assets": [
         "assets",
+        "i18n",
         "favicon.ico"
       ],
       "index": "index.html",

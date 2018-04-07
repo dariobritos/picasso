@@ -41,7 +41,7 @@ export class ScenarioDetailComponent implements OnInit, OnDestroy {
         this.scenarioService.getScenario(this.id).then((sc) => {
             this.scenario = sc;
             if (!isNullOrUndefined(this.scenario.output)) {
-                //Cuando el scenario tiene output ya no consultamos su estado
+                //Cuando el scenarios tiene output ya no consultamos su estado
                 this.processOutput();
             }
         });
@@ -52,7 +52,7 @@ export class ScenarioDetailComponent implements OnInit, OnDestroy {
             .subscribe((data) => {
                 this.scenario = data;
                 if (!isNullOrUndefined(this.scenario.output) && this.scenario.output.length > 0) {
-                    //Cuando el scenario tiene output ya no consultamos su estado
+                    //Cuando el scenarios tiene output ya no consultamos su estado
                     this.processOutput();
 
                     this.subscription.unsubscribe();
