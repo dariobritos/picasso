@@ -18,7 +18,7 @@ const routes: Routes = [
     {path: '', redirectTo: '/home', pathMatch: 'full'},
     {path: 'home', component: HomeComponent},
     {path: 'dashboard', component: DashboardComponent},
-    {path: 'scenarios/:id', component: ScenarioDetailComponent},
+    {path: 'scenario/:id', component: ScenarioDetailComponent},
     {path: 'material/:id', component: MaterialDetailComponent},
     {path: 'scenarios', component: ScenariosComponent},
     {path: 'new/semi-elliptical-surface-crack-in-a-straight-pipe', component: SESCIASPComponent},
