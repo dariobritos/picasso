@@ -107,11 +107,11 @@ public class TuringClient {
     }
 
     public MaterialTO getMaterial(String materialId) {
-        return restTemplate.getForEntity(TURING_HOST + MATERIAL_PATH+ "/" + materialId, MaterialTO.class, materialId).getBody();
+        return restTemplate.getForEntity(TURING_HOST + MATERIAL_PATH + "/" + materialId, MaterialTO.class, materialId).getBody();
     }
 
     public void deleteMaterial(String materialId) {
-        restTemplate.delete(TURING_HOST + MATERIAL_PATH+ "/" + materialId);
+        restTemplate.delete(TURING_HOST + MATERIAL_PATH + "/" + materialId);
     }
 
 
