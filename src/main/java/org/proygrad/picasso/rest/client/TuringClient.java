@@ -27,8 +27,8 @@ public class TuringClient {
 
     private final static String MATERIAL_PATH = "material";
     private final static String MATERIAL_BY_USER_ID_PATH = "?user_id=";
-    private final static String MATERIAL_BY_PROPERTIES_PATH = "?properties=[";
-    private final static String MATERIAL_BY_PROPERTIES_PATH_END = "]";
+    private final static String MATERIAL_BY_PROPERTIES_PATH = "properties=";
+    private final static String PROPERTIES_PATH = "&properties=";
 
     @Autowired
     private RestTemplate restTemplate;
@@ -88,18 +88,22 @@ public class TuringClient {
 
     public List<MaterialTO> getMaterialsByUserIdOrProperties(String userId, List<String> properties) {
 
-
-        String serchByUserPath = "";
+        String searchByUserPath = "";
         String searchByProperties="";
 
         if(userId!=null && !userId.isEmpty()){
-            serchByUserPath = MATERIAL_BY_USER_ID_PATH + userId;
+            searchByUserPath = MATERIAL_BY_USER_ID_PATH + userId;
         }
         if(properties!=null && !properties.isEmpty()){
-            searchByProperties = MATERIAL_BY_PROPERTIES_PATH+ String.join(",", properties) +MATERIAL_BY_PROPERTIES_PATH_END;
+            if(searchByUserPath.isEmpty()){
+                searchByProperties="?";
+            } else {
+                searchByProperties="&";
+            }
+            searchByProperties = searchByProperties+MATERIAL_BY_PROPERTIES_PATH+ String.join(PROPERTIES_PATH, properties);
         }
 
-        ResponseEntity<MaterialTO[]> responseEntity = restTemplate.getForEntity(TURING_HOST +MATERIAL_PATH + serchByUserPath + searchByProperties, MaterialTO[].class);
+        ResponseEntity<MaterialTO[]> responseEntity = restTemplate.getForEntity(TURING_HOST +MATERIAL_PATH + searchByUserPath + searchByProperties, MaterialTO[].class);
         MaterialTO[] objects = responseEntity.getBody();
 
         return new ArrayList(Arrays.asList(objects));
