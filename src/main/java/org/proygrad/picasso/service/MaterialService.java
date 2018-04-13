@@ -28,5 +28,9 @@ public class MaterialService {
     public void deleteMaterial(String id){
         turingClient.deleteMaterial(id);
     }
+
+    public String updateMaterial(String id, MaterialTO materialTO) {
+        return turingClient.updateMaterial(id, materialTO);
+    }
 }
 

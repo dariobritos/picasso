@@ -74,6 +74,7 @@ public class TuringClient {
     }
 
     public UserTO findByUsername(String username) {
+        LOGGER.info("Find user by username " + username);
         return restTemplate.getForEntity(TURING_HOST + USER_BY_EMAIL_PATH + username, UserTO.class).getBody();
 
     }
@@ -87,6 +88,8 @@ public class TuringClient {
     }
 
     public List<MaterialTO> getMaterialsByUserIdOrProperties(String userId, List<String> properties) {
+
+        LOGGER.info("Getting materials by user id and properties");
 
         String searchByUserPath = "";
         String searchByProperties="";
@@ -115,9 +118,12 @@ public class TuringClient {
     }
 
     public void deleteMaterial(String materialId) {
+        LOGGER.info("Sending material to delete: " + materialId);
         restTemplate.delete(TURING_HOST + MATERIAL_PATH + "/" + materialId);
     }
 
-
-
+    public String updateMaterial(String materialId, MaterialTO materialTO) {
+        LOGGER.info("Sending material to update: " + materialId);
+        return restTemplate.patchForObject( TURING_HOST + MATERIAL_PATH + "/" + materialId, (Object) materialTO, String.class, materialId);
+    }
 }

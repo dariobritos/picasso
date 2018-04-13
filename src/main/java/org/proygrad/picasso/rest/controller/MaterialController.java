@@ -39,4 +39,10 @@ public class MaterialController {
         materialService.deleteMaterial(id);
     }
 
+    @RequestMapping(value = "/rest/material/{id}", method = RequestMethod.PATCH)
+    public String updateMaterial(@PathVariable("id") String id, @RequestBody MaterialTO materialTO) {
+        return materialService.updateMaterial(id, materialTO);
+    }
+
+
 }
