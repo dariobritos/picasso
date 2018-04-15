@@ -9,6 +9,7 @@ import {UserStorage} from "./user-storage.service";
 @Injectable()
 export class MaterialService {
     private materialUrl = 'rest/material';  // URL to web api
+    private materialByUserUrl = 'rest/material?user_id=';  // URL to web api
     private headers = new Headers({'Content-Type': 'application/json'});
 
     constructor(private http: Http,private storage: UserStorage) {
@@ -22,13 +23,6 @@ export class MaterialService {
             .catch(this.handleError);
     }
 
-    getMaterials(): Promise<Material[]> {
-        return this.http.get(this.materialUrl, {headers: this.buildHeaders()})
-            .toPromise()
-            .then(response => response.json() as Material[])
-            .catch(this.handleError);
-    }
-
     create(material: Material): Promise<string> {
         return this.http
             .post(this.materialUrl, JSON.stringify(material), {headers: this.buildHeaders()})
@@ -36,6 +30,23 @@ export class MaterialService {
             .then(res => res.text())
             .catch(this.handleError);
     }
+
+    getMaterialsForUser(userId:string): Promise<Material[]> {
+        const url = `${this.materialByUserUrl}/${userId}`;
+        return this.http.get(url, {headers: this.buildHeaders()})
+            .toPromise()
+            .then(response => response.json() as Material[])
+            .catch(this.handleError);
+    }
+
+    delete(id: String) {
+        const url = `${this.materialUrl}/${id}`;
+        return this.http.delete(url, {headers: this.buildHeaders()})
+            .toPromise()
+            .then()
+            .catch(this.handleError);
+    }
+
 
     update(material: Material): Promise<Material> {
         const url = `${this.materialUrl}/${material.id}`;
@@ -45,7 +56,6 @@ export class MaterialService {
             .then(() => material)
             .catch(this.handleError);
     }
-
 
     private buildHeaders():Headers{
         //Agregamos el header de autorizacion
@@ -57,5 +67,4 @@ export class MaterialService {
         console.error('An error occurred', error); // for demo purposes only
         return Promise.reject(error.message || error);
     }
-
 }

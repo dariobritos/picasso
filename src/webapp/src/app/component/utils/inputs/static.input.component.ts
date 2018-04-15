@@ -1,12 +1,6 @@
 import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
-import {Distribution, Parameter} from "../../../entities/scenario";
-import {
-    DISTANCE, FRACTURE_TOUGHNESS, INTERNATIONAL, INTERNATIONAL_UNITS, LOGNORMAL, NORMAL, PREASURE, DETERMINISTIC, UNITEDSTATES,
-    UNITEDSTATES_UNITS,
-    VARIABLE
-} from "../constant/constants";
 import {FormControl, FormGroup, Validators} from "@angular/forms";
-import {forEach} from "@angular/router/src/utils/collection";
+import {Parameter} from "../../../entities/parameter";
 
 @Component({
     selector: 'static-input',

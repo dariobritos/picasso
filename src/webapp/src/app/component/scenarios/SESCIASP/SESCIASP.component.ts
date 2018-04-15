@@ -1,20 +1,22 @@
 import {Component, OnInit} from '@angular/core';
-import {CommonItem, Parameter, Scenario} from "../../../entities/scenario";
 import {
+    DETERMINISTIC,
     DISTANCE,
     FRACTURE_TOUGHNESS,
     LOGNORMAL,
     NORMAL,
+    PLASTIC_COLLAPSE,
     PREASURE,
     SE_SURFACE_CRACK_STRAIGHT_PIPE,
-    DETERMINISTIC,
-    VARIABLE, PLASTIC_COLLAPSE
+    VARIABLE
 } from "../../utils/constant/constants";
 import {FormControl, FormGroup, Validators} from "@angular/forms";
 import {Router} from "@angular/router";
 import {ScenarioService} from "../../../service/scenario.service";
 import {AuthGuard} from "../../../service/auth_guard.service";
 import {UserStorage} from "../../../service/user-storage.service";
+import {CommonItem, Scenario} from "../../../entities/scenario";
+import {Parameter} from "../../../entities/parameter";
 
 
 @Component({

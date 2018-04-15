@@ -51,7 +51,7 @@
     "english": "English",
     "spanish": "Spanish",
     "fastScenario": "Fast scenario",
-    "update":"Update"
+    "update": "Update"
   },
   "signup": {
     "signup": "Signup",
@@ -84,9 +84,16 @@
     "BAR_LOAD": "Load",
     "BAR_STRENGTH": "Strength",
     "distribution": {
-      "deterministic":"Deterministic",
-      "normal":"Normal",
-      "logNormal":"Log normal"
+      "deterministic": "Deterministic",
+      "normal": "Normal",
+      "logNormal": "Log normal"
     }
+  },
+  "materials": {
+    "materials":"Materials"
+  },
+
+  "material-detail": {
+    "name":"Name"
   }
 }

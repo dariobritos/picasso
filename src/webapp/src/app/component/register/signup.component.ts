@@ -1,6 +1,6 @@
 import {Component, OnInit} from "@angular/core";
-import {NewUser, User} from "../../entities/User";
-import {SCENARIO_TYPES, USER} from "../utils/constant/constants";
+import {NewUser} from "../../entities/User";
+import {SCENARIO_TYPES} from "../utils/constant/constants";
 import {AuthGuard} from "../../service/auth_guard.service";
 import {Router} from "@angular/router";
 import {UserService} from "../../service/user.service";

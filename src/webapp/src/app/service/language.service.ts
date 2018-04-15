@@ -1,15 +1,8 @@
 import {Injectable} from '@angular/core';
-import {Router} from '@angular/router';
 import 'rxjs/add/operator/map';
 import 'rxjs/add/operator/catch';
 import {UserStorage} from "./user-storage.service";
-import {UserService} from "./user.service";
-import {Http} from "@angular/http";
-import {User} from "../entities/User";
-import {Observable} from "rxjs/Observable";
-import {Subscription} from "rxjs/Subscription";
 import {TranslateService} from "ng2-translate";
-
 
 
 @Injectable()

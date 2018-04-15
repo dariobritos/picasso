@@ -88,5 +88,12 @@
       "normal": "Normal",
       "logNormal": "Log normal"
     }
+  },
+  "materials": {
+    "materials":"Materiales"
+  },
+
+  "material-detail": {
+    "name":"Nombre"
   }
 }

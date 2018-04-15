@@ -27,7 +27,6 @@ import {SignupComponent} from "./component/register/signup.component";
 import {InterceptorModule} from "./interceptors/interceptors.module";
 import {MaterialService} from "./service/material.service";
 import {MaterialDetailComponent} from "./component/materials/detail/material-detail.component";
-import {TranslateModule} from "ng2-translate";
 import {LanguageService} from "./service/language.service";
 
 

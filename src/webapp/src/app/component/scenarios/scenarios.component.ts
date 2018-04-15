@@ -2,7 +2,6 @@ import {Component, OnInit} from '@angular/core';
 
 import {Router} from "@angular/router";
 import {ScenarioService} from "../../service/scenario.service";
-import {Scenario} from "../../entities/scenario";
 import {SCENARIO_TYPES} from "../utils/constant/constants";
 import {ScenarioTypePipe} from "../utils/pipes/scenario-type.pipe";
 import {AuthGuard} from "../../service/auth_guard.service";

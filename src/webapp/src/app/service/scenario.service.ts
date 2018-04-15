@@ -3,7 +3,6 @@ import {Headers, Http} from '@angular/http';
 
 import 'rxjs/add/operator/toPromise';
 import {Scenario} from "../entities/scenario";
-import {Router} from "@angular/router";
 import {UserStorage} from "./user-storage.service";
 
 
