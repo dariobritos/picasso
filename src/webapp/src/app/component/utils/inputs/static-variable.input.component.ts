@@ -28,6 +28,8 @@ export class StaticVariableInputComponent implements OnInit {
     @Input()
     staticField: Boolean;
 
+
+
     @Input()
     unitSystem: String;
 

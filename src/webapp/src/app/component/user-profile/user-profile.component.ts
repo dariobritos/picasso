@@ -78,7 +78,6 @@ export class UserProfileComponent implements OnInit {
 
     updateUser() {
         this.loading = true;
-        console.log(this.user);
         this.userService.update(this.user).then(() => {
             this.userStorage.storeUserInfo(btoa(JSON.stringify(this.user)));
             this.languageService.reloadLanguage();

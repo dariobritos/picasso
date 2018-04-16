@@ -1,7 +1,7 @@
 <div class="main-container container mt-2 justify-content-lg-center">
-    <div class="row m-0 justify-content-center ">
+    <div *ngIf="this.material" class="row m-0 justify-content-center ">
 
-        <div class="col-12 col-lg-6 col-md-12 col-sm-12 justify-content-center mb-3 mt-3">
+        <div  class="col-12 col-lg-6 col-md-12 col-sm-12 justify-content-center mb-3 mt-3">
             <div class="input-group mb-3">
                 <div class="input-group-prepend">
                     <span class="input-group-text" id="basic-addon1">{{'material-detail.name'|translate}}</span>
@@ -10,8 +10,14 @@
                        aria-describedby="basic-addon1" [(ngModel)]="material.name">
             </div>
 
-            <static-variable-input *ngFor="let p of material.properties" [parameter]="p" [unitSystem]="this.unitSystem"
+            <static-variable-input *ngIf="getProperty('FRACTURE_TOUGHNESS')" [parameter]="getProperty('FRACTURE_TOUGHNESS')"
+                                   [unitSystem]="unitSystem"
                                    (changeParameter)="propertyChanged($event)"></static-variable-input>
+            <static-variable-input *ngIf="getProperty('YIELD_STRESS')" [parameter]="getProperty('YIELD_STRESS')"
+                                   [unitSystem]="unitSystem"
+                                   (changeParameter)="propertyChanged($event)"></static-variable-input>
+            <static-input *ngIf="getProperty('PLASTIC_COLLAPSE')" [parameter]="getProperty('PLASTIC_COLLAPSE')" [unitSystem]="unitSystem"
+                          (changeParameter)="propertyChanged($event)"></static-input>
 
 
             <div *ngIf="this.materialPropertiesFiltered.length>0" class="input-group">
@@ -35,13 +41,13 @@
 
 
     </div>
-    <div class="row m-0 justify-content-center ">
+    <div *ngIf="this.material"  class="row m-0 justify-content-center ">
 
         <div class="text-center">
             <button routerLink="/materials" type="button"
                     class="btn btn-success">Back
             </button>
-            <button [disabled]="this.loading" routerLink="/materials" type="button"
+            <button [disabled]="this.loading || !validMaterial()" type="button"
                     class="btn btn-success" (click)="saveMaterial()">Save
             </button>
         </div>

@@ -47,6 +47,9 @@
 
                 </div>
 
+                <h1 class="w-80 text-center  mt-4 mb-4" *ngIf="this.scenario.output.length>0">{{'scenario.variance'|translate}}: {{this.varianceScientific}} </h1>
+
+
                 <div *ngIf="this.scenario.output.length===0" class="col-12 text-center mt-5 animationload">
                     <div class="osahanloading"></div>
                 </div>

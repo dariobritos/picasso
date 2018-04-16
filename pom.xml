@@ -9,7 +9,6 @@
 	<packaging>jar</packaging>
 
 	<name>picasso</name>
-	<name>Demo project for Spring Boot</name>
 
 	<parent>
 		<groupId>org.springframework.boot</groupId>

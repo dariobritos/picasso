@@ -31,10 +31,14 @@
     "commentAndStart": "Comment and start",
     "startScenario": "Start scenario",
     "failureProbability": "Failure probability",
+    "variance": "Variance",
     "calculating": "Calculating",
     "custom": "Custom",
     "library": "Library",
-    "results": "Results"
+    "results": "Results",
+    "selectMaterial":"Select material",
+    "invalidCrackDepth":"Crack depth must be between XXXXXX",
+    "invalidCrackDepthLengthRelationship":"Crack dept / Crack length must be between XXXXX"
   },
   "profile": {
     "userProfile": "User profile",
@@ -90,7 +94,11 @@
     }
   },
   "materials": {
-    "materials":"Materials"
+    "materials":"Materials",
+    "name":"Name",
+    "properties":"Properties",
+    "actions":"Actions",
+    "newMaterial":"Add new"
   },
 
   "material-detail": {

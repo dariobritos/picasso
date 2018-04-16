@@ -8,7 +8,7 @@ import {
     PLASTIC_COLLAPSE,
     PREASURE,
     SE_SURFACE_CRACK_STRAIGHT_PIPE,
-    VARIABLE
+    VARIABLE, YIELD_STRESS
 } from "../../utils/constant/constants";
 import {FormControl, FormGroup, Validators} from "@angular/forms";
 import {Router} from "@angular/router";
@@ -17,6 +17,9 @@ import {AuthGuard} from "../../../service/auth_guard.service";
 import {UserStorage} from "../../../service/user-storage.service";
 import {CommonItem, Scenario} from "../../../entities/scenario";
 import {Parameter} from "../../../entities/parameter";
+import {Material} from "../../../entities/material";
+import {MaterialService} from "../../../service/material.service";
+import {isNullOrUndefined} from "util";
 
 
 @Component({
@@ -36,12 +39,20 @@ export class SESCIASPComponent implements OnInit {
     form: FormGroup;
     loading: boolean;
 
+
+    libraryMaterial: Boolean = false;
+    materials: Array<Material> = [];
+    selectedMaterialId: string = null;
+
     unitSystem: string;
+
+    invalidCrackDepth: Boolean = false;
+    invalidCrackDepthLengthRelationship: Boolean = false;
 
     constructor(private router: Router,
                 private scenarioService: ScenarioService,
                 private authGuard: AuthGuard,
-                private userStorage: UserStorage) {
+                private userStorage: UserStorage, private materialService: MaterialService) {
 
     }
 
@@ -77,8 +88,24 @@ export class SESCIASPComponent implements OnInit {
             'precision': new FormControl(this.precision, [
                 Validators.required,
                 Validators.min(1)]),
-            'comments': new FormControl(this.scenario.comments, [])
+            'comments': new FormControl(this.scenario.comments, []),
+            'selectMaterial': new FormControl(this.selectedMaterialId, [])
         });
+
+
+        this.materialService.getMaterialsForUser().then((materials) => {
+            this.materials = materials;
+        }).catch(() => {
+            this.materials = [];
+        });
+    }
+
+    libraryMaterialSelected() {
+        this.libraryMaterial = true;
+    }
+
+    customMaterialSelected() {
+        this.libraryMaterial = false;
     }
 
     parameterChanged(event: Parameter) {
@@ -88,18 +115,25 @@ export class SESCIASPComponent implements OnInit {
 
     startScenarioCalculation() {
 
-        let valid: boolean = true;
+        let valid: Boolean = true;
         this.scenario.parameters.forEach((value: Parameter) => {
             valid = valid && value.valid;
         });
 
-        this.loadScenarioConfiguration();
+        valid = valid && this.validateParameterRestrictions();
 
         if (valid) {
+            this.loadScenarioConfiguration();
             this.postAndRoute();
         }
 
 
+    }
+
+    validateParameterRestrictions(): Boolean {
+        this.invalidCrackDepth = true;
+        this.invalidCrackDepthLengthRelationship = true;
+        return !this.invalidCrackDepth && !this.invalidCrackDepthLengthRelationship;
     }
 
     getParameter(code: string) {
@@ -124,6 +158,23 @@ export class SESCIASPComponent implements OnInit {
 
         this.scenario.configuration.push(confSeed);
         this.scenario.configuration.push(confPrecision);
+    }
+
+    selectedMaterialChange() {
+        let material: Material = this.materials.find(x => x.id === this.selectedMaterialId);
+
+        this.loadParameterFromMaterialProperties(material, YIELD_STRESS);
+        this.loadParameterFromMaterialProperties(material, FRACTURE_TOUGHNESS);
+        this.loadParameterFromMaterialProperties(material, PLASTIC_COLLAPSE);
+    }
+
+    private loadParameterFromMaterialProperties(material: Material, code: string) {
+        let prop = material.properties.find(item => item.code === code);
+        if (!isNullOrUndefined(prop)) {
+            this.scenario.parameters = this.scenario.parameters.filter(item => item.code !== code);
+            this.scenario.parameters.push(prop);
+            this.scenario.parameters.push();
+        }
     }
 }
 

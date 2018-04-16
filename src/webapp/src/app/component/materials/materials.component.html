@@ -2,14 +2,20 @@
 
     <h1 class="w-100 text-center mt-4 mb-4">{{'materials.materials'|translate}}</h1>
 
+    <div class="row m-0 justify-content-center ">
+        <button routerLink="/material" type="button"
+                class="btn btn-success">{{'materials.newMaterial'|translate}}
+        </button>
+    </div>
+
     <div class="row m-2">
 
-        <table class="table">
+        <table *ngIf="materials.length>0" class="table">
             <thead>
             <tr>
-                <th scope="col">Description</th>
-                <th scope="col">Properties</th>
-                <th scope="col">Actions</th>
+                <th scope="col">{{'materials.name'|translate}}</th>
+                <th scope="col">{{'materials.properties'|translate}}</th>
+                <th scope="col">{{'materials.actions'|translate}}</th>
             </tr>
             </thead>
             <tbody>
@@ -18,7 +24,8 @@
             <tr *ngFor="let m of materials">
                 <td>{{m.name}}</td>
                 <td>
-                    <span *ngFor="let p of m.properties" class="badge badge-secondary">{{'params.'+p.code|translate}}</span>
+                    <span *ngFor="let p of m.properties"
+                          class="badge badge-secondary">{{'params.'+p.code|translate}}</span>
                 </td>
                 <td>
                     <button type="button" class="btn btn-default m-0 p-0 " routerLink="/material/{{m.id}}">
@@ -30,47 +37,6 @@
                 </td>
             </tr>
 
-            <tr>
-                <td>Hierro fundido</td>
-                <td>
-                    <span class="badge badge-secondary">Yield stress</span>
-                    <span class="badge badge-secondary">Fracture thougness</span>
-                </td>
-                <td>
-                    <button type="button" class="btn btn-default m-0 p-0 " routerLink="/material/1">
-                        <span class="fa fa-edit fa-lg"></span>
-                    </button>
-                    <button type="button" class="btn btn-default m-0 p-0 ">
-                        <span class="fa fa-trash fa-lg"></span>
-                    </button>
-                </td>
-            </tr>
-            <tr>
-                <td>Acero</td>
-                <td>
-                    <span class="badge badge-secondary">Yield stress</span>
-                <td>
-                    <button type="button" class="btn btn-default m-0 p-0 ">
-                        <span class="fa fa-edit fa-lg"></span>
-                    </button>
-                    <button type="button" class="btn btn-default m-0 p-0 ">
-                        <span class="fa fa-trash fa-lg"></span>
-                    </button>
-                </td>
-            </tr>
-            <tr>
-                <td>Aluminio 80</td>
-                <td>
-                    <span class="badge badge-secondary">Fracture thougness</span></td>
-                <td>
-                    <button type="button" class="btn btn-default m-0 p-0 ">
-                        <span class="fa fa-edit fa-lg"></span>
-                    </button>
-                    <button type="button" class="btn btn-default m-0 p-0 ">
-                        <span class="fa fa-trash fa-lg"></span>
-                    </button>
-                </td>
-            </tr>
 
             </tbody>
         </table>

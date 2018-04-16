@@ -14,8 +14,8 @@ public class PicassoRestConfig {
         RestTemplate restTemplate = new RestTemplate();
 
         HttpComponentsClientHttpRequestFactory requestFactory = new HttpComponentsClientHttpRequestFactory();
-        requestFactory.setConnectTimeout(10000);
-        requestFactory.setReadTimeout(10000);
+        requestFactory.setConnectTimeout(60000);
+        requestFactory.setReadTimeout(60000);
 
         restTemplate.setRequestFactory(requestFactory);
 

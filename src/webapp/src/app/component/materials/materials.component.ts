@@ -6,6 +6,8 @@ import {
     PREASURE
 } from "../utils/constant/constants";
 import {MaterialService} from "../../service/material.service";
+import {UserStorage} from "../../service/user-storage.service";
+import {User} from "../../entities/User";
 
 @Component({
     selector: 'materials',
@@ -24,14 +26,12 @@ export class MaterialsComponent implements OnInit {
     ngOnInit(): void {
         this.authGuard.verifyLocation();
 
-        let p1: MaterialProperty = new MaterialProperty(PLASTIC_COLLAPSE, DETERMINISTIC, null, 1.0, INTERNATIONAL, PREASURE);
-        let p2: MaterialProperty = new MaterialProperty(FRACTURE_TOUGHNESS, DETERMINISTIC, null, 1.0, INTERNATIONAL, PREASURE);
-        let properties: Array<MaterialProperty> = [p1, p2];
-        let temp: Material = new Material( "xxx-xxx-xxx", "Material prueba 2", properties);
-        temp.id='xxx-xxx-xxx';
-        this.materials.push(temp);
+        this.materialService.getMaterialsForUser().then((materials) => {
+            this.materials = materials;
 
-        console.log(this.materials);
+        }).catch(() => {
+            this.materials = [];
+        });
 
 
     }
@@ -39,7 +39,8 @@ export class MaterialsComponent implements OnInit {
 
     deleteMaterial(id: String) {
         this.materialService.delete(id).then(() => {
+            this.materials = this.materials.filter(m => m.id !== id);
         });
-        this.materials = this.materials.filter(m => m.id !== id);
+
     }
 }

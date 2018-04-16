@@ -31,10 +31,14 @@
     "commentAndStart": "Comentarios",
     "startScenario": "Comenzar escenario",
     "failureProbability": "Probabilidad de falla",
+    "variance": "Varianza",
     "calculating": "Calculando",
     "custom": "Personalizado",
     "library": "Libreria",
-    "results": "Resultados"
+    "results": "Resultados",
+    "selectMaterial":"Seleccionar material",
+    "invalidCrackDepth":"La profundidad de la grieta debe estar entre XXXXX",
+    "invalidCrackDepthLengthRelationship":"Profundidad de la grieta / Largo de la grieta debe estar entre XXXX"
   },
   "profile": {
     "userProfile": "Perfil de usuario",
@@ -90,7 +94,11 @@
     }
   },
   "materials": {
-    "materials":"Materiales"
+    "materials":"Materiales",
+    "name":"Nombre",
+    "properties":"Propiedades",
+    "actions":"Acciones",
+    "newMaterial":"Agregar nuevo"
   },
 
   "material-detail": {

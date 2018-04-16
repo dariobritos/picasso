@@ -4,6 +4,7 @@ import {Headers, Http} from '@angular/http';
 import 'rxjs/add/operator/toPromise';
 import {Material} from "../entities/material";
 import {UserStorage} from "./user-storage.service";
+import {isNullOrUndefined} from "util";
 
 
 @Injectable()
@@ -31,8 +32,12 @@ export class MaterialService {
             .catch(this.handleError);
     }
 
-    getMaterialsForUser(userId:string): Promise<Material[]> {
-        const url = `${this.materialByUserUrl}/${userId}`;
+    getMaterialsForUser(): Promise<Material[]> {
+
+        let userInfo = this.storage.getUserInfo();
+
+
+        const url = `${this.materialByUserUrl}${userInfo.id}`;
         return this.http.get(url, {headers: this.buildHeaders()})
             .toPromise()
             .then(response => response.json() as Material[])
@@ -51,7 +56,7 @@ export class MaterialService {
     update(material: Material): Promise<Material> {
         const url = `${this.materialUrl}/${material.id}`;
         return this.http
-            .put(url, JSON.stringify(material), {headers: this.buildHeaders()})
+            .patch(url, JSON.stringify(material), {headers: this.buildHeaders()})
             .toPromise()
             .then(() => material)
             .catch(this.handleError);
