@@ -1,7 +1,6 @@
-import {Component, OnInit, ViewChild} from "@angular/core";
+import {Component, OnInit} from "@angular/core";
 import {LoginService} from "../../service/login.service";
 import {AuthGuard} from "../../service/auth_guard.service";
-import {Router} from "@angular/router";
 import {UserStorage} from "../../service/user-storage.service";
 import {User} from "../../entities/User";
 import {isNullOrUndefined} from "util";

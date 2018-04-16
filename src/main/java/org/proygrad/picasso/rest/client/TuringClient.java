@@ -2,9 +2,6 @@ package org.proygrad.picasso.rest.client;
 
 import org.apache.log4j.Logger;
 import org.proygrad.picasso.rest.api.material.MaterialTO;
-import org.proygrad.picasso.rest.api.material.ParameterDistributionTO;
-import org.proygrad.picasso.rest.api.material.PropertyDistributionTO;
-import org.proygrad.picasso.rest.api.material.PropertyTO;
 import org.proygrad.picasso.rest.api.scenario.ScenarioTO;
 import org.proygrad.picasso.rest.api.user.UserTO;
 import org.proygrad.picasso.rest.exception.NotFoundException;
@@ -30,7 +27,8 @@ public class TuringClient {
 
     private final static String MATERIAL_PATH = "material";
     private final static String MATERIAL_BY_USER_ID_PATH = "?user_id=";
-    private final static String MATERIAL_BY_PROPERTIES_PATH = "?properties=";
+    private final static String MATERIAL_BY_PROPERTIES_PATH = "properties=";
+    private final static String PROPERTIES_PATH = "&properties=";
 
     @Autowired
     private RestTemplate restTemplate;
@@ -76,84 +74,56 @@ public class TuringClient {
     }
 
     public UserTO findByUsername(String username) {
+        LOGGER.info("Find user by username " + username);
         return restTemplate.getForEntity(TURING_HOST + USER_BY_EMAIL_PATH + username, UserTO.class).getBody();
 
     }
 
-    public String addMaterial(MaterialTO material) {
-        LOGGER.info("Material added " + material.getDescription() + " for " + material.getUserId());
+    /****** Material ***************************************************************************************************/
 
-        return "material_1_mock";
-        /*TODO: A probar
+    public String addMaterial(MaterialTO material) {
+        LOGGER.info("Material added " + material.getName() + " for " + material.getUserId());
+
         return restTemplate.postForEntity(TURING_HOST + MATERIAL_PATH, material, String.class).getBody();
-        */
     }
 
     public List<MaterialTO> getMaterialsByUserIdOrProperties(String userId, List<String> properties) {
 
-        return this.getMockMaterials();
+        LOGGER.info("Getting materials by user id and properties");
 
-        /* TODO: completar y ajustar segun usuario y propiedades q se envien
-        ResponseEntity<MaterialTO[]> responseEntity = restTemplate.getForEntity(MATERIAL_PATH + MATERIAL_BY_USER_ID_PATH + userId, MaterialTO[].class);
+        String searchByUserPath = "";
+        String searchByProperties="";
+
+        if(userId!=null && !userId.isEmpty()){
+            searchByUserPath = MATERIAL_BY_USER_ID_PATH + userId;
+        }
+        if(properties!=null && !properties.isEmpty()){
+            if(searchByUserPath.isEmpty()){
+                searchByProperties="?";
+            } else {
+                searchByProperties="&";
+            }
+            searchByProperties = searchByProperties+MATERIAL_BY_PROPERTIES_PATH+ String.join(PROPERTIES_PATH, properties);
+        }
+
+        ResponseEntity<MaterialTO[]> responseEntity = restTemplate.getForEntity(TURING_HOST +MATERIAL_PATH + searchByUserPath + searchByProperties, MaterialTO[].class);
         MaterialTO[] objects = responseEntity.getBody();
 
         return new ArrayList(Arrays.asList(objects));
-*/
+
     }
 
     public MaterialTO getMaterial(String materialId) {
-        return this.giveMaterialMock(materialId);
-        /*TODO: A probar
-        return restTemplate.getForEntity(TURING_HOST + MATERIAL_PATH+ "/" + materialId, MaterialTO.class, materialId).getBody();
-        */
+        return restTemplate.getForEntity(TURING_HOST + MATERIAL_PATH + "/" + materialId, MaterialTO.class, materialId).getBody();
     }
 
-    private List<MaterialTO> getMockMaterials() {
-
-        List<MaterialTO> mockMaterials = new ArrayList<MaterialTO>();
-
-        mockMaterials.add(giveMaterialMock("1"));
-        mockMaterials.add(giveMaterialMock("2"));
-        mockMaterials.add(giveMaterialMock("3"));
-        mockMaterials.add(giveMaterialMock("4"));
-
-        return mockMaterials;
+    public void deleteMaterial(String materialId) {
+        LOGGER.info("Sending material to delete: " + materialId);
+        restTemplate.delete(TURING_HOST + MATERIAL_PATH + "/" + materialId);
     }
 
-    private MaterialTO giveMaterialMock(String id) {
-        List<PropertyTO> mockPropertiesTO = new ArrayList<PropertyTO>();
-
-        List<ParameterDistributionTO> parameters = new ArrayList<ParameterDistributionTO>();
-
-        ParameterDistributionTO parameterDistribution_1 = new ParameterDistributionTO();
-        parameterDistribution_1.setId("PARAMETER_DISTRIBUTION_" + id + "_ID");
-        parameterDistribution_1.setCode("PARAMETER_DISTRIBUTION_" + id + "_CODE");
-        parameterDistribution_1.setValue("VALUE");
-        parameters.add(parameterDistribution_1);
-
-        PropertyDistributionTO propertyDistribution_1 = new PropertyDistributionTO();
-        propertyDistribution_1.setId("PROPERTY_DISTRIBUTION_" + id);
-        propertyDistribution_1.setType("VARIABLE");
-        propertyDistribution_1.setParameters(parameters);
-
-        PropertyTO property_1 = new PropertyTO();
-        property_1.setId("PROPERTY_" + id);
-        property_1.setCode("CODE_PROPERTY_" + id);
-        property_1.setDistribution(propertyDistribution_1);
-        property_1.setMagnitude("MAGNITUDE");
-        property_1.setType("VARIABLE");
-        property_1.setUnit("CMS");
-        property_1.setValue(1.0d);
-
-        mockPropertiesTO.add(property_1);
-
-        MaterialTO mockMaterial_1 = new MaterialTO();
-        mockMaterial_1.setId("MATERIAL_" + id);
-        mockMaterial_1.setDescription("desc material_" + id);
-        mockMaterial_1.setProperties(mockPropertiesTO);
-        mockMaterial_1.setUserId("USER_PEPEITO_ID");
-
-        return mockMaterial_1;
+    public String updateMaterial(String materialId, MaterialTO materialTO) {
+        LOGGER.info("Sending material to update: " + materialId);
+        return restTemplate.patchForObject( TURING_HOST + MATERIAL_PATH + "/" + materialId, (Object) materialTO, String.class, materialId);
     }
-
 }

@@ -20,6 +20,7 @@ const routes: Routes = [
     {path: 'dashboard', component: DashboardComponent},
     {path: 'scenario/:id', component: ScenarioDetailComponent},
     {path: 'material/:id', component: MaterialDetailComponent},
+    {path: 'material', component: MaterialDetailComponent},
     {path: 'scenarios', component: ScenariosComponent},
     {path: 'new/semi-elliptical-surface-crack-in-a-straight-pipe', component: SESCIASPComponent},
     {path: 'profile', component: UserProfileComponent},

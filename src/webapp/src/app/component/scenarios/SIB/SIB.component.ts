@@ -1,14 +1,12 @@
-import {Component, Inject, OnInit} from '@angular/core';
-import {Scenario, CommonItem, Parameter} from "../../../entities/scenario";
-import {
-    CENTIMETER, DISTANCE, INTERNATIONAL, LOGNORMAL, NORMAL, SE_SURFACE_CRACK_STRAIGHT_PIPE, SIMPLE_IRON_BAR, DETERMINISTIC,
-    VARIABLE
-} from "../../utils/constant/constants";
-import {Form, FormBuilder, FormControl, FormGroup, Validators} from "@angular/forms";
+import {Component, OnInit} from '@angular/core';
+import {CommonItem, Scenario} from "../../../entities/scenario";
+import {DISTANCE, LOGNORMAL, SIMPLE_IRON_BAR, VARIABLE} from "../../utils/constant/constants";
+import {FormControl, FormGroup, Validators} from "@angular/forms";
 import {Router} from "@angular/router";
 import {ScenarioService} from "../../../service/scenario.service";
 import {AuthGuard} from "../../../service/auth_guard.service";
 import {UserStorage} from "../../../service/user-storage.service";
+import {Parameter} from "../../../entities/parameter";
 
 
 @Component({
@@ -96,7 +94,7 @@ export class SIBComponent implements OnInit {
     private postAndRoute() {
         this.scenarioService.create(this.scenario)
             .then(res => {
-                this.router.navigate(['/scenarios', res]);
+                this.router.navigate(['/scenario', res]);
             });
     }
 

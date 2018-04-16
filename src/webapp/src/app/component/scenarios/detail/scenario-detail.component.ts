@@ -3,7 +3,7 @@ import {ActivatedRoute} from '@angular/router';
 import {Location} from '@angular/common';
 import 'rxjs/add/operator/switchMap';
 import {ScenarioService} from "../../../service/scenario.service";
-import {Scenario} from "../../../entities/scenario";
+import {CommonItem, Scenario} from "../../../entities/scenario";
 import {Observable} from "rxjs/Observable";
 import 'rxjs/Rx';
 import {isNullOrUndefined} from "util";
@@ -31,6 +31,7 @@ export class ScenarioDetailComponent implements OnInit, OnDestroy {
 
     failurePercentage: number = 0;
     failurePercentageScientific: string;
+    varianceScientific: string;
 
 
     ngOnInit(): void {
@@ -87,7 +88,7 @@ export class ScenarioDetailComponent implements OnInit, OnDestroy {
         return this.scenario.parameters.find(p => p.code === code);
     }
 
-    public getConfiguration(code: string) {
+    public getConfiguration(code: string): CommonItem {
         return this.scenario.configuration.find(p => p.code === code);
     }
 
@@ -101,6 +102,9 @@ export class ScenarioDetailComponent implements OnInit, OnDestroy {
             let fProb: number = +this.scenario.output.find(o => o.code === 'FAILURE_PROBABILITY').value;
             this.failurePercentage = Math.round(fProb * 100);
             this.failurePercentageScientific = fProb.toExponential(2);
+
+            let variance: number = fProb / +this.getConfiguration('PRECISION').value;
+            this.varianceScientific = variance.toExponential(2);
             this.doughnutChartData = [100 - this.failurePercentage, this.failurePercentage];
         }
     }

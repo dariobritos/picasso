@@ -1,8 +1,16 @@
 import {Pipe, PipeTransform} from "@angular/core";
 import {
-    CENTIMETER, FOOT, INCH, KILOPASCAL, MEGAPASCAL, MEGAPASCAL_METER_0_5, MILLIMETER, PSI,
+    CENTIMETER,
+    FOOT,
+    INCH,
+    KILOPASCAL,
     KSI,
-    THOU, KSI_INCH_0_5
+    KSI_INCH_0_5,
+    MEGAPASCAL,
+    MEGAPASCAL_METER_0_5,
+    MILLIMETER,
+    PSI,
+    THOU
 } from "../constant/constants";
 
 @Pipe({name: 'abbreviations'})

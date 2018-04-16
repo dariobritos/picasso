@@ -4,8 +4,9 @@ import {LoginService} from "../../../service/login.service";
 import {Router} from "@angular/router";
 import {User} from "../../../entities/User";
 import {UserStorage} from "../../../service/user-storage.service";
-import {UserService} from "../../../service/user.service";
 import {TranslateService} from "ng2-translate";
+import {isNullOrUndefined} from "util";
+import {ScenarioIdPipe} from "../pipes/scenario-id.pipe";
 
 declare var jquery: any;
 declare var $: any;
@@ -41,6 +42,14 @@ export class NavbarComponent {
 
     loggedIn(): boolean {
         return this.authGuard.checkLogin();
+    }
+
+    fastScenario(){
+        if(isNullOrUndefined(this.currentUser())){
+            return;
+        }
+        let pipe : ScenarioIdPipe = new ScenarioIdPipe();
+        this.router.navigate(["new/" + pipe.transform(this.currentUser().preferences.fastScenario)])
     }
 
     currentUser(): User {

@@ -1,6 +1,6 @@
 import {Component, Input, OnInit} from '@angular/core';
-import {Parameter} from "../../../entities/scenario";
-import {DISTANCE, LOGNORMAL, NORMAL, DETERMINISTIC, VARIABLE} from "../constant/constants";
+import {DETERMINISTIC, DISTANCE, LOGNORMAL, NORMAL, VARIABLE} from "../constant/constants";
+import {Parameter} from "../../../entities/parameter";
 
 @Component({
     selector: 'static-variable-output',

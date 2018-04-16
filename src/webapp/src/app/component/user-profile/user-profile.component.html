@@ -10,7 +10,8 @@
                 <div class="row">
                     <div class="form-group col col-12 col-lg-6">
                         <label for="fieldEmail">{{'profile.emailAddress'|translate}}</label>
-                        <input [(ngModel)]="user.email" name="email" type="email" [ngModelOptions]="{standalone: true}" class="form-control" id="fieldEmail"
+                        <input [(ngModel)]="user.email" name="email" type="email" [ngModelOptions]="{standalone: true}"
+                               class="form-control" id="fieldEmail"
                                aria-describedby="emailHelp" disabled
                                placeholder="{{'profile.emailAddress'|translate}}">
                     </div>
@@ -18,7 +19,8 @@
 
                     <div class="form-group col col-12 col-lg-6">
                         <label for="inputName">{{'profile.name'|translate}}</label>
-                        <input [(ngModel)]="user.name" name="name" type="text" formControlName="name" class="form-control" id="inputName"
+                        <input [(ngModel)]="user.name" name="name" type="text" formControlName="name"
+                               class="form-control" id="inputName"
                                placeholder="{{'profile.name'|translate}}">
                     </div>
 
@@ -29,13 +31,15 @@
                 <div class="row">
                     <div class="form-group col col-12 col-lg-6">
                         <label for="inputName">{{'profile.surname'|translate}}</label>
-                        <input [(ngModel)]="user.surname" name="surname" formControlName="surname" type="text" class="form-control"
+                        <input [(ngModel)]="user.surname" name="surname" formControlName="surname" type="text"
+                               class="form-control"
                                id="inputSurname" placeholder="{{'profile.surname'|translate}}">
                     </div>
 
                     <div class="form-group col col-12 col-lg-6">
                         <label for="inputOrganization">{{'profile.organization'|translate}}</label>
-                        <input [(ngModel)]="user.organization" name="organization" formControlName="organization" type="text" class="form-control"
+                        <input [(ngModel)]="user.organization" name="organization" formControlName="organization"
+                               type="text" class="form-control"
                                id="inputOrganization" placeholder="{{'profile.organization'|translate}}">
                     </div>
 
@@ -48,14 +52,18 @@
                         <label for="unitSystemInput" class="w-100">{{'profile.unitSystem'|translate}}</label>
                         <div id="unitSystemInput" class="btn-group w-100" data-toggle="buttons">
                             <label class="btn btn-secondary active w-50"
-                                   [ngClass]="{ 'active' : 'INT' == user.preferences.unitSystem }" (click)="unitSystemSelect('INT')">
-                                <input formControlName="unitINT" type="radio" name="unitINT" id="unitINT" autocomplete="off"
+                                   [ngClass]="{ 'active' : 'INT' == user.preferences.unitSystem }"
+                                   (click)="unitSystemSelect('INT')">
+                                <input formControlName="unitINT" type="radio" name="unitINT" id="unitINT"
+                                       autocomplete="off"
                                        (click)="unitSystemSelect('INT')" checked>
                                 {{'signup.international'|translate}}
                             </label>
                             <label class="btn btn-secondary w-50"
-                                   [ngClass]="{ 'active' : 'US' == user.preferences.unitSystem }"(click)="unitSystemSelect('US')">
-                                <input formControlName="unitUS" type="radio" name="unitUS" id="unitUS" autocomplete="off"
+                                   [ngClass]="{ 'active' : 'US' == user.preferences.unitSystem }"
+                                   (click)="unitSystemSelect('US')">
+                                <input formControlName="unitUS" type="radio" name="unitUS" id="unitUS"
+                                       autocomplete="off"
                                 >{{'signup.unitedStates'|translate}}
                             </label>
 
@@ -69,14 +77,18 @@
                             <label class="btn btn-secondary active w-50"
                                    [ngClass]="{ 'active' : 'EN' == user.preferences.language }"
                                    (click)="languageSelect('EN')">
-                                <input formControlName="languageEN" type="radio" name="languageEN" id="languageEN" autocomplete="off"
-                                       [(ngModel)]="user.preferences.language" [value]="'EN'"> {{'signup.english'|translate}}
+                                <input formControlName="languageEN" type="radio" name="languageEN" id="languageEN"
+                                       autocomplete="off"
+                                       [(ngModel)]="user.preferences.language" [value]="'EN'">
+                                {{'signup.english'|translate}}
                             </label>
                             <label class="btn btn-secondary w-50"
                                    [ngClass]="{ 'active' : 'ES' == user.preferences.language }"
                                    (click)="languageSelect('ES')">
-                                <input formControlName="languageES" type="radio" name="languageES" id="languageES" autocomplete="off"
-                                       [(ngModel)]="user.preferences.language" [value]="'ES'"> {{'signup.spanish'|translate}}
+                                <input formControlName="languageES" type="radio" name="languageES" id="languageES"
+                                       autocomplete="off"
+                                       [(ngModel)]="user.preferences.language" [value]="'ES'">
+                                {{'signup.spanish'|translate}}
                             </label>
 
                         </div>
@@ -89,7 +101,8 @@
                     <div class="form-group col col-12 col-lg-6">
                         <label for="fastScenarioIdInput" class="w-100">{{'profile.fastScenario'|translate}}</label>
                         <div id="fastScenarioIdInput" class="form-group w-100">
-                            <select [(ngModel)]="user.preferences.fastScenario"  formControlName="fastScenario" class="custom-select form-control-lg mb-2 mt-2 w-100">
+                            <select [(ngModel)]="user.preferences.fastScenario" formControlName="fastScenario"
+                                    class="custom-select form-control-lg mb-2 mt-2 w-100">
                                 <option *ngFor="let oo of scenarioTypes" [value]="oo">{{'scenario.'+oo|translate}}
                                 </option>
 
@@ -101,7 +114,8 @@
 
                 <div class="row justify-content-center">
                     <div class="col col-12 col-lg-12 text-center">
-                        <button [disabled]="this.loading" type="submit" (click)="updateUser()" class="button btn btn-success m-5"
+                        <button [disabled]="this.loading" type="submit" (click)="updateUser()"
+                                class="button btn btn-success m-5"
                                 style="background-color: green!important">
                             <span>{{'profile.update'|translate}}</span>
                         </button>

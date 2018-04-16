@@ -1,39 +1,54 @@
 <div class="main-container container mt-2 justify-content-lg-center">
-    <div class="row m-0 justify-content-center ">
+    <div *ngIf="this.material" class="row m-0 justify-content-center ">
 
-        <div class="col-12 col-lg-6 col-md-12 col-sm-12 justify-content-center mb-3 mt-3">
+        <div  class="col-12 col-lg-6 col-md-12 col-sm-12 justify-content-center mb-3 mt-3">
             <div class="input-group mb-3">
                 <div class="input-group-prepend">
-                    <span class="input-group-text" id="basic-addon1">Name</span>
+                    <span class="input-group-text" id="basic-addon1">{{'material-detail.name'|translate}}</span>
                 </div>
-                <input type="text" class="form-control" placeholder="Name" aria-label="Username" aria-describedby="basic-addon1">
+                <input type="text" class="form-control" placeholder="{{'material-detail.name'|translate}}"
+                       aria-describedby="basic-addon1" [(ngModel)]="material.name">
             </div>
-            <div class="input-group">
+
+            <static-variable-input *ngIf="getProperty('FRACTURE_TOUGHNESS')" [parameter]="getProperty('FRACTURE_TOUGHNESS')"
+                                   [unitSystem]="unitSystem"
+                                   (changeParameter)="propertyChanged($event)"></static-variable-input>
+            <static-variable-input *ngIf="getProperty('YIELD_STRESS')" [parameter]="getProperty('YIELD_STRESS')"
+                                   [unitSystem]="unitSystem"
+                                   (changeParameter)="propertyChanged($event)"></static-variable-input>
+            <static-input *ngIf="getProperty('PLASTIC_COLLAPSE')" [parameter]="getProperty('PLASTIC_COLLAPSE')" [unitSystem]="unitSystem"
+                          (changeParameter)="propertyChanged($event)"></static-input>
+
+
+            <div *ngIf="this.materialPropertiesFiltered.length>0" class="input-group">
                 <div class="input-group-prepend">
                     <span class="input-group-text" id="basic-addon2">New property</span>
                 </div>
-                <select class="custom-select" id="inputGroupSelect04">
-                    <option selected>Choose...</option>
-                    <option value="1">Yield stress</option>
-                    <option value="2">Plastic collapse</option>
-                    <option value="3">Fracture thougness</option>
+                <select [(ngModel)]="selectedMaterialProperty" class="custom-select" id="inputGroupSelect04">
+
+                    <option *ngFor="let prop of materialPropertiesFiltered"
+                            [value]="prop">
+                        {{'params.'+prop|translate}}
+                    </option>
+
+
                 </select>
                 <div class="input-group-append">
-                    <button class="btn btn-outline-success" type="button">Add</button>
+                    <button class="btn btn-outline-success" type="button" (click)="addProperty()" [disabled]="addEnabled()">Add</button>
                 </div>
             </div>
         </div>
 
 
     </div>
-    <div class="row m-0 justify-content-center ">
+    <div *ngIf="this.material"  class="row m-0 justify-content-center ">
 
         <div class="text-center">
             <button routerLink="/materials" type="button"
                     class="btn btn-success">Back
             </button>
-            <button routerLink="/materials" type="button"
-                    class="btn btn-success">Save
+            <button [disabled]="this.loading || !validMaterial()" type="button"
+                    class="btn btn-success" (click)="saveMaterial()">Save
             </button>
         </div>
     </div>
