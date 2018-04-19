@@ -1,5 +1,7 @@
 <label for="input-value" class="h5">
+
     {{'params.'+parameter.code|translate}}
+    <i> ({{'params.abbreviations.'+parameter.code|translate}})</i>
 </label>
 <div class="form-row" id="input-value" [formGroup]="form">
 

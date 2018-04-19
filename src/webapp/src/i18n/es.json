@@ -36,9 +36,10 @@
     "custom": "Personalizado",
     "library": "Libreria",
     "results": "Resultados",
-    "selectMaterial":"Seleccionar material",
-    "invalidCrackDepth":"La profundidad de la grieta debe estar entre XXXXX",
-    "invalidCrackDepthLengthRelationship":"Profundidad de la grieta / Largo de la grieta debe estar entre XXXX"
+    "selectMaterial": "Seleccionar material",
+    "restrictionA": "0 <= a/t <= 0.8",
+    "restrictionB": "0.05 <= a/c <= 1",
+    "restrictionC": "0.1 <= t/Ri <= 0.25"
   },
   "profile": {
     "userProfile": "Perfil de usuario",
@@ -55,7 +56,7 @@
     "english": "Ingles",
     "spanish": "Español",
     "fastScenario": "Escenario rapido",
-    "update":"Actualizar"
+    "update": "Actualizar"
   },
   "signup": {
     "signup": "Registro",
@@ -87,6 +88,18 @@
     "INNER_RADIUS": "Radio interno",
     "BAR_LOAD": "Carga",
     "BAR_STRENGTH": "Fuerza",
+    "abbreviations": {
+      "CRACK_DEPTH": "a",
+      "CRACK_LENGTH": "2c",
+      "WALL_THICKNESS": "t",
+      "FRACTURE_TOUGHNESS": "-",
+      "YIELD_STRESS": "-",
+      "PLASTIC_COLLAPSE": "Lr max",
+      "OPERATING_PRESSURE": "P",
+      "INNER_RADIUS": "Ri",
+      "BAR_LOAD": "-",
+      "BAR_STRENGTH": "-"
+    },
     "distribution": {
       "deterministic": "Deterministico",
       "normal": "Normal",
@@ -94,14 +107,13 @@
     }
   },
   "materials": {
-    "materials":"Materiales",
-    "name":"Nombre",
-    "properties":"Propiedades",
-    "actions":"Acciones",
-    "newMaterial":"Agregar nuevo"
+    "materials": "Materiales",
+    "name": "Nombre",
+    "properties": "Propiedades",
+    "actions": "Acciones",
+    "newMaterial": "Agregar nuevo"
   },
-
   "material-detail": {
-    "name":"Nombre"
+    "name": "Nombre"
   }
 }

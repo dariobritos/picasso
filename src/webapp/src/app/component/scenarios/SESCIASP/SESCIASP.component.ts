@@ -46,8 +46,9 @@ export class SESCIASPComponent implements OnInit {
 
     unitSystem: string;
 
-    invalidCrackDepth: Boolean = false;
-    invalidCrackDepthLengthRelationship: Boolean = false;
+    restrictionA: Boolean = true;
+    restrictionB: Boolean = true;
+    restrictionC: Boolean = true;
 
     constructor(private router: Router,
                 private scenarioService: ScenarioService,
@@ -131,12 +132,21 @@ export class SESCIASPComponent implements OnInit {
     }
 
     validateParameterRestrictions(): Boolean {
-        this.invalidCrackDepth = true;
-        this.invalidCrackDepthLengthRelationship = true;
-        return !this.invalidCrackDepth && !this.invalidCrackDepthLengthRelationship;
+
+        let t: number = this.getParameter('WALL_THICKNESS').value;
+        let c: number = this.getParameter('CRACK_LENGTH').value / 2;
+        let a: number = this.getParameter('CRACK_DEPTH').value;
+        let Ri: number = this.getParameter('INNER_RADIUS').value;
+
+
+        this.restrictionA = 0 <= (a / t) && (a / t) <= 0.8;
+        this.restrictionB = 0.05 <= (a / c) && (a / c) <= 1;
+        this.restrictionC = 0.1 <= (t / Ri) && (t / Ri) <= 0.25;
+
+        return this.restrictionA && this.restrictionB && this.restrictionC;
     }
 
-    getParameter(code: string) {
+    getParameter(code: string): Parameter {
         return this.scenario.parameters.find(p => p.code === code);
     }
 
