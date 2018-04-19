@@ -36,9 +36,10 @@
     "custom": "Custom",
     "library": "Library",
     "results": "Results",
-    "selectMaterial":"Select material",
-    "invalidCrackDepth":"Crack depth must be between XXXXXX",
-    "invalidCrackDepthLengthRelationship":"Crack dept / Crack length must be between XXXXX"
+    "selectMaterial": "Select material",
+    "restrictionA": "0 <= a/t <= 0.8",
+    "restrictionB": "0.05 <= a/c <= 1",
+    "restrictionC": "0.1 <= t/Ri <= 0.25"
   },
   "profile": {
     "userProfile": "User profile",
@@ -87,6 +88,18 @@
     "INNER_RADIUS": "Inner radius",
     "BAR_LOAD": "Load",
     "BAR_STRENGTH": "Strength",
+    "abbreviations": {
+      "CRACK_DEPTH": "a",
+      "CRACK_LENGTH": "2c",
+      "WALL_THICKNESS": "t",
+      "FRACTURE_TOUGHNESS": "-",
+      "YIELD_STRESS": "-",
+      "PLASTIC_COLLAPSE": "Lr max",
+      "OPERATING_PRESSURE": "P",
+      "INNER_RADIUS": "Ri",
+      "BAR_LOAD": "-",
+      "BAR_STRENGTH": "-"
+    },
     "distribution": {
       "deterministic": "Deterministic",
       "normal": "Normal",
@@ -94,14 +107,13 @@
     }
   },
   "materials": {
-    "materials":"Materials",
-    "name":"Name",
-    "properties":"Properties",
-    "actions":"Actions",
-    "newMaterial":"Add new"
+    "materials": "Materials",
+    "name": "Name",
+    "properties": "Properties",
+    "actions": "Actions",
+    "newMaterial": "Add new"
   },
-
   "material-detail": {
-    "name":"Name"
+    "name": "Name"
   }
 }
