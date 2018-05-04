@@ -18,8 +18,8 @@
   "scenario": {
     "scenario": "Escenario",
     "proceed": "Proceder",
-    "SE_SURFACE_CRACK_STRAIGHT_PIPE": "ES:Semi-elliptical surface crack in a straight pipe.",
-    "SIMPLE_IRON_BAR": "ES:Simple iron bar load-strength",
+    "SE_SURFACE_CRACK_STRAIGHT_PIPE": "Confiabilidad estructural de tuberias fisuradas basada en el diagrama de evaluación de falla",
+    "CIRCULAR_SECTION_BAR_SUBJECTED_TO_TRACTION": "Confiabilidad estructural de barra de sección circular sometida a tracción",
     "parametersSetup": "Configuracion de parametros",
     "crackGeometry": "Geometria de la fisura",
     "componentGeometry": "Geometria del componente",
@@ -82,10 +82,11 @@
     "CRACK_LENGTH": "Largo de la grieta",
     "WALL_THICKNESS": "Espesor de la pared",
     "FRACTURE_TOUGHNESS": "Tenacidad a la fractura",
-    "YIELD_STRESS": "Estres",
+    "YIELD_STRESS": "Tensión de fluencia",
     "PLASTIC_COLLAPSE": "Colapso plastico",
     "OPERATING_PRESSURE": "Presion operativa",
     "INNER_RADIUS": "Radio interno",
+    "BAR_DIAMETER": "Diámetro",
     "BAR_LOAD": "Carga",
     "BAR_STRENGTH": "Fuerza",
     "abbreviations": {
@@ -97,6 +98,7 @@
       "PLASTIC_COLLAPSE": "Lr max",
       "OPERATING_PRESSURE": "P",
       "INNER_RADIUS": "Ri",
+      "BAR_DIAMETER": "D",
       "BAR_LOAD": "-",
       "BAR_STRENGTH": "-"
     },

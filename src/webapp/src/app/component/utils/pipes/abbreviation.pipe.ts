@@ -8,7 +8,7 @@ import {
     KSI_INCH_0_5,
     MEGAPASCAL,
     MEGAPASCAL_METER_0_5,
-    MILLIMETER,
+    MILLIMETER, NEWTON, POUND_FORCE,
     PSI,
     THOU
 } from "../constant/constants";
@@ -22,12 +22,14 @@ export class AbbreviationPipe implements PipeTransform {
         [CENTIMETER, 'cm'],
         [KILOPASCAL, 'KPa'],
         [MEGAPASCAL, 'MPa'],
+        [NEWTON, 'N'],
         [INCH, 'inch'],
         [FOOT, 'foot'],
         [THOU, 'thou'],
         [KSI, 'psi'],
         [PSI, 'ksi'],
-        [MEGAPASCAL_METER_0_5, 'mpa*m0.5'],
+        [POUND_FORCE, 'lbf'],
+        [MEGAPASCAL_METER_0_5, 'mpa*m^0.5'],
         [KSI_INCH_0_5, 'ksi*inch^0.5']
 
 

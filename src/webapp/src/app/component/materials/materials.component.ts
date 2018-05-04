@@ -3,7 +3,7 @@ import {AuthGuard} from "../../service/auth_guard.service";
 import {Material, MaterialProperty} from "../../entities/material";
 import {
     DETERMINISTIC, FRACTURE_TOUGHNESS, INTERNATIONAL, PLASTIC_COLLAPSE,
-    PREASURE
+    PRESSURE
 } from "../utils/constant/constants";
 import {MaterialService} from "../../service/material.service";
 import {UserStorage} from "../../service/user-storage.service";

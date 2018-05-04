@@ -5,7 +5,7 @@ import {ScenarioDetailComponent} from "../component/scenarios/detail/scenario-de
 import {DashboardComponent} from "../component/dashboard/dashboard.component";
 import {HomeComponent} from "../component/home/home.component";
 import {SESCIASPComponent} from "../component/scenarios/SESCIASP/SESCIASP.component";
-import {SIBComponent} from "../component/scenarios/SIB/SIB.component";
+import {SIBComponent} from "../component/scenarios/CSBSTT/CSBSTT.component";
 import {UserProfileComponent} from "../component/user-profile/user-profile.component";
 import {MaterialsComponent} from "../component/materials/materials.component";
 import {ErrorComponent} from "../component/error/error.component";
@@ -25,7 +25,7 @@ const routes: Routes = [
     {path: 'new/semi-elliptical-surface-crack-in-a-straight-pipe', component: SESCIASPComponent},
     {path: 'profile', component: UserProfileComponent},
     {path: 'signup', component: SignupComponent},
-    {path: 'new/simple-iron-bar', component: SIBComponent},
+    {path: 'new/circular-section-bar-subjected-to-traction', component: SIBComponent},
     {path: 'materials', component: MaterialsComponent,canActivate:[AuthGuard]},
     {path: 'error/:code', component: ErrorComponent,canActivate:[AuthGuard]}
 ];

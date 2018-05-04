@@ -27,16 +27,21 @@
 
         <!--SETUP DE PARAMETROS-->
         <div class="col-12 col-lg-6 col-md-12 col-sm-12 ">
-            <h1 class="w-100 text-center  mt-4 mb-4">{{'scenario.parametersSetup'|translate}}p</h1>
+            <h1 class="w-100 text-center  mt-4 mb-4">{{'scenario.parametersSetup'|translate}}</h1>
             <div id="accordion" role="tablist" class="w-100">
 
-                <!--CARGA-->
+
+
+
+
+
+                <!--COMPONENTE-->
                 <div class="card">
-                    <div class="card-header" role="tab" id="headingFour">
+                    <div class="card-header" role="tab" id="headingOne">
                         <h5 class="mb-0">
-                            <a class="collapsed" data-toggle="collapse" href="#collapseFour" aria-expanded="false"
-                               aria-controls="collapseFour">
-                                {{'scenario.loadProperties'|translate}}
+                            <a class="collapsed" data-toggle="collapse" href="#collapseOne" aria-expanded="true"
+                               aria-controls="collapseOne">
+                                {{'scenario.componentGeometry'|translate}}
                             </a>
                         </h5>
                     </div>
@@ -45,9 +50,33 @@
                         <div class="card-body">
 
 
+                            <static-input [parameter]="getParameter('BAR_DIAMETER')"
+                                                   [unitSystem]="unitSystem"
+                                                   (changeParameter)="parameterChanged($event)"></static-input>
+
+                        </div>
+                    </div>
+                </div>
+
+
+                <!--CARGA-->
+                <div class="card">
+                    <div class="card-header" role="tab" id="headingTwo">
+                        <h5 class="mb-0">
+                            <a class="collapsed" data-toggle="collapse" href="#collapseTwo" aria-expanded="false"
+                               aria-controls="collapseTwo">
+                                {{'scenario.loadProperties'|translate}}
+                            </a>
+                        </h5>
+                    </div>
+                    <div id="collapseTwo" class="collapse" role="tabpanel" aria-labelledby="headingTwo"
+                         data-parent="#accordion">
+                        <div class="card-body">
+
+
                             <static-variable-input [parameter]="getParameter('BAR_LOAD')" [unitSystem]="this.unitSystem"
                                                    (changeParameter)="parameterChanged($event)"></static-variable-input>
-                            <static-variable-input [parameter]="getParameter('BAR_STRENGTH')" [unitSystem]="this.unitSystem"
+                            <static-variable-input [parameter]="getParameter('YIELD_STRESS')" [unitSystem]="this.unitSystem"
                                                    (changeParameter)="parameterChanged($event)"></static-variable-input>
 
 

@@ -1,6 +1,6 @@
 import {CommonItem} from "./scenario";
 import {
-    DISTANCE,
+    DISTANCE, FORCE,
     FRACTURE_TOUGHNESS,
     INCH,
     INTERNATIONAL,
@@ -8,10 +8,10 @@ import {
     KSI_INCH_0_5,
     MEGAPASCAL,
     MEGAPASCAL_METER_0_5,
-    MILLIMETER,
+    MILLIMETER, NEWTON,
     NORMAL,
-    PLASTIC_COLLAPSE,
-    PREASURE,
+    PLASTIC_COLLAPSE, POUND_FORCE,
+    PRESSURE,
     VARIABLE
 } from "../component/utils/constant/constants";
 
@@ -45,8 +45,11 @@ export class Parameter {
             case DISTANCE:
                 this.unit = (system === INTERNATIONAL) ? MILLIMETER : INCH;
                 break;
-            case PREASURE:
+            case PRESSURE:
                 this.unit = (system === INTERNATIONAL) ? MEGAPASCAL : KSI;
+                break;
+            case FORCE:
+                this.unit = (system === INTERNATIONAL) ? NEWTON : POUND_FORCE;
                 break;
             case FRACTURE_TOUGHNESS:
                 this.unit = (system === INTERNATIONAL) ? MEGAPASCAL_METER_0_5 : KSI_INCH_0_5;

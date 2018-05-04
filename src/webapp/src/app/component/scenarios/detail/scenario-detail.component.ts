@@ -103,7 +103,7 @@ export class ScenarioDetailComponent implements OnInit, OnDestroy {
             this.failurePercentage = Math.round(fProb * 100);
             this.failurePercentageScientific = fProb.toExponential(2);
 
-            let variance: number = fProb / +this.getConfiguration('PRECISION').value;
+            let variance: number = (fProb*(1-fProb)) / +this.getConfiguration('PRECISION').value;
             this.varianceScientific = variance.toExponential(2);
             this.doughnutChartData = [100 - this.failurePercentage, this.failurePercentage];
         }

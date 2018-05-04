@@ -12,7 +12,7 @@ import {ScenariosComponent} from "./component/scenarios/scenarios.component";
 import {ScenarioService} from "./service/scenario.service";
 import {HomeComponent} from "./component/home/home.component";
 import {SESCIASPComponent} from "./component/scenarios/SESCIASP/SESCIASP.component";
-import {SIBComponent} from "./component/scenarios/SIB/SIB.component";
+import {SIBComponent} from "./component/scenarios/CSBSTT/CSBSTT.component";
 import {InputsModule} from "./component/utils/utils-module";
 import {CommonModule} from "@angular/common";
 import {UserProfileComponent} from "./component/user-profile/user-profile.component";

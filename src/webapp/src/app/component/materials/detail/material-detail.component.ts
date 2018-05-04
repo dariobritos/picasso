@@ -6,7 +6,7 @@ import {Material, MaterialProperty} from "../../../entities/material";
 import {MaterialService} from "../../../service/material.service";
 import {
     DETERMINISTIC, FRACTURE_TOUGHNESS, INTERNATIONAL, MATERIAL_PROPERTIES, PLASTIC_COLLAPSE,
-    PREASURE, YIELD_STRESS
+    PRESSURE, YIELD_STRESS
 } from "../../utils/constant/constants";
 import {UserStorage} from "../../../service/user-storage.service";
 import {fakeAsync} from "@angular/core/testing";
@@ -91,7 +91,7 @@ export class MaterialDetailComponent implements OnInit, OnDestroy {
                 p1 = new MaterialProperty(FRACTURE_TOUGHNESS, DETERMINISTIC, null, 0.1, this.unitSystem, FRACTURE_TOUGHNESS);
                 break;
             case YIELD_STRESS:
-                p1 = new MaterialProperty(YIELD_STRESS, DETERMINISTIC, null, 2, this.unitSystem, PREASURE);
+                p1 = new MaterialProperty(YIELD_STRESS, DETERMINISTIC, null, 2, this.unitSystem, PRESSURE);
                 break;
             case PLASTIC_COLLAPSE:
                 p1 = new MaterialProperty(PLASTIC_COLLAPSE, DETERMINISTIC, null, 1, this.unitSystem, PLASTIC_COLLAPSE);

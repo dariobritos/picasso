@@ -20,8 +20,11 @@
                     <option *ngIf="distance" value="CM">{{'CM'|abbreviations}}</option>
 
 
-                    <option *ngIf="preasure" value="MPA">{{'MPA'|abbreviations}}</option>
-                    <option *ngIf="preasure" value="KPA">{{'KPA'|abbreviations}}</option>
+                    <option *ngIf="pressure" value="MPA">{{'MPA'|abbreviations}}</option>
+                    <option *ngIf="pressure" value="KPA">{{'KPA'|abbreviations}}</option>
+
+                    <option *ngIf="force" value="NEWTON">{{'NEWTON'|abbreviations}}</option>
+
 
                     <option *ngIf="fractureToughness" value="MEGAPASCAL_METER_0_5">
                         {{'MEGAPASCAL_METER_0_5'|abbreviations}}5
@@ -36,8 +39,10 @@
                     <option *ngIf="distance" value="THOU">{{'THOU'|abbreviations}}</option>
 
 
-                    <option *ngIf="preasure" value="KSI">{{'KSI'|abbreviations}}</option>
-                    <option *ngIf="preasure" value="PSI">{{'PSI'|abbreviations}}</option>
+                    <option *ngIf="pressure" value="KSI">{{'KSI'|abbreviations}}</option>
+                    <option *ngIf="pressure" value="PSI">{{'PSI'|abbreviations}}</option>
+
+                    <option *ngIf="force" value="POUND_FORCE">{{'POUND_FORCE'|abbreviations}}</option>
 
                     <option *ngIf="fractureToughness" value="KSI_INCH_0_5">{{'KSI_INCH_0_5'|abbreviations}}</option>
 
