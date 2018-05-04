@@ -52,7 +52,7 @@ export class ScenariosComponent implements OnInit {
             return 'semi-elliptical-surface-crack-in-a-straight-pipe';
         }
 
-        return 'simple-iron-bar';
+        return 'circular-section-bar-subjected-to-traction';
     }
 
 }

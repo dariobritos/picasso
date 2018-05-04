@@ -1,6 +1,9 @@
 import {Component, OnInit} from '@angular/core';
 import {CommonItem, Scenario} from "../../../entities/scenario";
-import {DISTANCE, LOGNORMAL, SIMPLE_IRON_BAR, VARIABLE} from "../../utils/constant/constants";
+import {
+    DISTANCE, LOGNORMAL, CIRCULAR_SECTION_BAR_SUBJECTED_TO_TRACTION, VARIABLE,
+    YIELD_STRESS, FORCE, NORMAL, PRESSURE, DETERMINISTIC
+} from "../../utils/constant/constants";
 import {FormControl, FormGroup, Validators} from "@angular/forms";
 import {Router} from "@angular/router";
 import {ScenarioService} from "../../../service/scenario.service";
@@ -11,8 +14,8 @@ import {Parameter} from "../../../entities/parameter";
 
 @Component({
     selector: 'my-scenarios',
-    templateUrl: './SIB.component.html',
-    styleUrls: ['./SIB.component.css']
+    templateUrl: './CSBSTT.component.html',
+    styleUrls: ['./CSBSTT.component.css']
 })
 export class SIBComponent implements OnInit {
 
@@ -21,7 +24,7 @@ export class SIBComponent implements OnInit {
     seed: number = (new Date()).getTime();
     precision: number = 100000;
 
-    scenarioType = SIMPLE_IRON_BAR;
+    scenarioType = CIRCULAR_SECTION_BAR_SUBJECTED_TO_TRACTION;
 
     form: FormGroup;
 
@@ -44,11 +47,12 @@ export class SIBComponent implements OnInit {
 
         this.scenario = new Scenario();
         this.scenario.parameters = [
-            new Parameter('BAR_LOAD', VARIABLE, LOGNORMAL, 0.1, this.unitSystem, DISTANCE),
-            new Parameter('BAR_STRENGTH', VARIABLE, LOGNORMAL, 0.1, this.unitSystem, DISTANCE)
+            new Parameter('BAR_LOAD', VARIABLE, LOGNORMAL, 0.1, this.unitSystem, FORCE),
+            new Parameter('YIELD_STRESS', VARIABLE, NORMAL, 2, this.unitSystem, PRESSURE),
+            new Parameter('BAR_DIAMETER', DETERMINISTIC, null, 0.1, this.unitSystem, DISTANCE)
         ];
 
-        this.scenario.type = SIMPLE_IRON_BAR;
+        this.scenario.type = CIRCULAR_SECTION_BAR_SUBJECTED_TO_TRACTION;
         this.scenario.unitSystem=this.unitSystem;
 
 

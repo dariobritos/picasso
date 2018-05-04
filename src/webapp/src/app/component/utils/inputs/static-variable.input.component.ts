@@ -1,13 +1,13 @@
 import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
 import {
     DETERMINISTIC,
-    DISTANCE,
+    DISTANCE, FORCE,
     FRACTURE_TOUGHNESS,
     INTERNATIONAL,
     INTERNATIONAL_UNITS,
     LOGNORMAL,
     NORMAL,
-    PREASURE,
+    PRESSURE,
     UNITEDSTATES,
     UNITEDSTATES_UNITS,
     VARIABLE
@@ -45,7 +45,8 @@ export class StaticVariableInputComponent implements OnInit {
     unitedstates: boolean = false;
 
     distance: boolean;
-    preasure: boolean;
+    pressure: boolean;
+    force: boolean;
     fractureToughness: boolean;
 
 
@@ -59,7 +60,8 @@ export class StaticVariableInputComponent implements OnInit {
         this.unitedstates = (this.unitSystem===UNITEDSTATES);
 
         this.distance = (this.parameter.magnitude === DISTANCE);
-        this.preasure = (this.parameter.magnitude === PREASURE);
+        this.pressure = (this.parameter.magnitude === PRESSURE);
+        this.force = (this.parameter.magnitude === FORCE);
         this.fractureToughness = (this.parameter.magnitude === FRACTURE_TOUGHNESS);
 
         this.form = new FormGroup({

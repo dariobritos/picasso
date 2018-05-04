@@ -6,7 +6,7 @@ import {
     LOGNORMAL,
     NORMAL,
     PLASTIC_COLLAPSE,
-    PREASURE,
+    PRESSURE,
     SE_SURFACE_CRACK_STRAIGHT_PIPE,
     VARIABLE, YIELD_STRESS
 } from "../../utils/constant/constants";
@@ -71,9 +71,9 @@ export class SESCIASPComponent implements OnInit {
             new Parameter('WALL_THICKNESS', DETERMINISTIC, null, 0.1, this.unitSystem, DISTANCE),
             new Parameter('INNER_RADIUS', DETERMINISTIC, null, 0.1, this.unitSystem, DISTANCE),
             new Parameter('FRACTURE_TOUGHNESS', VARIABLE, NORMAL, 0.1, this.unitSystem, FRACTURE_TOUGHNESS),
-            new Parameter('YIELD_STRESS', VARIABLE, NORMAL, 2, this.unitSystem, PREASURE),
+            new Parameter('YIELD_STRESS', VARIABLE, NORMAL, 2, this.unitSystem, PRESSURE),
             new Parameter('PLASTIC_COLLAPSE', DETERMINISTIC, null, 1, this.unitSystem, PLASTIC_COLLAPSE),
-            new Parameter('OPERATING_PRESSURE', VARIABLE, NORMAL, 0.1, this.unitSystem, PREASURE)];
+            new Parameter('OPERATING_PRESSURE', VARIABLE, NORMAL, 0.1, this.unitSystem, PRESSURE)];
 
 
         this.scenario.type = 'SE_SURFACE_CRACK_STRAIGHT_PIPE';

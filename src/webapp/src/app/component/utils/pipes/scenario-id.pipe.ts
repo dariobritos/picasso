@@ -4,7 +4,7 @@ import {Pipe, PipeTransform} from "@angular/core";
 export class ScenarioIdPipe implements PipeTransform {
 
 
-    scenarioIds: Map<string, string> = new Map([['SE_SURFACE_CRACK_STRAIGHT_PIPE', 'semi-elliptical-surface-crack-in-a-straight-pipe'],['SIMPLE_IRON_BAR','simple-iron-bar']]);
+    scenarioIds: Map<string, string> = new Map([['SE_SURFACE_CRACK_STRAIGHT_PIPE', 'semi-elliptical-surface-crack-in-a-straight-pipe'],['CIRCULAR_SECTION_BAR_SUBJECTED_TO_TRACTION','circular-section-bar-subjected-to-traction']]);
         // new Map().set('SE_SURFACE_CRACK_STRAIGHT_PIPE', 'semi-elliptical-surface-crack-in-a-straight-pipe');
 
 

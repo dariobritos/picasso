@@ -18,8 +18,8 @@
   "scenario": {
     "scenario": "Scenario",
     "proceed": "Proceed",
-    "SE_SURFACE_CRACK_STRAIGHT_PIPE": "Semi-elliptical surface crack in a straight pipe.",
-    "SIMPLE_IRON_BAR": "Simple iron bar load-strength",
+    "SE_SURFACE_CRACK_STRAIGHT_PIPE": "Structural reliability of fissured pipes based on the fault evaluation diagram",
+    "CIRCULAR_SECTION_BAR_SUBJECTED_TO_TRACTION": "Structural reliability of circular section bar subjected to traction",
     "parametersSetup": "Parameters setup",
     "crackGeometry": "Crack geometry",
     "componentGeometry": "Component geometry",
@@ -86,6 +86,7 @@
     "PLASTIC_COLLAPSE": "Plastic collapse",
     "OPERATING_PRESSURE": "Operating Pressure",
     "INNER_RADIUS": "Inner radius",
+    "BAR_DIAMETER": "Diameter",
     "BAR_LOAD": "Load",
     "BAR_STRENGTH": "Strength",
     "abbreviations": {
@@ -97,6 +98,7 @@
       "PLASTIC_COLLAPSE": "Lr max",
       "OPERATING_PRESSURE": "P",
       "INNER_RADIUS": "Ri",
+      "BAR_DIAMETER": "D",
       "BAR_LOAD": "-",
       "BAR_STRENGTH": "-"
     },
