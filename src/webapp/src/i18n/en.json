@@ -39,7 +39,10 @@
     "selectMaterial": "Select material",
     "restrictionA": "0 <= a/t <= 0.8",
     "restrictionB": "0.05 <= a/c <= 1",
-    "restrictionC": "0.1 <= t/Ri <= 0.25"
+    "restrictionC": "0.1 <= t/Ri <= 0.25",
+    "restrictionADescription": "The precondition of the relationship between the depth of the crack and the thickness of the pipe is not met",
+    "restrictionBDescription": "The precondition of the relationship between depth of crack and its length is not met",
+    "restrictionCDescription": "The precondition of the relationship between the thickness of the tube and its internal radius is not met"
   },
   "profile": {
     "userProfile": "User profile",

@@ -1,7 +1,7 @@
 {
   "home": {
     "welcome": "Bienvenido",
-    "email": "Correo electronico",
+    "email": "Correo electrónico",
     "password": "Contraseña",
     "letsgo": "Comenzar!"
   },
@@ -11,18 +11,18 @@
     "scenarios": "Escenarios",
     "materials": "Materiales",
     "profile": "Perfil",
-    "fastScenario": "Escenario rapido",
+    "fastScenario": "Escenario rápido",
     "signup": "Registrarse",
     "logout": "Salir"
   },
   "scenario": {
     "scenario": "Escenario",
     "proceed": "Proceder",
-    "SE_SURFACE_CRACK_STRAIGHT_PIPE": "Confiabilidad estructural de tuberias fisuradas basada en el diagrama de evaluación de falla",
+    "SE_SURFACE_CRACK_STRAIGHT_PIPE": "Confiabilidad estructural de tuberías fisuradas basada en el diagrama de evaluación de falla",
     "CIRCULAR_SECTION_BAR_SUBJECTED_TO_TRACTION": "Confiabilidad estructural de barra de sección circular sometida a tracción",
-    "parametersSetup": "Configuracion de parametros",
-    "crackGeometry": "Geometria de la fisura",
-    "componentGeometry": "Geometria del componente",
+    "parametersSetup": "Configuración de parámetros",
+    "crackGeometry": "Geometría de la fisura",
+    "componentGeometry": "Geometría del componente",
     "materialProperties": "Propiedades del material",
     "loadProperties": "Propiedades de la carga",
     "configuration": "Configuración",
@@ -34,20 +34,23 @@
     "variance": "Varianza",
     "calculating": "Calculando",
     "custom": "Personalizado",
-    "library": "Libreria",
+    "library": "Librería",
     "results": "Resultados",
     "selectMaterial": "Seleccionar material",
     "restrictionA": "0 <= a/t <= 0.8",
     "restrictionB": "0.05 <= a/c <= 1",
-    "restrictionC": "0.1 <= t/Ri <= 0.25"
+    "restrictionC": "0.1 <= t/Ri <= 0.25",
+    "restrictionADescription": "No se cumple la relación entre la profundidad de la grieta y el espesor del tubo",
+    "restrictionBDescription": "No se cumple la relación entre la profundidad de la grieta y su longitud",
+    "restrictionCDescription": "No se cumple la relación entre el espesor del tubo y su radio interno"
   },
   "profile": {
     "userProfile": "Perfil de usuario",
-    "emailAddress": "Correo electronico",
-    "neverShare": "No vamos a compartir esta informacion con nadie",
+    "emailAddress": "Correo electrónico",
+    "neverShare": "No vamos a compartir esta información con nadie",
     "name": "Nombre",
     "surname": "Apellido",
-    "organization": "Organizacion",
+    "organization": "Organización",
     "preferences": "Preferencias",
     "unitSystem": "Sistema de unidades",
     "language": "Lenguaje",
@@ -55,19 +58,19 @@
     "unitedStates": "Estados Unidos",
     "english": "Ingles",
     "spanish": "Español",
-    "fastScenario": "Escenario rapido",
+    "fastScenario": "Escenario rápido",
     "update": "Actualizar"
   },
   "signup": {
     "signup": "Registro",
     "toSignup": "Registrarse",
-    "emailAddress": "Correo electronico",
+    "emailAddress": "Correo electrónico",
     "password": "Contraseña",
     "thisWillBe": "Sera tu nombre de usuario",
-    "topSecret": "Maximo secreto",
+    "topSecret": "Máximo secreto",
     "name": "Nombre",
     "surname": "Apellido",
-    "organization": "Organizacion",
+    "organization": "Organización",
     "preferences": "Preferencias",
     "unitSystem": "Sistema de unidades",
     "language": "Lenguaje",
@@ -75,7 +78,7 @@
     "unitedStates": "Estados Unidos",
     "english": "Ingles",
     "spanish": "Español",
-    "fastScenario": "Escenario rapido"
+    "fastScenario": "Escenario rápido"
   },
   "params": {
     "CRACK_DEPTH": "Profundidad de la grieta",
@@ -83,8 +86,8 @@
     "WALL_THICKNESS": "Espesor de la pared",
     "FRACTURE_TOUGHNESS": "Tenacidad a la fractura",
     "YIELD_STRESS": "Tensión de fluencia",
-    "PLASTIC_COLLAPSE": "Colapso plastico",
-    "OPERATING_PRESSURE": "Presion operativa",
+    "PLASTIC_COLLAPSE": "Colapso plástico",
+    "OPERATING_PRESSURE": "Presión operativa",
     "INNER_RADIUS": "Radio interno",
     "BAR_DIAMETER": "Diámetro",
     "BAR_LOAD": "Carga",
@@ -103,7 +106,7 @@
       "BAR_STRENGTH": "-"
     },
     "distribution": {
-      "deterministic": "Deterministico",
+      "deterministic": "Determinístico",
       "normal": "Normal",
       "logNormal": "Log normal"
     }
@@ -119,3 +122,4 @@
     "name": "Nombre"
   }
 }
+
