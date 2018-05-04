@@ -101,7 +101,7 @@
       "PLASTIC_COLLAPSE": "Lr max",
       "OPERATING_PRESSURE": "P",
       "INNER_RADIUS": "Ri",
-      "BAR_DIAMETER": "D",
+      "BAR_DIAMETER": "d",
       "BAR_LOAD": "-",
       "BAR_STRENGTH": "-"
     },
