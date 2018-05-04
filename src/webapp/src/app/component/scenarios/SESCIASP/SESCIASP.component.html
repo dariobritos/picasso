@@ -225,12 +225,15 @@
 
                 <div class="col-12 text-center">
                     <div *ngIf="!restrictionA" class="alert alert-danger mt-3" role="alert">
+                        {{'scenario.restrictionADescription'|translate}}<br/>
                         {{'scenario.restrictionA'|translate}}
                     </div>
                     <div *ngIf="!restrictionB" class="alert alert-danger mt-3" role="alert">
+                        {{'scenario.restrictionBDescription'|translate}}<br/>
                         {{'scenario.restrictionB'|translate}}
                     </div>
                     <div *ngIf="!restrictionC" class="alert alert-danger mt-3" role="alert">
+                        {{'scenario.restrictionCDescription'|translate}}<br/>
                         {{'scenario.restrictionC'|translate}}
                     </div>
                     <button [disabled]="this.loading" type="submit" (click)="startScenarioCalculation()"
