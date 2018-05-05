@@ -6,13 +6,12 @@ import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {HttpModule} from "@angular/http";
 import {AppRoutingModule} from "./routing/app-routing.module";
 import {AppComponent} from "./component/app/app.component";
-import {DashboardComponent} from "./component/dashboard/dashboard.component";
 import {ScenarioDetailComponent} from "./component/scenarios/detail/scenario-detail.component";
 import {ScenariosComponent} from "./component/scenarios/scenarios.component";
 import {ScenarioService} from "./service/scenario.service";
 import {HomeComponent} from "./component/home/home.component";
 import {SESCIASPComponent} from "./component/scenarios/SESCIASP/SESCIASP.component";
-import {SIBComponent} from "./component/scenarios/CSBSTT/CSBSTT.component";
+import {SIBComponent} from "./component/scenarios/SRCSBST/CSBSTT.component";
 import {InputsModule} from "./component/utils/utils-module";
 import {CommonModule} from "@angular/common";
 import {UserProfileComponent} from "./component/user-profile/user-profile.component";
@@ -43,7 +42,6 @@ import {LanguageService} from "./service/language.service";
         InterceptorModule],
     declarations: [
         AppComponent,
-        DashboardComponent,
         HomeComponent,
         ErrorComponent,
         ScenarioDetailComponent,

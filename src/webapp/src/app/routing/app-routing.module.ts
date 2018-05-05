@@ -2,10 +2,9 @@ import {NgModule} from '@angular/core';
 import {RouterModule, Routes} from '@angular/router';
 import {ScenariosComponent} from "../component/scenarios/scenarios.component";
 import {ScenarioDetailComponent} from "../component/scenarios/detail/scenario-detail.component";
-import {DashboardComponent} from "../component/dashboard/dashboard.component";
 import {HomeComponent} from "../component/home/home.component";
 import {SESCIASPComponent} from "../component/scenarios/SESCIASP/SESCIASP.component";
-import {SIBComponent} from "../component/scenarios/CSBSTT/CSBSTT.component";
+import {SIBComponent} from "../component/scenarios/SRCSBST/CSBSTT.component";
 import {UserProfileComponent} from "../component/user-profile/user-profile.component";
 import {MaterialsComponent} from "../component/materials/materials.component";
 import {ErrorComponent} from "../component/error/error.component";
@@ -17,7 +16,6 @@ import {MaterialDetailComponent} from "../component/materials/detail/material-de
 const routes: Routes = [
     {path: '', redirectTo: '/home', pathMatch: 'full'},
     {path: 'home', component: HomeComponent},
-    {path: 'dashboard', component: DashboardComponent},
     {path: 'scenario/:id', component: ScenarioDetailComponent},
     {path: 'material/:id', component: MaterialDetailComponent},
     {path: 'material', component: MaterialDetailComponent},
